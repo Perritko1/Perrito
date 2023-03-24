@@ -1,5 +1,5 @@
 <template>
-    <a href="">
+    <a href="/strazcovia">
         <button class="guardians-btn">Strazcovia</button>
     </a>
 </template>

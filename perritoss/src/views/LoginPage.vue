@@ -11,7 +11,7 @@
 import HomeBtn from '../components/HomeBtn.vue';
 
 export default {
-  name: 'RegisterPage',
+  name: 'LoginPage',
   components: {
     HomeBtn
   }
