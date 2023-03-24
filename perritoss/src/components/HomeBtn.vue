@@ -1,6 +1,6 @@
 <template>
   <a href="/">
-    <button class="home-btn">Naspat</button>
+    <button class="home-btn"><img src="pes final 1.png" alt="">Naspat</button>
   </a>
 </template>
 

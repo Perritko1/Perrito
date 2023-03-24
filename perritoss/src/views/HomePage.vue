@@ -49,4 +49,5 @@ export default {
   margin-left: 180px;
   font-size: x-large;
 }
+
 </style>
