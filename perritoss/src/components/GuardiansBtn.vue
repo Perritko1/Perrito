@@ -1,7 +1,7 @@
 <template>
-  <a href="/">
-    <button class="home-btn">Naspat</button>
-  </a>
+    <a href="">
+        <button class="guardians-btn">Strazcovia</button>
+    </a>
 </template>
 
 <script>
@@ -11,7 +11,8 @@ export default {
 </script>
 
 <style>
-.home-btn {
+
+.guardians-btn {
     background-color: #C5FFF6;
     color: black;
     border: 0px;
@@ -20,6 +21,8 @@ export default {
     padding-top: 20px;
     padding-bottom: 20px;
     border-radius: 20px;
-    margin: 100px;
+    margin: 10px;
+    float: right;
 }
+
 </style>

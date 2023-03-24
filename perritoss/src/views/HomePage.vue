@@ -3,6 +3,7 @@
 
     <register-btn />
     <login-btn /> 
+    <guardians-btn />
    
 
     <HelloWorld msg=" Homepage"/>
@@ -20,6 +21,7 @@
 import HelloWorld from '@/components/Home.vue'
 import LoginBtn from '../components/LoginBtn.vue';
 import RegisterBtn from '../components/RegisterBtn.vue';
+import GuardiansBtn from '../components/GuardiansBtn.vue';
 
 
 export default {
@@ -28,6 +30,7 @@ export default {
     HelloWorld,
     LoginBtn,
     RegisterBtn,
+    GuardiansBtn
   }
 }
 </script>

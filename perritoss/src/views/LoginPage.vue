@@ -22,6 +22,7 @@ export default {
 <style>
 .header-lg {
   text-align: center;
+  margin: 0%;
 }
 </style>
 
