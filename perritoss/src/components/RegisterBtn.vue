@@ -12,6 +12,9 @@ export default {
 </script>
 
 <style>
+.body {
+    margin: 0;
+}
 .register-btn {
     background-color: #C5FFF6;
     color: black;
@@ -21,6 +24,7 @@ export default {
     padding-top: 20px;
     padding-bottom: 20px;
     border-radius: 20px;
-    margin: 100px;
+    margin: 10px;
+    float: right;
 }
 </style>

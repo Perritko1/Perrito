@@ -21,7 +21,8 @@ export default {
     padding-top: 20px;
     padding-bottom: 20px;
     border-radius: 20px;
-    margin: 100px;
+    margin: 10px;
+    float: right;
 }
 
 </style>

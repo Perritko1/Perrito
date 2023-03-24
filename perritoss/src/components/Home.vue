@@ -1,6 +1,9 @@
 <template>
-  <div class="hello">
-    <h1 class="header-hp">Homepage tu je a este krasny hafko bude</h1>
+  <div>
+    <div class="intro">
+      <h1 class="header-hp">Perrito</h1>
+      <h3 class="subtitle1">Najspolahlivejsia stranka na strazenie zvierat</h3>
+    </div>
   </div>
 </template>
 

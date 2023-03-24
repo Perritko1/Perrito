@@ -1,10 +1,13 @@
 <template>
   <div class="home">
-    
+
+    <register-btn />
+    <login-btn /> 
+   
+
     <HelloWorld msg=" Homepage"/>
 
-    <login-btn /> 
-    <register-btn />
+
   </div>
 </template>
 
@@ -30,7 +33,17 @@ export default {
 </script>
 
 <style>
+.body {
+  background-color: #C5FFF6;
+}
+
 .header-hp {
-  text-align: center;
+  margin-left: 180px; 
+  font-size: xxx-large;
+}
+
+.subtitle1 {
+  margin-left: 180px;
+  font-size: x-large;
 }
 </style>

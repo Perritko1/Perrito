@@ -20,9 +20,18 @@ export default {
 </script>
 
   <style>
-  .header-lg {
+  .header-rg {
     text-align: center;
+    margin: 0%;
   }
+
+.home-btn {
+  align-items: left;
+  margin-top: 100px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
 
 </style>
   
