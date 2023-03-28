@@ -9,6 +9,7 @@
       <button class="loginBtn">Prihlasit sa</button>
       <br>
       <button class="linkToReg">Nemas ucet ? Registruj sa</button>
+      <p class="text-red-500">joko</p>
   </div>
 </template>
 
