@@ -1,5 +1,8 @@
 <template>
     <div class="about">
+      <house-vector />
+      <login-vector />
+      <shield-vector />
       <nav class="flex h-42 items-center justify-between px-5 bg-blue">
         <div class="flex"> 
         <logo-perrito />
@@ -41,6 +44,10 @@ import GuardiansBtn from '@/components/GuardiansBtn.vue';
 import LoginBtn from '@/components/LoginBtn.vue';
 import HomeBtn from '@/components/HomeBtn.vue';
 import LogoPerrito from '@/assets/LogoPerrito.vue';
+import HouseVector from '@/assets/HouseVector.vue';
+import LoginVector from '@/assets/LoginVector.vue';
+import ShieldVector from '@/assets/ShieldVector.vue';
+
 
 
 export default {
@@ -51,7 +58,10 @@ export default {
     GuardiansBtn,
     LoginBtn,
     HomeBtn,
-    LogoPerrito
+    LogoPerrito,
+    HouseVector, 
+    LoginVector,
+    ShieldVector
 
 }
 }
