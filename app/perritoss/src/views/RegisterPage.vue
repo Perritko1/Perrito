@@ -1,22 +1,28 @@
 <template>
     <div class="about">
-      <house-vector />
-      <login-vector />
-      <shield-vector />
       <nav class="flex h-42 items-center justify-between px-5 bg-blue">
-        <div class="flex"> 
-        <logo-perrito />
-        <h1 class="text-5xl inter">Perrito</h1>
+        <div class="flex align-sub"> 
+          <logo-perrito/>
+          <h1 class="text-5xl inter font-extralight">Perrito</h1>
         </div>
-        <div>
-          <guardians-btn class="px-5"/>
-          <home-btn />
-          <login-btn />
+        <div class="flex">
+          <div class="flex items-center">
+            <shield-vector/>
+            <guardians-btn/>
+          </div>
+          <div class="flex items-center ml-14">
+            <house-vector/>
+            <home-btn/>
+          </div>
+          <div class="flex items-center ml-14">
+            <login-vector/>
+            <login-btn/>
+          </div>
         </div>
       </nav>
       
       <h1 class="header-rg">Registracia</h1>
-      <back-btn />
+      <back-btn/>
       <input type="text" class="input-r1">
       <br>
       <input type="text" class="input-r2">
@@ -29,12 +35,10 @@
       <br>
       <button class="majBtn-r">Majitel</button>
       <br>
-      <accept-btn />
+      <accept-btn/>
       <br>
     </div>
-
   </template>
-
 
 <script>
 

@@ -17,8 +17,8 @@ export default {
     background-color: #C5FFF6;
     color: black;
     border: 0px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 5px;
+    padding-right: 5px;
     padding-top: 20px;
     padding-bottom: 20px;
     border-radius: 20px;
