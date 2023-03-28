@@ -1,14 +1,17 @@
 <template>
-
     <div class="about">
-      <nav class="flex h-42 items-center justify-between px-5">
-        <h1 class="text-5xl inter">Perrito</h1> 
+      <nav class="flex h-42 items-center justify-between px-5 bg-blue">
+        <div class="flex"> 
+        <logo-perrito />
+        <h1 class="text-5xl inter">Perrito</h1>
+        </div>
         <div>
           <guardians-btn class="px-5"/>
-          <back-btn class="px-5"/>
+          <home-btn />
           <login-btn />
         </div>
       </nav>
+      
       <h1 class="header-rg">Registracia</h1>
       <back-btn />
       <input type="text" class="input-r1">
@@ -36,6 +39,9 @@ import BackBtn from '../components/BackBtn.vue';
 import AcceptBtn from '../components/AcceptBtn.vue';
 import GuardiansBtn from '@/components/GuardiansBtn.vue';
 import LoginBtn from '@/components/LoginBtn.vue';
+import HomeBtn from '@/components/HomeBtn.vue';
+import LogoPerrito from '@/assets/LogoPerrito.vue';
+
 
 export default {
   name: 'RegisterPage',
@@ -43,7 +49,9 @@ export default {
     BackBtn,
     AcceptBtn,
     GuardiansBtn,
-    LoginBtn
+    LoginBtn,
+    HomeBtn,
+    LogoPerrito
 
 }
 }
@@ -58,7 +66,7 @@ export default {
 
 .home-btn {
   align-items: left;
-  margin-top: 100px;
+  margin-top: 10px;
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 10px;
