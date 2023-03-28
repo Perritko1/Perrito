@@ -1,14 +1,14 @@
 <template>
   <h1 class="header-st">Toto je page strazcov</h1>
-  <home-btn />
+  <back-btn />
 </template>
 
 <script>
-import HomeBtn from '../components/HomeBtn.vue'
+import BackBtn from '../components/BackBtn.vue'
 export default {
     name: 'StrazcoviaPage',
     components: {
-    HomeBtn
+    BackBtn
   }
 
 } 

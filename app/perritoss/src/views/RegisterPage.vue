@@ -1,8 +1,16 @@
 <template>
 
     <div class="about">
+      <nav class="flex h-42 items-center justify-between px-5">
+        <h1 class="text-5xl inter">Perrito</h1> 
+        <div>
+          <guardians-btn class="px-5"/>
+          <back-btn class="px-5"/>
+          <login-btn />
+        </div>
+      </nav>
       <h1 class="header-rg">Registracia</h1>
-      <home-btn />
+      <back-btn />
       <input type="text" class="input-r1">
       <br>
       <input type="text" class="input-r2">
@@ -24,15 +32,20 @@
 
 <script>
 
-import HomeBtn from '../components/HomeBtn.vue';
+import BackBtn from '../components/BackBtn.vue';
 import AcceptBtn from '../components/AcceptBtn.vue';
+import GuardiansBtn from '@/components/GuardiansBtn.vue';
+import LoginBtn from '@/components/LoginBtn.vue';
 
 export default {
   name: 'RegisterPage',
   components: {
-    HomeBtn,
-    AcceptBtn
-  }
+    BackBtn,
+    AcceptBtn,
+    GuardiansBtn,
+    LoginBtn
+
+}
 }
 
 </script>
