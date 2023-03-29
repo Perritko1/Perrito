@@ -1,6 +1,6 @@
 <template>
     <a href="/strazcovia">
-        <button class="guardians-btn">Strazcovia</button>
+        <button class="guardians-btn inter">Strážcovia</button>
     </a>
 </template>
 

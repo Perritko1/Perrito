@@ -1,6 +1,6 @@
 <template>
     <a href="/">
-        <button class="home-btn">Domov</button>
+        <button class="home-btn inter">Domov</button>
     </a>
     
 

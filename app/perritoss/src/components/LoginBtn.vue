@@ -1,7 +1,7 @@
 <template>
 
  <a href="/login">
-    <button class="login-btn">Prihlasenie</button>
+    <button class="login-btn inter">Prihlásenie</button>
  </a>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="about">
+    <div class="about bg-grey h-screen">
       <nav class="flex h-42 items-center justify-between px-5 bg-blue">
         <div class="flex align-sub"> 
           <logo-perrito/>
@@ -21,20 +21,28 @@
         </div>
       </nav>
       
-      <h1 class="header-rg">Registracia</h1>
       <back-btn/>
-      <input type="text" class="input-r1">
-      <br>
-      <input type="text" class="input-r2">
-      <br>
-      <input type="text" class="input-r3">
-      <br>
-      <input type="text" class="input-r4">
-      <br>
-      <button class="strBtn-r">Strazca</button>
-      <br>
-      <button class="majBtn-r">Majitel</button>
-      <br>
+      <h1 class="header-rg text-4xl text-blue my-10">Registrácia</h1>
+      <div class="justify-center grid">
+        <div class="grid">
+          <input type="text" class="input-r1 w-60 bg-blue h-10 rounded-xl">
+          <br>
+          <input type="text" class="input-r2 bg-blue h-10 rounded-xl">
+          <br>
+          <input type="text" class="input-r3 bg-blue h-10 rounded-xl">
+          <br>
+          <input type="text" class="input-r4 bg-blue h-10 rounded-xl">
+          <br>
+        </div>     
+        <div class="flex justify-center">
+          <button class="majBtn-r grey rounded-xl w-full h-10 bg-blue ">Majitel</button>
+          <br>
+          <button class="strBtn-r grey rounded-xl w-full h-10 bg-blue ">Strazca</button>
+          <br>
+        </div>
+      </div>
+      
+      
       <accept-btn/>
       <br>
     </div>
