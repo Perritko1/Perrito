@@ -1,46 +1,44 @@
 <template>
     <div class="about bg-grey h-screen">
       <nav-bar />
-      
       <back-btn/>
       <h1 class="header-rg text-4xl text-blue my-10">Registrácia</h1>
       <div class="justify-center grid">
         <div class="grid">
-          <input type="text" placeholder="Celé meno" v-model="state.name" class="input-r1 w-60 bg-blue h-10 rounded-xl">
+          <input type="text" placeholder="Celé meno" v-model="state.name" class="input-r1 w-60 bg-blue h-10 rounded-xl indent-2">
           <span v-if="v$.email.$error">
           {{ v$.name.$errors[0].$message }}
           </span>
           <br>
-          <input type="text" placeholder="Uživateľské meno" v-model="state.username" class="input-r2 bg-blue h-10 rounded-xl">
+          <input type="text" placeholder="Užívateľské meno" v-model="state.username" class="input-r2 bg-blue h-10 rounded-xl indent-2">
           <span v-if="v$.email.$error">
           {{ v$.username.$errors[0].$message }}
           </span>
           <br>
-          <input type="text" placeholder="E-mailová adresa" v-model="state.email" class="input-r3 bg-blue h-10 rounded-xl">
+          <input type="text" placeholder="E-mailová adresa" v-model="state.email" class="input-r3 bg-blue h-10 rounded-xl indent-2">
           <span v-if="v$.email.$error">
           {{ v$.email.$errors[0].$message }}
           </span>
           <br>
-          <input type="password" placeholder="Heslo" v-model="state.password" class="input-r4 bg-blue h-10 rounded-xl">
+          <input type="password" placeholder="Heslo" v-model="state.password" class="input-r4 bg-blue h-10 rounded-xl indent-2">
           <span v-if="v$.email.$error">
           {{ v$.password.$errors[0].$message }}
           </span>
           <br>
         </div>     
         <div class="flex justify-center">
-          <button class="majBtn-r grey rounded-xl w-full h-10 bg-blue ">Majitel</button>
+          <button class="majBtn-r grey rounded-xl w-full h-10 bg-blue mr-5 drop-shadow-lg focus:bg-green focus:text-blue">Majiteľ</button>
           <br>
-          <button class="strBtn-r grey rounded-xl w-full h-10 bg-blue ">Strazca</button>
+          <button class="strBtn-r grey rounded-xl w-full h-10 bg-blue drop-shadow-lg focus:bg-green focus:text-blue">Strážca</button>
           <br>
         </div>
       </div>
-      
-      
-      
-      <accept-btn @click="submitForm"/>
+      <div class="flex justify-center">
+        <accept-btn @click="submitForm" class="w-32 h-10 bg-grey rounded-xl mt-5 shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]"/>
+      </div>
       <br>
     </div>
-  </template>
+</template>
 
 <script>
 

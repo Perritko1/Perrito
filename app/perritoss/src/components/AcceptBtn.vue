@@ -1,6 +1,6 @@
 <template>
     
-        <button class="accept-btn text-blue">Dokoncit</button>
+        <button class="accept-btn text-blue">Dokončiť</button>
 
 </template>
 

@@ -4,11 +4,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        inter: ['inter']
+        inter: ['inter'],
       },
       colors: {
         'blue': '#C5FFF6',
-        'grey': '#33312F'
+        'grey': '#33312F',
+        'green': '#1F2726'
       },
     },
   },

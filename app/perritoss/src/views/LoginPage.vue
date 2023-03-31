@@ -22,7 +22,7 @@
 
 
     <h1>Prihlásenie</h1>
-      <back-btn />
+      <back-btn/>
       <input type="text" placeholder="E-mailová adresa" class="">
       <br>
       <input type="password" placeholder="Heslo" class="">
