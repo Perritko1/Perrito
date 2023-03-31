@@ -1,7 +1,7 @@
 <template>
 
  <a href="/register">
-    <button class="register-btn">Registracia</button>
+    <button class="register-btn">Registrácia</button>
  </a>
 </template>
 
