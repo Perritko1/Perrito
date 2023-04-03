@@ -1,4 +1,5 @@
 <template>
+  <div>
   <nav class="flex h-42 items-center justify-between px-5 bg-blue">
         <div class="flex align-sub"> 
           <logo-perrito/>
@@ -20,9 +21,34 @@
       </nav>
   <back-btn />
 
+  <div>
+    <img src="" alt="">
+    <p>Jozko Mrkva</p>
+    <p>20/den</p>
+    <p>5/hod</p>
+    <p>Petrzalka</p>
+    <p>hodnotenie</p>
+  </div>
 
+  <div>
+    <img src="" alt="">
+    <p>Janka Strbava</p>
+    <p>20/den</p>
+    <p>5/hod</p>
+    <p>Petrzalka</p>
+    <p>hodnotenie</p>
+  </div>
 
+  <div>
+    <img src="" alt="">
+    <p>Igor Koktavy</p>
+    <p>20/den</p>
+    <p>5/hod</p>
+    <p>Petrzalka</p>
+    <p>hodnotenie</p>
+  </div>
 
+</div>
 </template>
 
 <script>

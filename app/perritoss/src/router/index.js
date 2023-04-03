@@ -3,6 +3,8 @@ import HomePage from '../views/HomePage.vue'
 import RegisterPage from '../views/RegisterPage.vue'
 import LoginPage from '../views/LoginPage.vue'
 import StrazcoviaPage from '../views/StrazcoviaPage.vue'
+import FirstVisitMaj from '../views/FirstVisitMaj.vue'
+import FirstVisitStr from '../views/FirstVisitStr.vue'
 
 
 const routes = [
@@ -28,6 +30,16 @@ const routes = [
     path: '/strazcovia',
     name: 'Strazcovia',
     component: StrazcoviaPage
+  },
+  {
+    path: '/first-strazca',
+    name: 'FirstVisit strazca',
+    component: FirstVisitStr
+  },
+  {
+    path: '/first-majitel',
+    name: 'FirstVisit majitel',
+    component: FirstVisitMaj
   }
 ]
 
