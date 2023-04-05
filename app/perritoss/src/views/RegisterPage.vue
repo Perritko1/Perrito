@@ -1,7 +1,7 @@
 <template>
   <div class="h-screen bg-grey">
     <div class="about bg-grey">
-      <nav-bar />
+      <navbar />
       <back-btn/>
       <h1 class="header-rg text-4xl text-blue my-10">Registrácia</h1>
       <div class="justify-center grid">
@@ -44,7 +44,7 @@
             <g id="SVGRepo_iconCarrier"> <title/> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"/> <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"/> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/> </g> </g> </g> </g>
             </svg>
           {{ v$.password.$errors[0].$message }}
-          </span>
+          </span>../components/Navbar.vue
           <br>
         </div>     
         <div class="flex justify-center">
@@ -66,7 +66,7 @@
 
 import BackBtn from '../components/BackBtn.vue';
 import AcceptBtn from '../components/AcceptBtn.vue';
-import NavBar from '../components/NavBar.vue';
+import Navbar from '../components/Navbar.vue';
 
 
 
@@ -81,7 +81,7 @@ export default {
   components: {
     BackBtn,
     AcceptBtn,
-    NavBar
+    Navbar
   },
 
   setup() {
