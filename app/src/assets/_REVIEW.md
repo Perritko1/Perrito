@@ -1,3 +1,8 @@
+# 7.4.2023 Filip
+[] vsetky vsg vue files prerobte na svg-cka tak ako mate logoPerrito.svg
+[] styl by mal byt v priecinku _themes/
+[] ak sa pouzivaju assety na viacerych miestat dajte ich pod views/assets/ ak nie presunut pod komponent/page kde sa pouzivaju, odstranit tento priecinok
+
 # 5.4.2023 Marko
 [] folder assets by sa mal nazyvat _theme
 [] rozdelit do priecinkov, idealne podla vasej potreby, ale tak, aby bolo jasne vidno, co je co, proste mozte si spravit aj subfoldre (styles, images)
