@@ -64,9 +64,9 @@
 
 <script>
 
-import BackBtn from '../components/BackBtn.vue';
-import AcceptBtn from '../components/AcceptBtn.vue';
-import Navbar from '@/components/NavBar.vue';
+import BackBtn from '@/components/BackBtn.vue';
+import AcceptBtn from '@/components/AcceptBtn.vue';
+import Navbar from '@/components/Navbar.vue';
 
 
 

@@ -1,7 +1,8 @@
 <template>
-  <div class="home">
-    <nav class="flex h-42 items-center justify-between px-5 bg-blue">
-        <div class="flex align-sub"> 
+  <header class="bg-white">
+    <nav class="flex h-42 items-center justify-between px-5 bg-blue" aria-label="Global">
+      <div class="flex align-sub">
+        <a href="/">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 601 463" fill="none" stroke="#000" width="" height="" overflow="visible">
             <path fill="#000" d="M365.65 67.5921C365.65 63.4782 362.315 60.1432 358.201 60.1432C354.087 60.1432 350.752 63.4782 350.752 67.5921H365.65ZM432.676 67.5921H425.227V67.5936L432.676 67.5921ZM432.685 117.98L440.134 117.978L432.685 117.98ZM382.998 154.48L386.33 147.817H386.33L382.998 154.48ZM382.441 154.201L385.773 147.539H385.773L382.441 154.201ZM411.125 152.866L407.795 146.203L407.795 146.203L411.125 152.866ZM365.65 114.98V112.285H350.752V114.98H365.65ZM365.65 112.285V67.5921H350.752V112.285H365.65ZM425.227 8.0083V67.5921H440.124V8.0083H425.227ZM425.227 67.5936L425.236 117.981L440.134 117.978L440.124 67.5907L425.227 67.5936ZM386.33 147.817L385.773 147.539L379.11 160.864L379.667 161.142L386.33 147.817ZM407.795 146.203C403.428 148.385 398.534 149.53 393.626 149.53V164.428C400.819 164.428 407.996 162.756 414.455 159.529L407.795 146.203ZM393.626 149.53C391.094 149.53 388.571 148.938 386.33 147.817L379.667 161.142C384 163.309 388.808 164.428 393.626 164.428V149.53ZM350.752 114.98C350.752 134.411 361.731 152.174 379.11 160.864L385.773 147.539C373.44 141.372 365.65 128.768 365.65 114.98H350.752ZM414.455 159.529C430.195 151.662 440.138 135.575 440.134 117.978L425.236 117.981C425.239 129.933 418.486 140.86 407.795 146.203L414.455 159.529Z" class="fill-current-color" />
             <path fill="#000" d="M571.913 152.112C571.913 147.998 568.578 144.663 564.464 144.663C560.35 144.663 557.015 147.998 557.015 152.112H571.913ZM592.995 152.112H585.546V152.114L592.995 152.112ZM592.998 171.417L600.447 171.416L592.998 171.417ZM573.963 185.4L577.295 178.738L577.295 178.738L573.963 185.4ZM573.75 185.294L570.419 191.956L570.419 191.956L573.75 185.294ZM584.739 184.782L581.409 178.119L581.409 178.119L584.739 184.782ZM571.913 170.268V169.235H557.015V170.268H571.913ZM571.913 169.235V152.112H557.015V169.235H571.913ZM585.546 129.285V152.112H600.444V129.285H585.546ZM585.546 152.114L585.55 171.419L600.447 171.416L600.444 152.111L585.546 152.114ZM577.295 178.738L577.081 178.631L570.419 191.956L570.632 192.063L577.295 178.738ZM581.409 178.119C580.381 178.633 579.21 178.909 578.035 178.909V193.807C581.496 193.807 584.949 193.004 588.069 191.445L581.409 178.119ZM578.035 178.909C577.77 178.909 577.508 178.845 577.295 178.738L570.632 192.063C572.937 193.215 575.484 193.807 578.035 193.807V178.909ZM557.015 170.268C557.015 179.452 562.204 187.848 570.419 191.956L577.081 178.631C573.913 177.047 571.913 173.809 571.913 170.268H557.015ZM588.069 191.445C595.656 187.653 600.449 179.898 600.447 171.416L585.55 171.419C585.55 174.256 583.947 176.85 581.409 178.119L588.069 191.445Z" class="fill-current-color" />
@@ -16,72 +17,88 @@
             <path fill="#000" d="M97.1783 293.365V293.365C91.2681 293.365 86.4771 298.156 86.4771 304.066V332.603" stroke-width="14.9104" class="stroke-current-color" />
             <path stroke="#000" d="M104.311 264.827L77.563 262.154C71.7392 261.571 66.2083 259.316 61.6381 255.66V255.66C54.501 249.95 48.6881 242.76 44.6006 234.585L40.272 225.928C37.7979 220.98 36.1377 215.665 35.3553 210.188L33.8299 199.51C33.257 195.5 32.9695 191.454 32.9695 187.403V164.743C32.9695 162.545 32.3722 160.388 31.2414 158.503V158.503C26.8934 151.257 16.6525 150.568 11.3733 157.167L10.7977 157.887C8.98668 160.15 8 162.963 8 165.862V187.358C8 191.437 8.33702 195.509 9.00761 199.532L10.463 208.264C11.1979 212.673 12.2771 217.018 13.6905 221.259L18.7012 236.292L25.6651 250.22C28.1465 255.183 31.2518 259.808 34.9056 263.984V263.984C47.2761 278.122 65.1477 286.231 83.9334 286.23L97.1768 286.229" stroke-width="14.9104" class="stroke-current-color" />
           </svg>
-          <h1 class="text-5xl inter font-extralight">Perrito</h1>
-        </div>
-        <div class="flex">
-          <div class="flex items-center">
+         <h1 class="text-5xl inter font-extralight">Perrito</h1>
+        </a>
+      </div>
+      <div class="flex lg:hidden">
+        <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = true">
+          <!-- <span class="sr-only">Open main menu</span> -->
+          <Bars3Icon class="h-6 w-6" aria-hidden="true" />
+        </button>
+      </div>
+          <div class="hidden lg:flex lg:flex-1 lg:justify-end">
             <svg class="fill-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 22" fill="none" :width="widthAttr" :height="heightAttr" overflow="visible">
               <path d="M18 9.7C18 15.0835 14.16 20.1178 9 21.34C3.84 20.1178 0 15.0835 0 9.7V3.88L9 0L18 3.88V9.7ZM9 19.4C12.75 18.43 16 14.1038 16 9.9134V5.141L9 2.1146L2 5.141V9.9134C2 14.1038 5.25 18.43 9 19.4ZM7 15.52L3 11.64L4.41 10.2723L7 12.7749L13.59 6.3826L15 7.76" class="fill-current-color" />
             </svg>
             <guardians-btn/>
           </div>
-          <div class="flex items-center ml-14">
-            <svg class="stroke-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 20" fill="none" :width="widthAttr" :height="heightAttr" overflow="visible">
-              <path d="M11 13.5H6.5C5.10444 13.5 4.40665 13.5 3.83886 13.6722C2.56045 14.06 1.56004 15.0605 1.17224 16.3389C1 16.9067 1 17.6044 1 19M15 16L17 18L21 14M13.5 5.5C13.5 7.98528 11.4853 10 9 10C6.51472 10 4.5 7.98528 4.5 5.5C4.5 3.01472 6.51472 1 9 1C11.4853 1 13.5 3.01472 13.5 5.5Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="stroke-current-color" />
-            </svg>
-              <login-btn/>
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+              <svg class="fill-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" fill="none" :width="widthAttr" :height="heightAttr" overflow="visible">
+                <g>
+                  <path d="M24.3462 12.4877L13.5129 1.65435C13.3776 1.51984 13.1945 1.44434 13.0037 1.44434C12.8129 1.44434 12.6299 1.51984 12.4945 1.65435L1.66121 12.4877C1.54289 12.6258 1.48107 12.8036 1.48809 12.9853C1.49511 13.1671 1.57046 13.3395 1.69908 13.4682C1.82771 13.5968 2.00013 13.6721 2.1819 13.6791C2.36366 13.6862 2.54138 13.6243 2.67955 13.506L13.0001 3.18546L23.3207 13.5132C23.4588 13.6316 23.6365 13.6934 23.8183 13.6864C24.0001 13.6793 24.1725 13.604 24.3011 13.4754C24.4297 13.3467 24.5051 13.1743 24.5121 12.9926C24.5191 12.8108 24.4573 12.6331 24.339 12.4949L24.3462 12.4877Z" class="fill-current-color" />
+                  <path d="M20.2221 23.1116H16.611V15.8894H9.38881V23.1116H5.7777V13.0005L4.33325 14.4449V23.1116C4.33325 23.4947 4.48543 23.8621 4.75632 24.133C5.02721 24.4039 5.39461 24.556 5.7777 24.556H10.8333V17.3338H15.1666V24.556H20.2221C20.6052 24.556 20.9726 24.4039 21.2435 24.133C21.5144 23.8621 21.6666 23.4947 21.6666 23.1116V14.2716L20.2221 12.8271V23.1116Z" class="fill-current-color" />
+                </g>
+                <defs></defs>
+              </svg>
+              <home-btn/>
+            </div>
+              <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                <svg class="stroke-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 20" fill="none" :width="widthAttr" :height="heightAttr" overflow="visible">
+                  <path d="M11 13.5H6.5C5.10444 13.5 4.40665 13.5 3.83886 13.6722C2.56045 14.06 1.56004 15.0605 1.17224 16.3389C1 16.9067 1 17.6044 1 19M15 16L17 18L21 14M13.5 5.5C13.5 7.98528 11.4853 10 9 10C6.51472 10 4.5 7.98528 4.5 5.5C4.5 3.01472 6.51472 1 9 1C11.4853 1 13.5 3.01472 13.5 5.5Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="stroke-current-color" />
+                </svg>
+                <login-btn />
+              </div>
+    </nav>
+
+      <Dialog as="div" class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
+        <div class="fixed inset-0 z-10" />
+        <DialogPanel class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <div class="flex items-center justify-between">
+            <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = false">
+              <span class="sr-only">Close menu</span>
+              <XMarkIcon class="h-6 w-6" aria-hidden="true" />
+            </button>
           </div>
-          <div class="flex items-center ml-14">
-            <register-btn />
+          <div class="mt-6 flow-root">
+            <div class="-my-6 divide-y divide-gray-500/10">
+              <div class="space-y-2 py-6">
+                <div>
+                  <guardians-btn/>
+                  <home-btn/>
+                </div>
+              </div>
+              <div class="py-6">
+                <login-btn />
+              </div>
+            </div>
           </div>
-        </div>
-      </nav>
-    
-
-    
-
-   <div>
-    <div class="intro">
-      <h1 class="header-hp">Perrito</h1>
-      <h3 class="subtitle1">Najspolahlivejsia stranka na strazenie zvierat</h3>
-    </div>
-  </div>
-
-
-
-
-  </div>
+        </DialogPanel>
+      </Dialog>
+  </header>
 </template>
 
-<script>
-import LoginBtn from '@/components/LoginBtn.vue';
-import RegisterBtn from '@/components/RegisterBtn.vue';
-import GuardiansBtn from '@/components/GuardiansBtn.vue';
+<script setup>
 
-export default {
-  name: 'HomePage',
-  components: {
-    LoginBtn,
-    RegisterBtn,
-    GuardiansBtn,
+import HomeBtn from '@/components/HomeBtn.vue'
+import LoginBtn from '@/components/LoginBtn.vue'
+import GuardiansBtn from '@/components/GuardiansBtn.vue'
 
-  }
-}
+
+
+import { ref } from 'vue'
+
+import {
+  Dialog,
+  DialogPanel,
+} from '@headlessui/vue'
+
+import {
+  Bars3Icon,
+  XMarkIcon
+
+
+} from '@heroicons/vue/24/outline'
+
+
+const mobileMenuOpen = ref(false)
 </script>
-
-<style>
-.body {
-  background-color: #C5FFF6;
-}
-
-.header-hp {
-  margin-left: 180px; 
-  font-size: xxx-large;
-}
-
-.subtitle1 {
-  margin-left: 180px;
-  font-size: x-large;
-}
-
-</style>

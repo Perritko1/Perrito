@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <nav class="flex h-42 items-center justify-between px-5 bg-blue">
+  <div>
+  <nav class="flex h-42 items-center justify-between px-5 bg-blue">
         <div class="flex align-sub"> 
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 601 463" fill="none" stroke="#000" width="" height="" overflow="visible">
             <path fill="#000" d="M365.65 67.5921C365.65 63.4782 362.315 60.1432 358.201 60.1432C354.087 60.1432 350.752 63.4782 350.752 67.5921H365.65ZM432.676 67.5921H425.227V67.5936L432.676 67.5921ZM432.685 117.98L440.134 117.978L432.685 117.98ZM382.998 154.48L386.33 147.817H386.33L382.998 154.48ZM382.441 154.201L385.773 147.539H385.773L382.441 154.201ZM411.125 152.866L407.795 146.203L407.795 146.203L411.125 152.866ZM365.65 114.98V112.285H350.752V114.98H365.65ZM365.65 112.285V67.5921H350.752V112.285H365.65ZM425.227 8.0083V67.5921H440.124V8.0083H425.227ZM425.227 67.5936L425.236 117.981L440.134 117.978L440.124 67.5907L425.227 67.5936ZM386.33 147.817L385.773 147.539L379.11 160.864L379.667 161.142L386.33 147.817ZM407.795 146.203C403.428 148.385 398.534 149.53 393.626 149.53V164.428C400.819 164.428 407.996 162.756 414.455 159.529L407.795 146.203ZM393.626 149.53C391.094 149.53 388.571 148.938 386.33 147.817L379.667 161.142C384 163.309 388.808 164.428 393.626 164.428V149.53ZM350.752 114.98C350.752 134.411 361.731 152.174 379.11 160.864L385.773 147.539C373.44 141.372 365.65 128.768 365.65 114.98H350.752ZM414.455 159.529C430.195 151.662 440.138 135.575 440.134 117.978L425.236 117.981C425.239 129.933 418.486 140.86 407.795 146.203L414.455 159.529Z" class="fill-current-color" />
@@ -20,68 +20,84 @@
         </div>
         <div class="flex">
           <div class="flex items-center">
-            <svg class="fill-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 22" fill="none" :width="widthAttr" :height="heightAttr" overflow="visible">
-              <path d="M18 9.7C18 15.0835 14.16 20.1178 9 21.34C3.84 20.1178 0 15.0835 0 9.7V3.88L9 0L18 3.88V9.7ZM9 19.4C12.75 18.43 16 14.1038 16 9.9134V5.141L9 2.1146L2 5.141V9.9134C2 14.1038 5.25 18.43 9 19.4ZM7 15.52L3 11.64L4.41 10.2723L7 12.7749L13.59 6.3826L15 7.76" class="fill-current-color" />
+            <svg class="fill-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 26" fill="none" :width="widthAttr" :height="heightAttr" overflow="visible">
+              <g>
+                <path d="M24.3462 12.4877L13.5129 1.65435C13.3776 1.51984 13.1945 1.44434 13.0037 1.44434C12.8129 1.44434 12.6299 1.51984 12.4945 1.65435L1.66121 12.4877C1.54289 12.6258 1.48107 12.8036 1.48809 12.9853C1.49511 13.1671 1.57046 13.3395 1.69908 13.4682C1.82771 13.5968 2.00013 13.6721 2.1819 13.6791C2.36366 13.6862 2.54138 13.6243 2.67955 13.506L13.0001 3.18546L23.3207 13.5132C23.4588 13.6316 23.6365 13.6934 23.8183 13.6864C24.0001 13.6793 24.1725 13.604 24.3011 13.4754C24.4297 13.3467 24.5051 13.1743 24.5121 12.9926C24.5191 12.8108 24.4573 12.6331 24.339 12.4949L24.3462 12.4877Z" class="fill-current-color" />
+                <path d="M20.2221 23.1116H16.611V15.8894H9.38881V23.1116H5.7777V13.0005L4.33325 14.4449V23.1116C4.33325 23.4947 4.48543 23.8621 4.75632 24.133C5.02721 24.4039 5.39461 24.556 5.7777 24.556H10.8333V17.3338H15.1666V24.556H20.2221C20.6052 24.556 20.9726 24.4039 21.2435 24.133C21.5144 23.8621 21.6666 23.4947 21.6666 23.1116V14.2716L20.2221 12.8271V23.1116Z" class="fill-current-color" />
+              </g>
+              <defs></defs>
             </svg>
-            <guardians-btn/>
+            <home-btn/>
           </div>
           <div class="flex items-center ml-14">
+            <login-btn />
             <svg class="stroke-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 20" fill="none" :width="widthAttr" :height="heightAttr" overflow="visible">
               <path d="M11 13.5H6.5C5.10444 13.5 4.40665 13.5 3.83886 13.6722C2.56045 14.06 1.56004 15.0605 1.17224 16.3389C1 16.9067 1 17.6044 1 19M15 16L17 18L21 14M13.5 5.5C13.5 7.98528 11.4853 10 9 10C6.51472 10 4.5 7.98528 4.5 5.5C4.5 3.01472 6.51472 1 9 1C11.4853 1 13.5 3.01472 13.5 5.5Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="stroke-current-color" />
             </svg>
-              <login-btn/>
           </div>
           <div class="flex items-center ml-14">
             <register-btn />
           </div>
         </div>
       </nav>
-    
+  <back-btn />
 
-    
-
-   <div>
-    <div class="intro">
-      <h1 class="header-hp">Perrito</h1>
-      <h3 class="subtitle1">Najspolahlivejsia stranka na strazenie zvierat</h3>
-    </div>
+  <div>
+    <img src="" alt="">
+    <p>Jozko Mrkva</p>
+    <p>20/den</p>
+    <p>5/hod</p>
+    <p>Petrzalka</p>
+    <p>hodnotenie</p>
   </div>
 
-
-
-
+  <div>
+    <img src="" alt="">
+    <p>Janka Strbava</p>
+    <p>20/den</p>
+    <p>5/hod</p>
+    <p>Petrzalka</p>
+    <p>hodnotenie</p>
   </div>
+
+  <div>
+    <img src="" alt="">
+    <p>Igor Koktavy</p>
+    <p>20/den</p>
+    <p>5/hod</p>
+    <p>Petrzalka</p>
+    <p>hodnotenie</p>
+  </div>
+
+</div>
 </template>
 
 <script>
-import LoginBtn from '@/components/LoginBtn.vue';
-import RegisterBtn from '@/components/RegisterBtn.vue';
-import GuardiansBtn from '@/components/GuardiansBtn.vue';
+
+import BackBtn from '@/components/BackBtn.vue'
+import HomeBtn from '@/components/HomeBtn.vue'
+import LoginBtn from '@/components/LoginBtn.vue'
+import RegisterBtn from '@/components/RegisterBtn.vue'
+
 
 export default {
-  name: 'HomePage',
-  components: {
-    LoginBtn,
-    RegisterBtn,
-    GuardiansBtn,
+    name: 'StrazcoviaPage',
+    components: {
+      BackBtn,
+      HomeBtn,
+      LoginBtn,
+      RegisterBtn,
 
   }
-}
+
+} 
 </script>
 
 <style>
-.body {
-  background-color: #C5FFF6;
-}
 
-.header-hp {
-  margin-left: 180px; 
-  font-size: xxx-large;
-}
-
-.subtitle1 {
-  margin-left: 180px;
-  font-size: x-large;
+.header-st { 
+    text-align: center;
+    margin: 0%;
 }
 
 </style>

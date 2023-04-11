@@ -2,9 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../views/HomePage.vue'
 import RegisterPage from '../views/RegisterPage.vue'
 import LoginPage from '../views/LoginPage.vue'
-import StrazcoviaPage from '../views/StrazcoviaPage.vue'
-import FirstVisitMaj from '../views/FirstVisitMaj.vue'
-import FirstVisitStr from '../views/FirstVisitStr.vue'
+import GuardiansPage from '../views/GuardiansPage.vue'
+import FirstVisitOwn from '../views/FirstVisitOwn.vue'
+import FirstVisitGuard from '../views/FirstVisitGuard.vue'
 
 
 const routes = [
@@ -16,9 +16,6 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: LoginPage
   },
   {
@@ -27,19 +24,19 @@ const routes = [
     component: RegisterPage
   },
   {
-    path: '/strazcovia',
+    path: '/guardians',
     name: 'Strazcovia',
-    component: StrazcoviaPage
+    component: GuardiansPage
   },
   {
-    path: '/first-strazca',
+    path: '/first-guardian',
     name: 'FirstVisit strazca',
-    component: FirstVisitStr
+    component: FirstVisitGuard
   },
   {
-    path: '/first-majitel',
+    path: '/first-owner',
     name: 'FirstVisit majitel',
-    component: FirstVisitMaj
+    component: FirstVisitOwn
   }
 ]
 
