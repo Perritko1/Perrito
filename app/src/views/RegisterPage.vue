@@ -1,7 +1,7 @@
 <template>
   <div class="h-screen bg-grey">
     <div class="about bg-grey">
-      <navbar />
+      <nav-bar />
       <back-btn/>
       <h1 class="header-rg text-4xl text-blue my-10">Registrácia</h1>
       <div class="justify-center grid">
@@ -66,7 +66,7 @@
 
 import BackBtn from '@/components/BackBtn.vue';
 import AcceptBtn from '@/components/AcceptBtn.vue';
-import Navbar from '@/components/Navbar.vue';
+import NavBar from '@/components/NavBar.vue';
 
 
 
@@ -80,7 +80,7 @@ export default {
   components: {
     BackBtn,
     AcceptBtn,
-    Navbar
+    NavBar
   },
 
   setup() {
