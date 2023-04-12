@@ -2,7 +2,10 @@
   <div class="h-screen bg-grey">
     <div class="about bg-grey">
       <nav-bar />
-      <back-btn/>
+      <a href="/">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58" fill="none" :width="widthAttr" :height="heightAttr" overflow="visible" class="w-12 h-12 m-7">
+        <path d="M7.25 21.7497H39.875C45.8811 21.7497 50.75 26.6186 50.75 32.6247C50.75 38.6308 45.8811 43.4997 39.875 43.4997H29M7.25 21.7497L16.9167 12.083M7.25 21.7497L16.9167 31.4163" stroke="#C5FFF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </a>
       <h1 class="header-rg text-4xl text-blue my-10">Registrácia</h1>
       <div class="justify-center grid">
         <div class="grid w-60">
@@ -44,18 +47,22 @@
             <g id="SVGRepo_iconCarrier"> <title/> <g id="Complete"> <g id="alert-circle"> <g> <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"/> <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"/> <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/> </g> </g> </g> </g>
             </svg>
           {{ v$.password.$errors[0].$message }}
-          </span>../components/Navbar.vue
+          </span>
           <br>
         </div>     
         <div class="flex justify-center">
-          <button class="majBtn-r grey rounded-xl w-full h-10 bg-green mr-5 drop-shadow-lg text-blue focus:bg-blue focus:text-grey">Majiteľ</button>
+          <button class="majBtn-r grey rounded-xl w-full h-10 bg-green mr-5 drop-shadow-lg text-blue focus:bg-blue focus:text-grey">
+            Majiteľ
+          </button>
           <br>
-          <button class="strBtn-r grey rounded-xl w-full h-10 bg-green drop-shadow-lg text-blue focus:bg-blue focus:text-grey">Strážca</button>
+          <button class="strBtn-r grey rounded-xl w-full h-10 bg-green drop-shadow-lg text-blue focus:bg-blue focus:text-grey">
+            Strážca
+          </button>
           <br>
         </div>
       </div>
       <div class="flex justify-center">
-        <accept-btn @click="submitForm" class="w-32 h-10 bg-grey rounded-xl mt-6 shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]"/>
+        <button @click="submitForm" class="w-32 h-10 bg-grey rounded-xl mt-6 shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)] accept-btn text-blue">Dokončiť</button>
       </div>
       <br>
     </div>
@@ -64,22 +71,15 @@
 
 <script>
 
-import BackBtn from '@/components/BackBtn.vue';
-import AcceptBtn from '@/components/AcceptBtn.vue';
 import NavBar from '@/components/NavBar.vue';
-
-
 
 import useValidate from '@vuelidate/core'
 import { required, email, minLength, helpers, } from '@vuelidate/validators'
 import { reactive, computed } from 'vue'
 
-
 export default {
   name: 'RegisterPage',
   components: {
-    BackBtn,
-    AcceptBtn,
     NavBar
   },
 
@@ -93,10 +93,9 @@ export default {
 
     const mustBeZavinac = (value) => value.includes('@')
 
-
     const rules = computed(() => {
       return {
-        name: { required },
+      name: { required },
       username: { required, minLength: minLength(4) },
       email: { required, email, mustBeZavinac: helpers.withMessage('E-mail musi obsahovat @', mustBeZavinac), },
       password: { required, minLength: minLength(8) },
@@ -131,13 +130,11 @@ export default {
     margin: 0%;
   }
 
-.home-btn {
-  align-items: left;
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-}
-
-</style>
-  
+  .home-btn {
+    align-items: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  </style>
