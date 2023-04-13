@@ -13,7 +13,7 @@
       <div class="justify-center grid">
         <div class="grid w-60">
           <input type="text" placeholder="Celé meno" v-model="state.name" class="input-r1 bg-blue h-10 rounded-xl indent-2">
-          <span v-if="v$.email.$error" class="flex text-red-600 items-center">
+          <span v-if="v$.name.$error" class="flex text-red-600 items-center">
             <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
             <g id="SVGRepo_bgCarrier" stroke-width="0"/>
             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
@@ -34,7 +34,7 @@
           </span>
           <br>
           <input type="text" placeholder="Užívateľské meno" v-model="state.username" class="input-r2 bg-blue h-10 rounded-xl indent-2">
-          <span v-if="v$.email.$error" class="flex text-red-600 items-center">
+          <span v-if="v$.username.$error" class="flex text-red-600 items-center">
             <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
             <g id="SVGRepo_bgCarrier" stroke-width="0"/>
             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
@@ -76,7 +76,7 @@
           </span>
           <br>
           <input type="password" placeholder="Heslo" v-model="state.password" class="input-r4 bg-blue h-10 rounded-xl indent-2">
-          <span v-if="v$.email.$error" class="flex text-red-600 items-center">
+          <span v-if="v$.password.$error" class="flex text-red-600 items-center">
             <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
             <g id="SVGRepo_bgCarrier" stroke-width="0"/>
             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
@@ -123,7 +123,7 @@
 import NavBar from '@/views/components/NavBar.vue';
 
 import useValidate from '@vuelidate/core'
-import { required, email, minLength, helpers, } from '@vuelidate/validators'
+import { required, email, minLength, } from '@vuelidate/validators'
 import { reactive, computed } from 'vue'
 
 export default {
@@ -140,13 +140,13 @@ export default {
       password: '',
     })
 
-    const mustBeZavinac = (value) => value.includes('@')
+
 
     const rules = computed(() => {
       return {
       name: { required },
       username: { required, minLength: minLength(4) },
-      email: { required, email, mustBeZavinac: helpers.withMessage('E-mail musi obsahovat @', mustBeZavinac), },
+      email: { required, email, },
       password: { required, minLength: minLength(8) },
       }
     })
@@ -165,7 +165,7 @@ export default {
       if(!this.v$.$error) {
         alert('Registracia prebehla uspesne')
       } else {
-        alert('Musis vsetko vyplnit')
+        alert('Nepodarilo sa registrovat')
       }
     },
   },

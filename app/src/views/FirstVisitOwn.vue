@@ -1,13 +1,16 @@
 <template>
-  <h1>
-    first visit majitel
-  </h1>
+  <nav-bar />
 </template>
 
 <script>
 
-export default {
+import NavBar from '@/views/components/NavBar.vue'
 
+export default {
+  name: 'FirstvisitOwner',
+  components: {
+    NavBar,
+  }
 }
 
 </script>
