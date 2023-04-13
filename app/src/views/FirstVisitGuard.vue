@@ -17,7 +17,9 @@
             <path fill="#000" d="M97.1783 293.365V293.365C91.2681 293.365 86.4771 298.156 86.4771 304.066V332.603" stroke-width="14.9104" class="stroke-current-color" />
             <path stroke="#000" d="M104.311 264.827L77.563 262.154C71.7392 261.571 66.2083 259.316 61.6381 255.66V255.66C54.501 249.95 48.6881 242.76 44.6006 234.585L40.272 225.928C37.7979 220.98 36.1377 215.665 35.3553 210.188L33.8299 199.51C33.257 195.5 32.9695 191.454 32.9695 187.403V164.743C32.9695 162.545 32.3722 160.388 31.2414 158.503V158.503C26.8934 151.257 16.6525 150.568 11.3733 157.167L10.7977 157.887C8.98668 160.15 8 162.963 8 165.862V187.358C8 191.437 8.33702 195.509 9.00761 199.532L10.463 208.264C11.1979 212.673 12.2771 217.018 13.6905 221.259L18.7012 236.292L25.6651 250.22C28.1465 255.183 31.2518 259.808 34.9056 263.984V263.984C47.2761 278.122 65.1477 286.231 83.9334 286.23L97.1768 286.229" stroke-width="14.9104" class="stroke-current-color" />
           </svg>
-         <h1 class="text-5xl inter font-extralight">Perrito</h1>
+         <h1 class="text-5xl inter font-extralight">
+          Perrito
+        </h1>
         </a>
       </div>
       <div class="flex lg:hidden">
@@ -30,7 +32,9 @@
           <path d="M18 9.7C18 15.0835 14.16 20.1178 9 21.34C3.84 20.1178 0 15.0835 0 9.7V3.88L9 0L18 3.88V9.7ZM9 19.4C12.75 18.43 16 14.1038 16 9.9134V5.141L9 2.1146L2 5.141V9.9134C2 14.1038 5.25 18.43 9 19.4ZM7 15.52L3 11.64L4.41 10.2723L7 12.7749L13.59 6.3826L15 7.76" class="fill-current-color" />
         </svg>
         <a href="/strazcovia">
-          <button class="guardians-btn inter">Strážcovia</button>
+          <button class="guardians-btn inter">
+            Strážcovia
+          </button>
         </a>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -42,14 +46,20 @@
           <defs></defs>
         </svg>
         <a href="/">
-          <button class="home-btn inter">Domov</button>
+          <button class="home-btn inter">
+            Domov
+          </button>
         </a>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
         <svg class="stroke-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 20" fill="none" :width="widthAttr" :height="heightAttr" overflow="visible">
           <path d="M11 13.5H6.5C5.10444 13.5 4.40665 13.5 3.83886 13.6722C2.56045 14.06 1.56004 15.0605 1.17224 16.3389C1 16.9067 1 17.6044 1 19M15 16L17 18L21 14M13.5 5.5C13.5 7.98528 11.4853 10 9 10C6.51472 10 4.5 7.98528 4.5 5.5C4.5 3.01472 6.51472 1 9 1C11.4853 1 13.5 3.01472 13.5 5.5Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="stroke-current-color" />
         </svg>
-        <login-btn />
+        <a href="/login">
+          <button class="login-btn inter">
+            Prihlásenie
+          </button>
+        </a>
       </div>
     </nav>
     <Dialog as="div" class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
@@ -57,7 +67,9 @@
       <DialogPanel class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
         <div class="flex items-center justify-between">
           <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = false">
-            <span class="sr-only">Close menu</span>
+            <span class="sr-only">
+              Close menu
+            </span>
             <XMarkIcon class="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
@@ -66,15 +78,23 @@
             <div class="space-y-2 py-6">
               <div>
                 <a href="/strazcovia">
-                  <button class="guardians-btn inter">Strážcovia</button>
+                  <button class="guardians-btn inter">
+                    Strážcovia
+                  </button>
                 </a>
                 <a href="/">
-                  <button class="home-btn inter">Domov</button>
+                  <button class="home-btn inter">
+                    Domov
+                  </button>
                 </a>
               </div>
             </div>
             <div class="py-6">
-              <login-btn />
+              <a href="/login">
+                <button class="login-btn inter">
+                  Prihlásenie
+                </button>
+              </a>
             </div>
           </div>
         </div>
@@ -84,12 +104,6 @@
 </template>
 
 <script setup>
-
-
-import LoginBtn from '@/components/LoginBtn.vue'
-
-
-
 
 import { ref } from 'vue'
 
@@ -101,10 +115,8 @@ import {
 import {
   Bars3Icon,
   XMarkIcon
-
-
 } from '@heroicons/vue/24/outline'
 
-
 const mobileMenuOpen = ref(false)
+
 </script>
