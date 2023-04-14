@@ -60,7 +60,7 @@
       </button>    
     </div>
     <div class="flex justify-center items-center">
-      <div class="w-96">
+      <div class="w-72 md:w-96">
         <hr class="h-px my-8 bg-black border-0 dark:bg-gray-700">
       </div>
     </div>  
