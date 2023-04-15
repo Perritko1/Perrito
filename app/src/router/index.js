@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomePage from '../views/HomePage.vue'
-import RegisterPage from '../views/RegisterPage.vue'
-import LoginPage from '../views/LoginPage.vue'
-import GuardiansPage from '../views/GuardiansPage.vue'
-import FirstVisitOwn from '../views/FirstVisitOwn.vue'
-import FirstVisitGuard from '../views/FirstVisitGuard.vue'
-
+import HomePage from '@/views/HomePage.vue'
+import RegisterPage from '@/views/RegisterPage.vue'
+import LoginPage from '@/views/LoginPage.vue'
+import GuardiansPage from '@/views/GuardiansPage.vue'
+import FirstVisitOwn from '@/views/FirstVisitOwn.vue'
+import FirstVisitGuard from '@/views/FirstVisitGuard.vue'
+import AnimalsPage from '@/views/AnimalsPage.vue'
 
 const routes = [
   {
@@ -37,6 +37,11 @@ const routes = [
     path: '/first-owner',
     name: 'FirstVisit majitel',
     component: FirstVisitOwn
+  },
+  {
+    path: '/animals',
+    name: 'Zvieratka',
+    component: AnimalsPage
   }
 ]
 
