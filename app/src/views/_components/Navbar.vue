@@ -3,7 +3,7 @@
     <nav class="flex justify-between px-5 bg-blue">
       <div> 
         <a class="flex items-end" href="/">
-          <img src="@/themes/LogoPerrito.svg" alt="" class="w-24 h-24">      
+          <img src="@/views/_components/_assets/LogoPerrito.svg" alt="" class="w-24 h-24">      
           <h1 class="text-5xl inter font-extralight mb-[0.460rem]">
             Perrito
           </h1> 
@@ -68,7 +68,7 @@
     </nav>
     <Dialog as="div" class="lg:hidden " @close="mobileMenuOpen = false" :open="mobileMenuOpen">
       <div class="fixed inset-0 z-10">
-        <DialogPanel class="fixed inset-y-0 right-0 z-10 w-10\12 overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <DialogPanel class="fixed inset-y-0 right-0 z-10 w-10\12 overflow-y-auto bg-blue px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div class="flex items-center justify-between">
             <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = false">
               <span class="sr-only">
@@ -82,7 +82,7 @@
               <div class="space-y-2 py-6">
                 <div>
                   <div class="flex justify-center">
-                    <img src="@/themes/LogoPerrito.svg" alt="" class="w-16 h-16">
+                    <img src="@/views/_components/_assets/LogoPerrito.svg" alt="" class="w-16 h-16">
                   </div>
                   <div class="flex justify-center text-xl">
                     <h1>P E R R I T O</h1>

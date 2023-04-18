@@ -1,47 +1,40 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomePage from '@/views/HomePage.vue'
-import RegisterPage from '@/views/RegisterPage.vue'
-import LoginPage from '@/views/LoginPage.vue'
-import GuardiansPage from '@/views/GuardiansPage.vue'
-import FirstVisitOwn from '@/views/FirstVisitOwn.vue'
-import FirstVisitGuard from '@/views/FirstVisitGuard.vue'
-import AnimalsPage from '@/views/AnimalsPage.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: HomePage
+    component: () => import('@/views/Home/HomePage.vue')
   },
   {
     path: '/login',
     name: 'Login',
-    component: LoginPage
+    component: () => import('@/views/Login/LoginPage.vue')
   },
   {
     path: '/register',
     name: 'Register',
-    component: RegisterPage
+    component: () => import('@/views/Register/RegisterPage.vue')
   },
   {
     path: '/guardians',
     name: 'Strazcovia',
-    component: GuardiansPage
+    component: () => import('@/views/Guardians/GuardiansPage.vue')
   },
   {
     path: '/first-guardian',
     name: 'FirstVisit strazca',
-    component: FirstVisitGuard
+    component: () => import('@/views/FirstVisitGuard/FirstVisitGuard.vue')
   },
   {
     path: '/first-owner',
     name: 'FirstVisit majitel',
-    component: FirstVisitOwn
+    component: () => import('@/views/FirstVisitOwn/FirstVisitOwn.vue')
   },
   {
     path: '/animals',
     name: 'Zvieratka',
-    component: AnimalsPage
+    component: () => import('@/views/Animals/AnimalsPage.vue')
   }
 ]
 

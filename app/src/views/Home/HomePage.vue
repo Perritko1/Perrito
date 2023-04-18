@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <nav-bar />
+    <navbar/>
     <div>
       <div class="intro">
         <h1 class="header-hp">
@@ -15,12 +15,12 @@
 </template>
 
 <script>
-import NavBar from '@/views/components/NavBar.vue'
+import Navbar from '@/views/_components/Navbar.vue'
 
 export default {
   name: 'HomePage',
   components: {
-    NavBar,
+    Navbar,
   }
 }
 

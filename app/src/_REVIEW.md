@@ -1,4 +1,4 @@
 # 7.4.2023 Filip
 [x] v App.vue mate nejake haluze, neviem preco je tam text path, a anix preco je tam nav, nechajte tam cisto len roputer view nic ine
-[] odporucam vytvorit globalny.layout ak mate zaklad ako footer a header vsade taky isty, vdaka tomu ho nebudete musiet pridavat do kazdej page, marko vam ukaze ako na to :D
+[x] odporucam vytvorit globalny.layout ak mate zaklad ako footer a header vsade taky isty, vdaka tomu ho nebudete musiet pridavat do kazdej page, marko vam ukaze ako na to :D
 [x] ked stylujete vo vue file mali by ste pouzivat scoped style inak vam styly budu zasahovat do celej appky a nie len do vue file ako by mali, a zaroven mozte aj pouzivat postcss-ko ktore mate v projekte staci len urcit jazyk stylu, tu mate priklad <style lang="postcss" scoped></style>
