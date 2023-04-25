@@ -17,8 +17,10 @@
         </button>
       </div>
       <div>
-        <p>Rok narodenia:</p>
-        <input type="number">
+        <label for="birthdate">Zadajte datum narodenia:</label>
+        <input type="date" id="birthdate" v-model="birthdate">
+        <p v-if="age"> {{age}} rokov </p>
+        <p v-if="error"> {{error}} </p>
       </div>
       <div>
         <p>Telefonne cislo:</p>
@@ -55,7 +57,7 @@
           <input type="number">
         </div>
         <div>
-          <button>Potvrdit</button>
+          <button @click="calculateAge" >Potvrdit</button>
         </div>
       </div>
   </div>
@@ -80,6 +82,9 @@ export default {
     return {
      src: null,
      file: null,
+      birthdate: '',
+      age: '',
+      error: ''
     }
   },
   
@@ -95,6 +100,21 @@ export default {
       reader.readAsDataURL(this.file);
       reader.onload = (e) => {
         this.src = e.target.result;
+      }
+    },
+
+    calculateAge() {
+      const today = new Date()
+      const birthDate = new Date (this.birthdate)
+      let age = today.getFullYear() - birthDate.getFullYear()
+      const month = today.getMonth() - birthDate.getMonth()
+      if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+          age--
+      } if (age < 15) {
+          this.error = "Prepac, musis mat najmenej 15 rokov na strazenie"
+      } else {
+        this.age = age 
+        this.error = ''
       }
     }
   },
