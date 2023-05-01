@@ -12,14 +12,13 @@
       </h1>
       <div class="">
         <button @click="browse()">
-          <input type="file" accept="image/*" class="hidden" ref="file" @change="change">
-          <img :src="src" alt="Vyber fotku" class="h-24 w-24 object-cover">
+          <input type="file" accept="image/*" class="hidden" ref="file" @change="change" >
+          <img :src="src" class="rounded cursor-pointer h-52 w-52">
         </button>
       </div>
       <div>
         <label for="birthdate">Zadajte datum narodenia:</label>
         <input type="date" id="birthdate" v-model="birthdate">
-        <p v-if="age"> {{age}} rokov </p>
         <p v-if="error"> {{error}} </p>
       </div>
       <div>

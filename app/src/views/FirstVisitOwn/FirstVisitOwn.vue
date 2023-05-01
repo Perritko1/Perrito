@@ -13,33 +13,34 @@
       <div class="flex justify-center"> 
         <div class="mr-64">
           <div>
-            <button>
-              <label for="files" @change="onFileSelected">
-                <img class="rounded cursor-pointer h-52 w-52" id="picture" src="@/views/_assets/imageadd.svg" alt="">
-              </label>
-              <input @change="onFileSelected" class="hidden" id="files" type="file">
+            <button @click="browse()">
+              <input type="file" accept="image/*" class="hidden" ref="file" @change="change" >
+              <img :src="src" class="rounded cursor-pointer h-52 w-52">
             </button>
           </div>
           <div class="flex justify-center mt-10 text-blue">
             <p class="mr-4">Popis zvieratka:</p>
             <br>
-            <input type="text" maxlength="800" class="bg-blue text-black rounded-xl w-48 h-8 indent-2">
+            <input type="text" maxlength="800" class="bg-blue text-black rounded-xl w-48 h-8 indent-2" v-model="state.description">
+            <span v-if="v$.description.$error"> {{ v$.description.$errors[0].$message }} </span>
           </div>
         </div>
         <div class="text-blue">
           <div class="flex">
             <p class="mr-4">Rasa:</p>
-            <input type="text" class="bg-blue text-black rounded-xl h-8 w-48 mb-4 indent-2">
+            <input type="text" class="bg-blue text-black rounded-xl h-8 w-48 mb-4 indent-2" v-model="state.breed">
+            <span v-if="v$.breed.$error"> {{ v$.breed.$errors[0].$message }} </span>
           </div>
           <div class="flex">
             <p class="mr-4">Rok narodenia:</p>
-            <input type="number" class="bg-blue text-black rounded-xl h-8 w-48 mb-4 indent-2">
+            <input type="date" class="bg-blue text-black rounded-xl h-8 w-48 mb-4 indent-2">
           </div>
           <div class="flex">
             <p class="mr-4">Váha:</p>
-            <input type="number" class="bg-blue text-black rounded-xl h-8 w-48 mb-4 indent-2">
+            <input type="number" class="bg-blue text-black rounded-xl h-8 w-48 mb-4 indent-2" v-model="state.weight">
+            <span v-if="v$.weight.$error"> {{ v$.weight.$errors[0].$message }} </span>
           </div>
-          <div class="flex mb-4">
+          <div class="flex mb-4" >
             <p class="mr-4">Trénovaný:</p>
             <button class="grey rounded-xl w-full h-10 bg-green mr-5 drop-shadow-lg text-blue focus:bg-blue focus:text-grey">
               Áno
@@ -50,7 +51,8 @@
           </div>
           <div class="flex">
             <p class="mr-4">Lokalita:</p>
-            <input type="text" class="bg-blue text-black rounded-xl h-8 w-48 indent-2">
+            <input type="text" class="bg-blue text-black rounded-xl h-8 w-48 indent-2" v-model="state.location">
+            <span v-if="v$.location.$error"> {{ v$.location.$errors[0].$message }} </span>
           </div>
         </div>        
       </div>
@@ -65,6 +67,9 @@
 
 <script>
 import Navbar from '@/views/_components/Navbar.vue'
+import  useValidate from '@vuelidate/core'
+import { required, minLength, maxLength, helpers } from '@vuelidate/validators'
+import { reactive, computed } from 'vue'
 
 export default {
   name: 'FirstvisitOwner',
@@ -75,13 +80,44 @@ export default {
     value: File,
     defaultSrc: String
   },
+
+setup() {
+  const state =  reactive ({
+    breed: '',
+    weight: '',
+    location: '',
+    description: '',
+  })
+
+const mustBeBreed = (value) => value.includes('');
+const mustBeWeight = (value) => value.includes('');
+const mustBeLocation = (value) => value.includes('');
+const mustBedescription = (value) => value.includes('');
+
+  const rules = computed (() => {
+    return {
+      breed: { required, mustBeBreed: helpers.withMessage("Musis zadat rasu zvieratka",mustBeBreed)},
+      weight: { required, maxLength: maxLength(2), mustBeWeight: helpers.withMessage("Musis zadat vahu zvieratka", mustBeWeight)},
+      location: { required, mustBeLocation: helpers.withMessage("Musis zadat lokalitu", mustBeLocation)},
+      description: { required, minLength: minLength(100), mustBedescription: helpers.withMessage("Musis napisat popis zvieratka", mustBedescription)},
+    }
+  })
+
+  const v$ = useValidate(rules, state)
+
+  return {
+    state,
+    v$,
+  }
+},
+
   data() {
     return {
-     src: this.defaultSrc,
-     file: null,
+    src: this.defaultSrc,
+    file: null,
     }
   },
-  
+
   methods: {
     browse() {
       this.$refs.file.click();
@@ -94,6 +130,15 @@ export default {
       reader.readAsDataURL(this.file);
       reader.onload = (e) => {
         this.src = e.target.result;
+      }
+    },
+
+    submitForm() {
+      this.v$.$validate()
+      if(this.v$.$error) {
+        alert("nepodarilo sa dokoncit nastavovanie uctu")
+      } else {
+        alert("nastavenie uctu prebehlo uspesne")
       }
     },
   },
