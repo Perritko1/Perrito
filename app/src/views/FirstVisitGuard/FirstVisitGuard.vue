@@ -110,7 +110,7 @@ export default {
       if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
           age--
       } if (age < 15) {
-          this.error = "Prepac, musis mat najmenej 15 rokov na strazenie"
+          this.error = "Na strazenie zvierat potrebujes mat 15 rokov"
       } else {
         this.age = age 
         this.error = ''
