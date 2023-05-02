@@ -24,7 +24,7 @@
       <div>
         <p>Telefonne cislo:</p>
         <input type="number" v-model="state.phoneNum">
-        <span v-if="v$.phone.$error"> {{ v$.phoneNum.$errors[0].$message }} </span>
+        <span v-if="v$.phoneNum.$error"> {{ v$.phoneNum.$errors[0].$message }} </span>
       </div>
       <div>
         <p>Cena:</p>
