@@ -81,35 +81,35 @@ export default {
     defaultSrc: String
   },
 
-setup() {
-  const state =  reactive ({
-    breed: '',
-    weight: '',
-    location: '',
-    description: '',
-  })
+  setup() {
+    const state =  reactive ({
+      breed: '',
+      weight: '',
+      location: '',
+      description: '',
+    })
 
-const mustBeBreed = (value) => value.includes('');
-const mustBeWeight = (value) => value.includes('');
-const mustBeLocation = (value) => value.includes('');
-const mustBedescription = (value) => value.includes('');
+    const mustBeBreed = (value) => value.includes('');
+    const mustBeWeight = (value) => value.includes('');
+    const mustBeLocation = (value) => value.includes('');
+    const mustBedescription = (value) => value.includes('');
 
-  const rules = computed (() => {
+    const rules = computed (() => {
+      return {
+        breed: { required, mustBeBreed: helpers.withMessage("Musis zadat rasu zvieratka",mustBeBreed)},
+        weight: { required, maxLength: maxLength(2), mustBeWeight: helpers.withMessage("Musis zadat vahu zvieratka", mustBeWeight)},
+        location: { required, mustBeLocation: helpers.withMessage("Musis zadat lokalitu", mustBeLocation)},
+        description: { required, minLength: minLength(100), mustBedescription: helpers.withMessage("Musis napisat popis zvieratka", mustBedescription)},
+      }
+    })
+
+    const v$ = useValidate(rules, state)
+
     return {
-      breed: { required, mustBeBreed: helpers.withMessage("Musis zadat rasu zvieratka",mustBeBreed)},
-      weight: { required, maxLength: maxLength(2), mustBeWeight: helpers.withMessage("Musis zadat vahu zvieratka", mustBeWeight)},
-      location: { required, mustBeLocation: helpers.withMessage("Musis zadat lokalitu", mustBeLocation)},
-      description: { required, minLength: minLength(100), mustBedescription: helpers.withMessage("Musis napisat popis zvieratka", mustBedescription)},
+      state,
+      v$,
     }
-  })
-
-  const v$ = useValidate(rules, state)
-
-  return {
-    state,
-    v$,
-  }
-},
+  },
 
   data() {
     return {
@@ -135,10 +135,10 @@ const mustBedescription = (value) => value.includes('');
 
     submitForm() {
       this.v$.$validate()
-      if(this.v$.$error) {
-        alert("nepodarilo sa dokoncit nastavovanie uctu")
-      } else {
+      if(!this.v$.$error) {
         alert("nastavenie uctu prebehlo uspesne")
+      } else {
+        alert("nepodarilo sa dokoncit nastavovanie uctu")
       }
     },
   },

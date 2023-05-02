@@ -18,13 +18,13 @@
       </div>
       <div>
         <label for="birthdate">Zadajte datum narodenia:</label>
-        <input type="date" id="birthdate" v-model="state.birthdate">
+        <input type="date" id="birthdate">
         <p v-if="error"> {{error}} </p>
       </div>
       <div>
         <p>Telefonne cislo:</p>
         <input type="number" v-model="state.phoneNum">
-        <span v-if="v$.phone.$error"> {{ v$.location.$errors[0].$message }} </span>
+        <span v-if="v$.phone.$error"> {{ v$.phoneNum.$errors[0].$message }} </span>
       </div>
       <div>
         <p>Cena:</p>
@@ -40,6 +40,7 @@
       <div>
         <p>Napiste nieco o sebe a vztahu k zvieratkam</p>
         <input type="text" maxlength="800" v-model="state.description">
+        <span v-if="v$.description.$error"> {{ v$.location.$errors[0].$message }} </span>
       </div>
       <div>
         <p>Poziadavky na strazene zvieratka</p>
@@ -108,7 +109,7 @@ export default {
         phoneNum: { required, mustBePhone: helpers.withMessage("musis zadat telefonne cislo", mustBePhone) },
         price: { required, mustBePrice: helpers.withMessage("musis uviest cenu", mustBePrice) },
         location: { required, mustBeLocation: helpers.withMessage("musis zadat lokalitu strazenia", mustBeLocation) },
-        description: { required, mustBePhone: helpers.withMessage("musis zadat telefonne cislo", mustBeDescription) },
+        description: { required, mustBeDescription: helpers.withMessage("musis zadat telefonne cislo", mustBeDescription) },
         animalAge: { required, mustBeAnimalAge: helpers.withMessage("musis zadat vek zviera", mustBeAnimalAge) },
         animalWeight: { required, mustBeAnimalWeight: helpers.withMessage("musis zadat vahu zvieratka", mustBeAnimalWeight)},
       }
