@@ -18,28 +18,25 @@
       </div>
       <div>
         <label for="birthdate">Zadajte datum narodenia:</label>
-        <input type="date" id="birthdate" v-model="state.birthdate">
+        <input type="date" id="birthdate" v-model="birthdate">
         <p v-if="error"> {{error}} </p>
       </div>
       <div>
         <p>Telefonne cislo:</p>
-        <input type="number" v-model="state.phoneNum">
-        <span v-if="v$.phoneNum.$error"> {{ v$.location.$errors[0].$message }} </span>
+        <input type="number">
       </div>
       <div>
         <p>Cena:</p>
-        <input type="number" v-model="state.price">
-        <span v-if="v$.price.$error"> {{ v$.location.$errors[0].$message }} </span>
+        <input type="number">
         <p>/den</p>
       </div>
       <div>
         <p>Lokalita:</p>
-        <input type="text" v-model="state.location">
-        <span v-if="v$.location.$error"> {{ v$.location.$errors[0].$message }} </span>
+        <input type="text">
       </div>
       <div>
         <p>Napiste nieco o sebe a vztahu k zvieratkam</p>
-        <input type="text" maxlength="800" v-model="state.description">
+        <input type="text" maxlength="800">
       </div>
       <div>
         <p>Poziadavky na strazene zvieratka</p>
@@ -47,8 +44,7 @@
       <div>
         <div>
           <p>Vek zvieratka:</p>
-          <input type="number" v-model="state.animalAge">
-          <span v-if="v$.animalAge.$error"> {{ v$.location.$errors[0].$message }} </span>
+          <input type="number">
         </div>
         <div>
           <p>Trenovany:</p>
@@ -57,11 +53,10 @@
         </div>
         <div>
           <p>Vaha zvieratka:</p>
-          <input type="number" v-model="state.animalWeight">
-          <span v-if="v$.animalWeight.$error"> {{ v$.location.$errors[0].$message }} </span>
+          <input type="number">
         </div>
         <div>
-          <button @click="submitForm" >Potvrdit</button>
+          <button @click="calculateAge" >Potvrdit</button>
         </div>
       </div>
   </div>
@@ -70,10 +65,6 @@
 <script >
 
 import Navbar from '@/views/_components/Navbar.vue'
-import useValidate from '@vuelidate/core'
-import { required } from '@vuelidate/validators'
-import { reactive, computed } from 'vue'
-
 
 export default {
   name: 'FirstvisitOwner',
@@ -86,32 +77,13 @@ export default {
     defaultSrc: String
   },
 
-  setup() {
-    const state = reactive({
-      phoneNum: '',
-      price: '',
-      location: '',
-      description: '',
-      animalAge: '',
-      animalWeight: '',
-    })
-
-    const rules = computed(() => {
-      return {
-        phoneNum: { required },
-        price: { required },
-        location: { required },
-        description: { required },
-        animalAge: { required },
-        animalWeight: { required },
-      }
-    })
-
-    const v$ = useValidate(rules, state)
-
+  data() {
     return {
-      state, 
-      v$,
+     src: null,
+     file: null,
+      birthdate: '',
+      age: '',
+      error: ''
     }
   },
   
@@ -130,29 +102,20 @@ export default {
       }
     },
 
-    // calculateAge() {
-    //   const today = new Date()
-    //   const birthDate = new Date (this.birthdate)
-    //   let age = today.getFullYear() - birthDate.getFullYear()
-    //   const month = today.getMonth() - birthDate.getMonth()
-    //   if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
-    //       age--
-    //   } if (age < 15) {
-    //       this.error = "Na strazenie zvierat potrebujes mat 15 rokov"
-    //   } else {
-    //     this.age = age 
-    //     this.error = ''
-    //   }
-    // },
-
-    submitForm() {
-      this.v$.$validate()
-      if(!this.v$.$error) {
-        alert("dokoncovaniie uctu prebehlo uspesne")
+    calculateAge() {
+      const today = new Date()
+      const birthDate = new Date (this.birthdate)
+      let age = today.getFullYear() - birthDate.getFullYear()
+      const month = today.getMonth() - birthDate.getMonth()
+      if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+          age--
+      } if (age < 15) {
+          this.error = "Na strazenie zvierat potrebujes mat 15 rokov"
       } else {
-        alert("nepodarilo sa donastavovat ucet")
+        this.age = age 
+        this.error = ''
       }
-    },
+    }
   },
 }
 
