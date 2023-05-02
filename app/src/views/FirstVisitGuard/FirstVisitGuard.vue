@@ -12,13 +12,14 @@
       </h1>
       <div class="">
         <button @click="browse()">
-          <input type="file" accept="image/*" class="hidden" ref="file" @change="change">
-          <img :src="src" alt="Vyber fotku" class="h-24 w-24 object-cover">
+          <input type="file" accept="image/*" class="hidden" ref="file" @change="change" >
+          <img :src="src" class="rounded cursor-pointer h-52 w-52">
         </button>
       </div>
       <div>
-        <p>Rok narodenia:</p>
-        <input type="number">
+        <label for="birthdate">Zadajte datum narodenia:</label>
+        <input type="date" id="birthdate" v-model="birthdate">
+        <p v-if="error"> {{error}} </p>
       </div>
       <div>
         <p>Telefonne cislo:</p>
@@ -55,7 +56,7 @@
           <input type="number">
         </div>
         <div>
-          <button>Potvrdit</button>
+          <button @click="calculateAge" >Potvrdit</button>
         </div>
       </div>
   </div>
@@ -80,6 +81,9 @@ export default {
     return {
      src: null,
      file: null,
+      birthdate: '',
+      age: '',
+      error: ''
     }
   },
   
@@ -95,6 +99,21 @@ export default {
       reader.readAsDataURL(this.file);
       reader.onload = (e) => {
         this.src = e.target.result;
+      }
+    },
+
+    calculateAge() {
+      const today = new Date()
+      const birthDate = new Date (this.birthdate)
+      let age = today.getFullYear() - birthDate.getFullYear()
+      const month = today.getMonth() - birthDate.getMonth()
+      if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+          age--
+      } if (age < 15) {
+          this.error = "Na strazenie zvierat potrebujes mat 15 rokov"
+      } else {
+        this.age = age 
+        this.error = ''
       }
     }
   },
