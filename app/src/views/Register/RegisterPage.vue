@@ -10,6 +10,7 @@
       <h1 class="text-4xl text-blue my-10 flex justify-center">
         Registrácia
       </h1>
+      <form @submit.prevent="registerUser">
       <div class="justify-center grid">
         <div class="grid w-60">
           <input type="text" placeholder="Celé meno" v-model="state.name" class="input-r1 bg-blue h-10 rounded-xl indent-2">
@@ -98,11 +99,11 @@
           <br>
         </div>     
         <div class="flex justify-center">
-          <button class="grey rounded-xl w-full h-10 bg-green mr-5 drop-shadow-lg text-blue focus:bg-blue focus:text-grey">
+          <button @click="majitelControl" class="grey rounded-xl w-full h-10 bg-green mr-5 drop-shadow-lg text-blue focus:bg-blue focus:text-grey">
             Majiteľ
           </button>
           <br>
-          <button class="grey rounded-xl w-full h-10 bg-green drop-shadow-lg text-blue focus:bg-blue focus:text-grey">
+          <button @click="strazcaControl" class="grey rounded-xl w-full h-10 bg-green drop-shadow-lg text-blue focus:bg-blue focus:text-grey">
             Strážca
           </button>
           <br>
@@ -114,6 +115,7 @@
         </button>
       </div>
       <br>
+      </form>
     </div>
   </div>
 </template>
@@ -121,10 +123,12 @@
 <script>
 
 import Navbar from '@/views/_components/Navbar.vue';
-
 import useValidate from '@vuelidate/core'
 import { required, email, minLength, } from '@vuelidate/validators'
+/*import { data } from 'autoprefixer'*/
 import { reactive, computed } from 'vue'
+/*let majitel = false;
+let strazca = false;*/
 
 export default {
   name: 'RegisterPage',
@@ -139,8 +143,6 @@ export default {
       email: '',
       password: '',
     })
-
-
 
     const rules = computed(() => {
       return {
@@ -158,7 +160,14 @@ export default {
       v$,
     }
   },
-
+  /*data()  {
+   return {
+      name: '',
+      username: '',
+      email: '',
+      password: '',
+   }
+  },*/
   methods: {
     submitForm() {
       this.v$.$validate()
@@ -168,7 +177,27 @@ export default {
         alert('Nepodarilo sa registrovat')
       }
     },
+  /*
+    majitelControl() {
+    majitel = true;
+    strazca = false;
   },
+  strazcaControl() {
+    strazca = true;
+    majitel = false;
+  },
+
+
+  registerUser() {
+   const user = new URLSearchParams()
+   user.append('name',this.state.name)
+   user.append('username',this.state.username)
+   user.append('email',this.state.email)
+   user.append('password',this.state.password)
+
+   this.$store.dispatch('registerUser', user)
+  }*/
+},
 }
 
 </script>
