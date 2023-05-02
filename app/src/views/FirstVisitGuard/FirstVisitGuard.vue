@@ -71,7 +71,7 @@
 
 import Navbar from '@/views/_components/Navbar.vue'
 import useValidate from '@vuelidate/core'
-import { required } from '@vuelidate/validators'
+import { required, helpers } from '@vuelidate/validators'
 import { reactive, computed } from 'vue'
 
 
@@ -96,14 +96,21 @@ export default {
       animalWeight: '',
     })
 
+    const mustBePhone = (value) => value.includes('');
+    const mustBePrice = (value) => value.includes('');
+    const mustBeLocation = (value) => value.includes('');
+    const mustBeDescription = (value) => value.includes('');
+    const mustBeAnimalAge = (value) => value.includes('');
+    const mustBeAnimalWeight = (value) => value.includes('');
+
     const rules = computed(() => {
       return {
-        phoneNum: { required },
-        price: { required },
-        location: { required },
-        description: { required },
-        animalAge: { required },
-        animalWeight: { required },
+        phoneNum: { required, mustBePhone: helpers.withMessage("musis zadat telefonne cislo", mustBePhone) },
+        price: { required, mustBePrice: helpers.withMessage("musis uviest cenu", mustBePrice) },
+        location: { required, mustBeLocation: helpers.withMessage("musis zadat lokalitu strazenia", mustBeLocation) },
+        description: { required, mustBePhone: helpers.withMessage("musis zadat telefonne cislo", mustBeDescription) },
+        animalAge: { required, mustBeAnimalAge: helpers.withMessage("musis zadat vek zviera", mustBeAnimalAge) },
+        animalWeight: { required, mustBeAnimalWeight: helpers.withMessage("musis zadat vahu zvieratka", mustBeAnimalWeight)},
       }
     })
 
