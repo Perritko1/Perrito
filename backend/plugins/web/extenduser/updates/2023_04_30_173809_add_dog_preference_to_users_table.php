@@ -26,7 +26,7 @@ class AddDogPreferenceToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            dropIfExists('dog_preference');
+            $table->dropColumn('dog_preference');
         });
     }
 };
