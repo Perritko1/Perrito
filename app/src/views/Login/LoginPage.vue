@@ -1,11 +1,11 @@
 <template>
-  <div class="about bg-grey h-screen">
+  <div class="bg-grey h-screen">
     <navbar/>
     <a href="/">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58" fill="none" :width="widthAttr" :height="heightAttr" overflow="visible" class="w-12 h-12 m-7">
       <path d="M7.25 21.7497H39.875C45.8811 21.7497 50.75 26.6186 50.75 32.6247C50.75 38.6308 45.8811 43.4997 39.875 43.4997H29M7.25 21.7497L16.9167 12.083M7.25 21.7497L16.9167 31.4163" stroke="#C5FFF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
     </a>
-    <h1 class="header-rg text-4xl text-blue my-10 flex justify-center">
+    <h1 class="text-4xl text-blue my-10 flex justify-center">
       Prihlásenie
     </h1>
     <div class="justify-center grid">
