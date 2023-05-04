@@ -1,83 +1,201 @@
 <template>
-  <div>
-    <navbar/>
-      <a href="/">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58" fill="none" :width="widthAttr" :height="heightAttr" overflow="visible" class="w-12 h-12 m-7">
-          <path d="M7.25 21.7497H39.875C45.8811 21.7497 50.75 26.6186 50.75 32.6247C50.75 38.6308 45.8811 43.4997 39.875 43.4997H29M7.25 21.7497L16.9167 12.083M7.25 21.7497L16.9167 31.4163" stroke="#C5FFF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-      <h1>
-        Vítame Vas.
-        Donastavujte si svoj účet
-      </h1>
-      <div class="">
-        <button @click="browse()">
-          <input type="file" accept="image/*" class="hidden" ref="file" @change="change" >
-          <img :src="src" class="rounded cursor-pointer h-52 w-52">
-        </button>
-      </div>
-      <div>
-        <label for="birthdate">Zadajte datum narodenia:</label>
-        <input type="date" id="birthdate">
-        <p v-if="error"> {{error}} </p>
-      </div>
-      <div>
-        <p>Telefonne cislo:</p>
-        <input type="number" v-model="state.phoneNum">
-        <span v-if="v$.phoneNum.$error"> {{ v$.phoneNum.$errors[0].$message }} </span>
-      </div>
-      <div>
-        <p>Cena:</p>
-        <input type="number" v-model="state.price">
-        <span v-if="v$.price.$error"> {{ v$.location.$errors[0].$message }} </span>
-        <p>/den</p>
-      </div>
-      <div>
-        <p>Lokalita:</p>
-        <input type="text" v-model="state.location">
-        <span v-if="v$.location.$error"> {{ v$.location.$errors[0].$message }} </span>
-      </div>
-      <div>
-        <p>Napiste nieco o sebe a vztahu k zvieratkam</p>
-        <input type="text" maxlength="800" v-model="state.description">
-        <span v-if="v$.description.$error"> {{ v$.location.$errors[0].$message }} </span>
-      </div>
-      <div>
-        <p>Poziadavky na strazene zvieratka</p>
-      </div>
-      <div>
-        <div>
-          <p>Lokalita:</p>
-          <input type="text" v-model="state.location">
-          <span v-if="v$.location.$error"> {{ v$.location.$errors[0].$message }} </span>
+  <div class="bg-grey h-screen">
+    <div class="bg-grey">
+      <navbar/>
+        <a href="/">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58" fill="none" :width="widthAttr" :height="heightAttr" overflow="visible" class="w-12 h-12 m-7">
+            <path d="M7.25 21.7497H39.875C45.8811 21.7497 50.75 26.6186 50.75 32.6247C50.75 38.6308 45.8811 43.4997 39.875 43.4997H29M7.25 21.7497L16.9167 12.083M7.25 21.7497L16.9167 31.4163" stroke="#C5FFF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <div class="flex justify-center text-center">
+          <h1 class="text-4xl text-blue md:w-[50rem] my-10 mx-4">
+            Vítame Vás. Donastavujte si svoj účet.
+          </h1>
         </div>
-        <div>
-          <p>Napiste nieco o sebe a vztahu k zvieratkam</p>
-          <input type="text" maxlength="800" v-model="state.description">
+        <div class="flex md:justify-evenly justify-center">
+          <div class="md:flex md:w-[50rem] md:justify-between">
+            <div class="flex justify-center mb-4">
+              <button @click="browse()">
+                <input type="file" accept="image/*" class="hidden" ref="file" @change="change">
+                <img :src="src" class="rounded cursor-pointer h-52 w-52">
+              </button>
+            </div>
+            <div class="text-blue w-72">
+              <div class="inline">
+                <label class="mr-4" for="birthdate">
+                  Zadajte dátum narodenia:
+                </label>
+                <input class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" type="date" id="birthdate">
+                <p v-if="error"> 
+                  {{error}} 
+                </p>
+              </div>
+              <div class="inline">
+                <p class="mr-4">Telefónne číslo:</p>
+                <input type="number" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" v-model="state.phoneNum">
+                <span v-if="v$.phoneNum.$error" class="flex text-red-600 items-center mt-[-1rem]"> 
+                  <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> 
+                      <title/> 
+                      <g id="Complete"> 
+                        <g id="alert-circle"> 
+                          <g> 
+                            <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"/> 
+                            <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"/> 
+                            <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/> 
+                          </g> 
+                        </g> 
+                      </g> 
+                    </g>
+                  </svg>
+                  {{ v$.phoneNum.$errors[0].$message }} 
+                </span>
+              </div>
+              <div class="inline">
+                <p class="mr-4">Cena:</p>
+                <input type="number" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" v-model="state.price">
+                <span v-if="v$.price.$error" class="flex text-red-600 items-center mt-[-1rem]"> 
+                  <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> 
+                      <title/> 
+                      <g id="Complete"> 
+                        <g id="alert-circle"> 
+                          <g> 
+                            <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"/> 
+                            <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"/> 
+                            <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/> 
+                          </g> 
+                        </g> 
+                      </g> 
+                    </g>
+                  </svg>
+                  {{ v$.location.$errors[0].$message }} 
+                </span>
+              </div>
+              <div class="inline">
+                <p class="mr-4">Lokalita:</p>
+                <input type="text" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" v-model="state.location">
+                <span v-if="v$.location.$error" class="flex text-red-600 items-center mt-[-1rem] mb-4"> 
+                  <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> 
+                      <title/> 
+                      <g id="Complete"> 
+                        <g id="alert-circle"> 
+                          <g> 
+                            <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"/> 
+                            <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"/> 
+                            <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/> 
+                          </g> 
+                        </g> 
+                      </g> 
+                    </g>
+                  </svg>
+                  {{ v$.location.$errors[0].$message }} 
+                </span>
+              </div>
+            </div>
+          </div>    
         </div>
-        <div>
-          <p>Poziadavky na strazene zvieratka</p>
+        <div class="flex justify-center text-blue">
+          <div class="inline">
+            <p class="mr-4 sm:mt-4 ">Napíšte niečo o sebe a vzťahu k zvieratkám.</p>
+            <textarea name="" id="" class="bg-blue text-black rounded-xl w-[18rem] md:w-[50rem] h-40 indent-2" v-model="state.description"></textarea> 
+            <span v-if="v$.description.$error" class="flex text-red-600 items-center mt-[-0.5rem]">
+              <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                <g id="SVGRepo_iconCarrier"> 
+                  <title/> 
+                  <g id="Complete"> 
+                    <g id="alert-circle"> 
+                      <g> 
+                        <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"/> 
+                        <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"/> 
+                        <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/> 
+                      </g> 
+                    </g> 
+                  </g> 
+                </g>
+              </svg>
+              {{ v$.location.$errors[0].$message }} 
+            </span>
+          </div>
         </div>
-        <div>
-          <div>
-            <p>Vek zvieratka:</p>
-            <input type="number" v-model="state.animalAge">
-            <span v-if="v$.animalAge.$error"> {{ v$.location.$errors[0].$message }} </span>
-          </div>
-          <div>
-            <p>Trenovany:</p>
-            <button>Ano</button>
-            <button>Nie</button>
-          </div>
-          <div>
-            <p>Vaha zvieratka:</p>
-            <input type="number" v-model="state.animalWeight">
-            <span v-if="v$.animalWeight.$error"> {{ v$.location.$errors[0].$message }} </span>
-          </div>
-          <div>
-            <button @click="submitForm" >Potvrdit</button>
+        <div class="flex justify-center text-center">
+          <h1 class="text-4xl text-blue md:w-[50rem] my-10 mx-4">
+            Požiadavky na strážené zvieratká.
+          </h1>
+        </div>
+        <div class="flex md:justify-evenly justify-center text-blue">
+          <div class="md:flex md:w-[50rem] md:justify-between">
+            <div class="">
+              <p>Vek zvieratka:</p>
+              <input type="number" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" v-model="state.animalAge">
+              <span v-if="v$.animalAge.$error" class="flex text-red-600 items-center"> 
+                <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                  <g id="SVGRepo_iconCarrier"> 
+                    <title/> 
+                    <g id="Complete"> 
+                      <g id="alert-circle"> 
+                        <g> 
+                          <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"/> 
+                          <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"/> 
+                          <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/> 
+                        </g> 
+                      </g> 
+                    </g> 
+                  </g>
+                </svg>
+                {{ v$.location.$errors[0].$message }} 
+              </span>
+            </div>
+            <div class="flex items-center">
+              <p class="mr-4">Trénovaný:</p>
+              <button class="grey rounded-xl w-full h-10 px-4 bg-green mr-5 drop-shadow-lg text-blue focus:bg-blue focus:text-grey">
+                Áno
+              </button>
+              <button class="grey rounded-xl w-full h-10 px-4 bg-green drop-shadow-lg text-blue focus:bg-blue focus:text-grey">
+                Nie
+              </button>
+            </div>
+            <div>
+              <p>Váha zvieratka:</p>
+              <input type="number" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" v-model="state.animalWeight">
+              <span v-if="v$.animalWeight.$error" class="flex text-red-600 items-center">
+                <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                  <g id="SVGRepo_iconCarrier"> 
+                    <title/> 
+                    <g id="Complete"> 
+                      <g id="alert-circle"> 
+                        <g> 
+                          <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"/> 
+                          <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"/> 
+                          <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/> 
+                        </g> 
+                      </g> 
+                    </g> 
+                  </g>
+                </svg>
+                {{ v$.location.$errors[0].$message }} 
+              </span>
+            </div>
           </div>
         </div>
+        <div class="flex justify-center">
+          <button @click="submitForm" class="w-32 h-10 bg-grey rounded-xl mt-6 mb-10 shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)] accept-btn text-blue">
+            Dokončiť
+          </button>
+        </div>   
     </div>
   </div>
 </template>
