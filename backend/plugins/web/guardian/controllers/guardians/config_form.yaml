@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Guardian
+
+# Model Form Field configuration
+form: $/web/guardian/models/guardian/fields.yaml
+
+# Model Class name
+modelClass: Web\Guardian\Models\Guardian
+
+# Default redirect location
+defaultRedirect: web/guardian/guardians
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: web/guardian/guardians/update/:id
+    redirectClose: web/guardian/guardians
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: web/guardian/guardians
+    redirectClose: web/guardian/guardians
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title
