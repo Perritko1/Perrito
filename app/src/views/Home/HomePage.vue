@@ -1,14 +1,72 @@
 <template>
   <div class="home">
     <navbar/>
-    <div>
-      <div class="intro">
-        <h1 class="header-hp">
+    <div class="h-[25rem] bg-grey flex justify-evenly">
+      <div class="h-[25rem] grid content-center text-blue">
+        <h1 class="text-5xl mb-10">
           Perrito
         </h1>
-        <h3 class="subtitle1">
-          Najspolahlivejsia stranka na strazenie zvierat
-        </h3>
+        <h2 class="text-4xl">
+          Najspoľahlivejšia stránka na stráženie zvierat.
+        </h2>
+      </div>
+      <img src="@/views/Home/_assets/main_dog.png" alt="">
+    </div>
+    <div class="h-[25rem] bg-blue">
+      <div class="flex justify-center pt-4">
+        <h1 class="text-3xl">
+          Nájdi si svojho strážcu.
+        </h1>
+      </div> 
+      <div class="h-[20rem] flex justify-center items-end">
+        <button class="text-blue w-32 h-10 bg-grey rounded-xl shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
+          Zobraziť viac
+        </button>    
+      </div>
+    </div>
+    <div class="h-[56rem] bg-grey">
+      <div class="flex justify-center pt-4">
+        <h1 class="text-3xl text-blue">
+          Nájdi si psíka ktorého budeš strážiť.
+        </h1>
+      </div>
+      <div class="h-[20rem] flex justify-center items-end">
+        <button class="text-grey w-32 h-10 bg-blue rounded-xl shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
+          Zobraziť viac
+        </button>
+      </div>
+      <div class="flex justify-center items-center">
+        <div class="w-screen mx-40">
+          <hr class="h-px my-20 bg-blue border-0 dark:bg-gray-700">
+        </div>
+      </div>
+      <div class="flex justify-center">
+        <h1 class="text-3xl text-blue">
+          Ako to funguje?
+        </h1>
+      </div>
+      <div class="mt-16 flex justify-evenly text-blue">
+        <div class="w-80 grid gap-4 content-evenly">
+          <div class="flex justify-center">
+            <img src="@/views/Home/_assets/create.svg" alt="">
+          </div>
+          <h1 class="flex justify-center text-2xl">Tvorba účtu</h1>
+          <p class="flex justify-center text-center">Vytvorte si účet pre vaše zvieratko.</p>
+        </div>
+        <div class="w-80 grid gap-4 content-evenly">
+          <div class="flex justify-center">
+            <img src="@/views/Home/_assets/search.svg" alt="">
+          </div>
+          <h1 class="flex justify-center text-2xl">Nájsť strážcu</h1>
+          <p class="flex justify-center text-center">Vyberte si jedného z našich zodpovedných strážcov.</p>
+        </div>
+        <div class="w-80 grid gap-4 content-evenly">
+          <div class="flex justify-center">
+            <img src="@/views/Home/_assets/message.svg" alt="">
+          </div>         
+          <h1 class="flex justify-center text-2xl">Kontaktovanie</h1>
+          <p class="flex justify-center text-center">Kontaktujte vybraného strážcu pomocou telefónneho čísla.</p>
+        </div>
       </div>
     </div>
   </div>
