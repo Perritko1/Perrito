@@ -69,18 +69,21 @@
         </div>
       </div>
     </div>
+    <Footer/>
   </div>
 </template>
 
 <script>
 import Navbar from '@/views/_components/Navbar.vue'
+import Footer from '@/views/_components/Footer.vue'
 
-export default {
+export default{
   name: 'HomePage',
   components: {
     Navbar,
-  }
-}
+    Footer,
+  },
+};
 
 </script>
 
