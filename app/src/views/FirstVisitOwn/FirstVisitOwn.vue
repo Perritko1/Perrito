@@ -50,7 +50,7 @@
               </div>
               <div class="inline">
                 <p class="mr-4">Váha:</p>
-                <input type="number" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" v-model="state.weight">
+                <input type="number" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" v-model="state.weight" min="0" max="99">
                 <span v-if="v$.weight.$error" class="flex text-red-600 items-center mt-[-1rem]"> 
                   <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"/>
@@ -143,7 +143,7 @@
 <script>
 import Navbar from '@/views/_components/Navbar.vue'
 import  useValidate from '@vuelidate/core'
-import { required, minLength, maxLength, helpers } from '@vuelidate/validators'
+import { required, minLength, helpers } from '@vuelidate/validators'
 import { reactive, computed } from 'vue'
 
 export default {
@@ -172,7 +172,7 @@ export default {
     const rules = computed (() => {
       return {
         breed: { required, mustBeBreed: helpers.withMessage("Musis zadat rasu zvieratka",mustBeBreed)},
-        weight: { required, maxLength: maxLength(2), mustBeWeight: helpers.withMessage("Musis zadat vahu zvieratka", mustBeWeight)},
+        weight: { required, mustBeWeight: helpers.withMessage("Musis zadat vahu zvieratka", mustBeWeight)},
         location: { required, mustBeLocation: helpers.withMessage("Musis zadat lokalitu", mustBeLocation)},
         description: { required, minLength: minLength(100), mustBedescription: helpers.withMessage("Musis napisat popis zvieratka", mustBedescription)},
       }
