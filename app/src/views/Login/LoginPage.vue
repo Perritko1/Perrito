@@ -55,7 +55,7 @@
       </div>   
     </div>
     <div class="flex justify-center">
-      <button @click="submitForm" class="text-blue w-32 h-10 bg-grey rounded-xl mt-6 shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
+      <button @click="submitForm(); loginUser()" class="text-blue w-32 h-10 bg-grey rounded-xl mt-6 shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
         Prihlásiť sa
       </button>    
     </div>
@@ -78,6 +78,7 @@ import useValidate from '@vuelidate/core'
 import { required, email, minLength, helpers } from '@vuelidate/validators'
 import { reactive, computed } from "vue"
 import Navbar from '@/views/_components/Navbar.vue'
+import axios from 'axios'
 
 export default {
   name: 'LoginPage',
@@ -117,6 +118,14 @@ export default {
       } else {
         alert('nepodarilo sa prihlasit')
       }
+    },
+
+    async loginUser() {
+      let result = await axios.post("", {
+        email:this.email,
+        password:this.password,
+      })
+      console.warn(result)
     },
   },
 }
