@@ -3,7 +3,7 @@
     <div class="about bg-grey">
       <navbar/>
       <a href="/">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58" fill="none" :width="widthAttr" :height="heightAttr" overflow="visible" class="w-12 h-12 m-7">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58" fill="none" overflow="visible" class="w-12 h-12 m-7">
           <path d="M7.25 21.7497H39.875C45.8811 21.7497 50.75 26.6186 50.75 32.6247C50.75 38.6308 45.8811 43.4997 39.875 43.4997H29M7.25 21.7497L16.9167 12.083M7.25 21.7497L16.9167 31.4163" stroke="#C5FFF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
@@ -110,7 +110,7 @@
           </div>
         </div>
         <div class="flex justify-center">
-          <button @click="submitForm(); navigate()" class="w-32 h-10 bg-grey rounded-xl mt-6 shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)] accept-btn text-blue">
+          <button @click="submitForm(); navigate(); addUser();" class="w-32 h-10 bg-grey rounded-xl mt-6 shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)] accept-btn text-blue">
             Dokončiť
           </button>
         </div>
@@ -127,6 +127,7 @@ import useValidate from '@vuelidate/core'
 import { required, email, minLength, } from '@vuelidate/validators'
 /*import { data } from 'autoprefixer'*/
 import { reactive, computed } from 'vue'
+import axios from 'axios'
 
 
 export default {
@@ -191,6 +192,16 @@ export default {
         this.$router.push(this.selectedRoute)
       } 
     },
+
+    async addUser() {
+      let result = await axios.post("", {
+        user:this.email,
+        username:this.username,
+        email:this.email,
+        password:this.password,
+      })
+      console.warn(result)
+    },
   
 
 
@@ -204,15 +215,15 @@ export default {
   // },
 
 
-  registerUser() {
-   const user = new URLSearchParams()
-   user.append('name',this.name)
-   user.append('username',this.username)
-   user.append('email',this.email)
-   user.append('password',this.password)
+  // registerUser() {
+  //  const user = new URLSearchParams()
+  //  user.append('name',this.name)
+  //  user.append('username',this.username)
+  //  user.append('email',this.email)
+  //  user.append('password',this.password)
 
-   this.$store.dispatch('registerUser', user)
-  }
+  //  this.$store.dispatch('registerUser', user)
+  // }
 },
 }
 
