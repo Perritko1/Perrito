@@ -54,7 +54,7 @@
           </div>
         </div>
         <div class="flex justify-center">
-          <button @click="submitForm" class="w-32 h-10 bg-grey rounded-xl mt-6 mb-10 shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)] accept-btn text-blue">
+          <button @click="submitForm(); addUserInfo()" class="w-32 h-10 bg-grey rounded-xl mt-6 mb-10 shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)] accept-btn text-blue">
             Dokončiť
           </button>
         </div>   
@@ -65,6 +65,7 @@
 <script >
 
 import Navbar from '@/views/_components/Navbar.vue'
+import axios from 'axios'
 
 
 export default {
@@ -126,6 +127,18 @@ export default {
       } else {
         alert("nepodarilo sa donastavovat ucet")
       }
+    },
+
+    async addUserInfo() {
+      let result = await axios.post("", {
+        phoneNum:this.phoneNum,
+        price:this.price,
+        location:this.location,
+        description:this.description,
+        animalAge:this.animalAge,
+        animalWeight:this.animalWeight,
+      })
+      console.warn(result)
     },
   },
 }
