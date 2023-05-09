@@ -26,168 +26,30 @@
                   Zadajte dátum narodenia:
                 </label>
                 <input class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" type="date" id="birthdate">
-                <p v-if="error"> 
-                  {{error}} 
-                </p>
               </div>
               <div class="inline">
                 <p class="mr-4">Telefónne číslo:</p>
-                <input type="number" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" v-model="state.phoneNum">
-                <span v-if="v$.phoneNum.$error" class="flex text-red-600 items-center mt-[-1rem]"> 
-                  <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-                    <g id="SVGRepo_iconCarrier"> 
-                      <title/> 
-                      <g id="Complete"> 
-                        <g id="alert-circle"> 
-                          <g> 
-                            <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"/> 
-                            <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"/> 
-                            <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/> 
-                          </g> 
-                        </g> 
-                      </g> 
-                    </g>
-                  </svg>
-                  {{ v$.phoneNum.$errors[0].$message }} 
-                </span>
+                <input type="number" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" v-model="phoneNum">
               </div>
               <div class="inline">
                 <p class="mr-4">Cena:</p>
-                <input type="number" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" v-model="state.price">
-                <span v-if="v$.price.$error" class="flex text-red-600 items-center mt-[-1rem]"> 
-                  <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-                    <g id="SVGRepo_iconCarrier"> 
-                      <title/> 
-                      <g id="Complete"> 
-                        <g id="alert-circle"> 
-                          <g> 
-                            <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"/> 
-                            <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"/> 
-                            <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/> 
-                          </g> 
-                        </g> 
-                      </g> 
-                    </g>
-                  </svg>
-                  {{ v$.location.$errors[0].$message }} 
-                </span>
+                <div class="flex">
+                  <input type="number" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2 mr-2" placeholder="deň" v-model="price">
+                  <input type="number" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" placeholder="hodina" v-model="hour">
+                </div>
               </div>
               <div class="inline">
                 <p class="mr-4">Lokalita:</p>
-                <input type="text" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" v-model="state.location">
-                <span v-if="v$.location.$error" class="flex text-red-600 items-center mt-[-1rem] mb-4"> 
-                  <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-                    <g id="SVGRepo_iconCarrier"> 
-                      <title/> 
-                      <g id="Complete"> 
-                        <g id="alert-circle"> 
-                          <g> 
-                            <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"/> 
-                            <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"/> 
-                            <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/> 
-                          </g> 
-                        </g> 
-                      </g> 
-                    </g>
-                  </svg>
-                  {{ v$.location.$errors[0].$message }} 
-                </span>
+                <input type="text" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" placeholder="mesto" v-model="location">
               </div>
             </div>
           </div>    
         </div>
-        <div class="flex justify-center text-blue">
+        <div class="flex justify-center sm:justify-center text-blue">
           <div class="inline">
-            <p class="mr-4 sm:mt-4 ">Napíšte niečo o sebe a vzťahu k zvieratkám.</p>
-            <textarea name="" id="" class="bg-blue text-black rounded-xl w-[18rem] md:w-[50rem] h-40 indent-2" v-model="state.description"></textarea> 
-            <span v-if="v$.description.$error" class="flex text-red-600 items-center mt-[-0.5rem]">
-              <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-                <g id="SVGRepo_iconCarrier"> 
-                  <title/> 
-                  <g id="Complete"> 
-                    <g id="alert-circle"> 
-                      <g> 
-                        <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"/> 
-                        <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"/> 
-                        <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/> 
-                      </g> 
-                    </g> 
-                  </g> 
-                </g>
-              </svg>
-              {{ v$.location.$errors[0].$message }} 
-            </span>
-          </div>
-        </div>
-        <div class="flex justify-center text-center">
-          <h1 class="text-4xl text-blue md:w-[50rem] my-10 mx-4">
-            Požiadavky na strážené zvieratká.
-          </h1>
-        </div>
-        <div class="flex md:justify-evenly justify-center text-blue">
-          <div class="md:flex md:w-[50rem] md:justify-between">
-            <div class="">
-              <p>Vek zvieratka:</p>
-              <input type="number" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" v-model="state.animalAge">
-              <span v-if="v$.animalAge.$error" class="flex text-red-600 items-center"> 
-                <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-                  <g id="SVGRepo_iconCarrier"> 
-                    <title/> 
-                    <g id="Complete"> 
-                      <g id="alert-circle"> 
-                        <g> 
-                          <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"/> 
-                          <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"/> 
-                          <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/> 
-                        </g> 
-                      </g> 
-                    </g> 
-                  </g>
-                </svg>
-                {{ v$.location.$errors[0].$message }} 
-              </span>
-            </div>
-            <div class="flex items-center">
-              <p class="mr-4">Trénovaný:</p>
-              <button class="grey rounded-xl w-full h-10 px-4 bg-green mr-5 drop-shadow-lg text-blue focus:bg-blue focus:text-grey">
-                Áno
-              </button>
-              <button class="grey rounded-xl w-full h-10 px-4 bg-green drop-shadow-lg text-blue focus:bg-blue focus:text-grey">
-                Nie
-              </button>
-            </div>
-            <div>
-              <p>Váha zvieratka:</p>
-              <input type="number" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" v-model="state.animalWeight">
-              <span v-if="v$.animalWeight.$error" class="flex text-red-600 items-center">
-                <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-                  <g id="SVGRepo_iconCarrier"> 
-                    <title/> 
-                    <g id="Complete"> 
-                      <g id="alert-circle"> 
-                        <g> 
-                          <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"/> 
-                          <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"/> 
-                          <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/> 
-                        </g> 
-                      </g> 
-                    </g> 
-                  </g>
-                </svg>
-                {{ v$.location.$errors[0].$message }} 
-              </span>
+            <p class="mr-4 sm:mt-4 w-72 md:w-auto ml-4 md:ml-auto">Napíšte niečo o sebe a vzťahu k zvieratkám:</p>
+            <div class="flex justify-center">
+              <textarea name="" id="" class="bg-blue text-black rounded-xl w-[18rem] md:w-[50rem] h-40 indent-2" v-model="description"></textarea> 
             </div>
           </div>
         </div>
@@ -203,9 +65,6 @@
 <script >
 
 import Navbar from '@/views/_components/Navbar.vue'
-import useValidate from '@vuelidate/core'
-import { required, helpers } from '@vuelidate/validators'
-import { reactive, computed } from 'vue'
 
 
 export default {
@@ -219,42 +78,17 @@ export default {
     defaultSrc: String
   },
 
-  setup() {
-    const state = reactive({
+  data() {
+    return {
       phoneNum: '',
       price: '',
+      hour: '',
       location: '',
       description: '',
       animalAge: '',
       animalWeight: '',
-    })
-
-    const mustBePhone = (value) => value.includes('');
-    const mustBePrice = (value) => value.includes('');
-    const mustBeLocation = (value) => value.includes('');
-    const mustBeDescription = (value) => value.includes('');
-    const mustBeAnimalAge = (value) => value.includes('');
-    const mustBeAnimalWeight = (value) => value.includes('');
-
-    const rules = computed(() => {
-      return {
-        phoneNum: { required, mustBePhone: helpers.withMessage("musis zadat telefonne cislo", mustBePhone) },
-        price: { required, mustBePrice: helpers.withMessage("musis uviest cenu", mustBePrice) },
-        location: { required, mustBeLocation: helpers.withMessage("musis zadat lokalitu strazenia", mustBeLocation) },
-        description: { required, mustBeDescription: helpers.withMessage("musis zadat telefonne cislo", mustBeDescription) },
-        animalAge: { required, mustBeAnimalAge: helpers.withMessage("musis zadat vek zviera", mustBeAnimalAge) },
-        animalWeight: { required, mustBeAnimalWeight: helpers.withMessage("musis zadat vahu zvieratka", mustBeAnimalWeight)},
-      }
-    })
-
-    const v$ = useValidate(rules, state)
-
-    return {
-      state, 
-      v$,
     }
   },
-  
   methods: {
     browse() {
       this.$refs.file.click();

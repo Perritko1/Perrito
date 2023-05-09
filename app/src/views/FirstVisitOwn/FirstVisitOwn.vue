@@ -17,32 +17,14 @@
             <div class="flex justify-center mb-4">
               <button @click="browse()">
                 <input type="file" accept="image/*" class="hidden" ref="file" @change="change">
-                <img :src="src" class="rounded cursor-pointer h-52 w-52">
+                <img v-if="src" :src="src" class="rounded cursor-pointer h-52 w-52">
+                <img v-else src="@/views/_assets/mdi_image-add-outline.svg" class="rounded cursor-pointer h-52 w-52">
               </button>
             </div>
             <div class="text-blue w-72">
               <div class="inline">
                 <p class="mr-4">Rasa:</p>
-                <input type="text" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" v-model="state.breed">
-                <span v-if="v$.breed.$error" class="flex text-red-600 items-center mt-[-1rem]"> 
-                  <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-                    <g id="SVGRepo_iconCarrier"> 
-                      <title/> 
-                      <g id="Complete"> 
-                        <g id="alert-circle"> 
-                          <g> 
-                            <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"/> 
-                            <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"/> 
-                            <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/> 
-                          </g> 
-                        </g> 
-                      </g> 
-                    </g>
-                  </svg>
-                  {{ v$.breed.$errors[0].$message }} 
-                </span>
+                <input type="text" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" v-model="breed">
               </div>
               <div class="inline">
                 <p class="mr-4">Rok narodenia:</p>
@@ -50,50 +32,19 @@
               </div>
               <div class="inline">
                 <p class="mr-4">Váha:</p>
-                <input type="number" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" v-model="state.weight">
-                <span v-if="v$.weight.$error" class="flex text-red-600 items-center mt-[-1rem]"> 
-                  <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-                    <g id="SVGRepo_iconCarrier"> 
-                      <title/> 
-                      <g id="Complete"> 
-                        <g id="alert-circle"> 
-                          <g> 
-                            <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"/> 
-                            <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"/> 
-                            <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/> 
-                          </g> 
-                        </g> 
-                      </g> 
-                    </g>
-                  </svg>
-                  {{ v$.weight.$errors[0].$message }} 
-                </span>
+                <input type="number" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" placeholder="kilogramy" v-model="weight">
               </div>
               <div class="inline">
                 <p class="mr-4">Lokalita:</p>
-                <input type="text" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" v-model="state.location">
-                <span v-if="v$.location.$error" class="flex text-red-600 items-center mt-[-1rem] mb-4"> 
-                  <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-                    <g id="SVGRepo_iconCarrier"> 
-                      <title/> 
-                      <g id="Complete"> 
-                        <g id="alert-circle"> 
-                          <g> 
-                            <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"/> 
-                            <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"/> 
-                            <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/> 
-                          </g> 
-                        </g> 
-                      </g> 
-                    </g>
-                  </svg>
-                  {{ v$.location.$errors[0].$message }} 
-                </span>
+                <input type="text" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" placeholder="mesto" v-model="location">
               </div>
+              <div class="inline">
+                <p class="mr-4">Cena:</p>
+                <div class="flex">
+                  <input type="number" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2 mr-2" placeholder="cena za deň" v-model="price">
+                  <input type="number" class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" placeholder="cena za hodinu" v-model="hour">
+                </div>
+              </div>  
               <div class="flex" >
                 <p class="mr-4">Trénovaný:</p>
                 <button class="grey rounded-xl w-full h-10 bg-green mr-5 drop-shadow-lg text-blue focus:bg-blue focus:text-grey">
@@ -109,26 +60,7 @@
         <div class="flex justify-center text-blue">
           <div class="inline">
             <p class="mr-4 sm:mt-4">Popis zvieratka:</p>
-            <textarea name="" id="" class="bg-blue text-black rounded-xl w-[18rem] md:w-[50rem] h-40 indent-2" v-model="state.description"></textarea>
-            <span v-if="v$.description.$error" class="flex text-red-600 items-center mt-[-0.5rem]"> 
-              <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-                <g id="SVGRepo_iconCarrier"> 
-                  <title/> 
-                  <g id="Complete"> 
-                    <g id="alert-circle"> 
-                      <g> 
-                        <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="8" y2="12"/> 
-                        <line fill="none" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12" x2="12" y1="16" y2="16"/> 
-                        <circle cx="12" cy="12" data-name="--Circle" fill="none" id="_--Circle" r="10" stroke="#ff0000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/> 
-                      </g> 
-                    </g> 
-                  </g> 
-                </g>
-              </svg>
-              {{ v$.description.$errors[0].$message }} 
-            </span>
+            <textarea name="" id="" class="bg-blue text-black rounded-xl w-[18rem] md:w-[50rem] h-40 indent-2" v-model="description"></textarea>
           </div>
         </div>
         <div class="flex justify-center">
@@ -142,9 +74,6 @@
 
 <script>
 import Navbar from '@/views/_components/Navbar.vue'
-import  useValidate from '@vuelidate/core'
-import { required, minLength, maxLength, helpers } from '@vuelidate/validators'
-import { reactive, computed } from 'vue'
 
 export default {
   name: 'FirstvisitOwner',
@@ -152,44 +81,22 @@ export default {
     Navbar
   },
   props: {
-    value: File,
-    defaultSrc: String
-  },
-
-  setup() {
-    const state =  reactive ({
-      breed: '',
-      weight: '',
-      location: '',
-      description: '',
-    })
-
-    const mustBeBreed = (value) => value.includes('');
-    const mustBeWeight = (value) => value.includes('');
-    const mustBeLocation = (value) => value.includes('');
-    const mustBedescription = (value) => value.includes('');
-
-    const rules = computed (() => {
-      return {
-        breed: { required, mustBeBreed: helpers.withMessage("Musis zadat rasu zvieratka",mustBeBreed)},
-        weight: { required, maxLength: maxLength(2), mustBeWeight: helpers.withMessage("Musis zadat vahu zvieratka", mustBeWeight)},
-        location: { required, mustBeLocation: helpers.withMessage("Musis zadat lokalitu", mustBeLocation)},
-        description: { required, minLength: minLength(100), mustBedescription: helpers.withMessage("Musis napisat popis zvieratka", mustBedescription)},
+    value: {
+      type: Number,
+      default: () => {
+        return 0
       }
-    })
-
-    const v$ = useValidate(rules, state)
-
-    return {
-      state,
-      v$,
     }
   },
 
   data() {
     return {
-    src: this.defaultSrc,
-    file: null,
+      src: '',
+      file: null,
+      breed: '',
+      weight: '',
+      location: '',
+      description: '',
     }
   },
 
@@ -200,12 +107,7 @@ export default {
     
     change(e) {
       this.file = e.target.files[0];
-      this.$emit('input', this.file);
-      let reader = new FileReader();
-      reader.readAsDataURL(this.file);
-      reader.onload = (e) => {
-        this.src = e.target.result;
-      }
+      this.src = URL.createObjectURL(this.file)
     },
 
     submitForm() {
@@ -217,6 +119,7 @@ export default {
       }
     },
   },
+  
 }
 </script>
 
