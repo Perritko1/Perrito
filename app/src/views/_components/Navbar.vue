@@ -19,7 +19,6 @@
           <svg class="fill-black w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 22" fill="none" overflow="visible">
             <path d="M18 9.7C18 15.0835 14.16 20.1178 9 21.34C3.84 20.1178 0 15.0835 0 9.7V3.88L9 0L18 3.88V9.7ZM9 19.4C12.75 18.43 16 14.1038 16 9.9134V5.141L9 2.1146L2 5.141V9.9134C2 14.1038 5.25 18.43 9 19.4ZM7 15.52L3 11.64L4.41 10.2723L7 12.7749L13.59 6.3826L15 7.76" class="fill-current-color" />
           </svg>
-          @click="$router.go"
           <a @click="$router.push('/guardians')">
             <button class="inter ml-2">
               Strážcovia
@@ -36,7 +35,7 @@
             <path d="M6240 5905 c-348 -39 -692 -132 -1031 -281 -518 -229 -1018 -610 -1341 -1024 -697 -894 -1181 -1862 -1378 -2755 -12 -55 -33 -138 -46 -185 -67 -243 -56 -519 31 -760 140 -388 443 -689 818 -815 224 -75 559 -74 932 4 243 50 425 108 941 299 718 267 917 318 1400 363 216 20 255 21 404 10 381 -27 682 -110 1260 -346 512 -209 798 -322 870 -342 720 -204 1435 47 1680 590 107 239 119 628 29 997 -88 359 -349 942 -599 1335 -705 1110 -1208 1727 -1790 2197 -547 441 -1006 650 -1571 713 -159 18 -447 18 -609 0z"/>
             </g>
           </svg>
-          <a href="/animals">
+          <a @click="$router.push('/animals')">
             <button class="inter ml-2">
               Zvieratká
             </button>
@@ -49,7 +48,7 @@
               <path d="M20.2221 23.1116H16.611V15.8894H9.38881V23.1116H5.7777V13.0005L4.33325 14.4449V23.1116C4.33325 23.4947 4.48543 23.8621 4.75632 24.133C5.02721 24.4039 5.39461 24.556 5.7777 24.556H10.8333V17.3338H15.1666V24.556H20.2221C20.6052 24.556 20.9726 24.4039 21.2435 24.133C21.5144 23.8621 21.6666 23.4947 21.6666 23.1116V14.2716L20.2221 12.8271V23.1116Z" class="fill-current-color" />
             </g>
           </svg>
-          <a href="/">
+          <a @click="$router.push('/')">
             <button class="inter ml-2">
               Domov
             </button>
@@ -59,7 +58,7 @@
           <svg class="stroke-black w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 20" fill="none" overflow="visible">
             <path d="M11 13.5H6.5C5.10444 13.5 4.40665 13.5 3.83886 13.6722C2.56045 14.06 1.56004 15.0605 1.17224 16.3389C1 16.9067 1 17.6044 1 19M15 16L17 18L21 14M13.5 5.5C13.5 7.98528 11.4853 10 9 10C6.51472 10 4.5 7.98528 4.5 5.5C4.5 3.01472 6.51472 1 9 1C11.4853 1 13.5 3.01472 13.5 5.5Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="stroke-current-color" />
           </svg>
-          <a href="/login">
+          <a @click="$router.push('/login')">
             <button class="inter ml-2">
               Prihlásenie
             </button>
@@ -94,22 +93,22 @@
                     </div>
                   </div>
                   <div class="grid justify-items-center text-xl font-normal">
-                    <a href="/guardians">
+                    <a @click="$router.push('/guardians')">
                       <button class="inter mb-10">
                         Strážcovia
                       </button>
                     </a>
-                    <a href="/animals">
+                    <a @click="$router.push('/animals')">
                       <button class="inter mb-10">
                         Zvieratká
                       </button>
                     </a>
-                    <a href="/">
+                    <a @click="$router.push('/')">
                       <button class="inter mb-10">
                         Domov
                       </button>
                     </a>
-                    <a href="/login">
+                    <a @click="$router.push('/login')">
                       <button class="inter">
                         Prihlásenie
                       </button>
