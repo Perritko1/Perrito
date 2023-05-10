@@ -25,8 +25,5 @@ class Owner extends Model
      * @var array rules for validation
      */
     public $rules = [
-        'race' => 'required|string',
-        'birthday' => 'required|date'
-
     ];
 }
