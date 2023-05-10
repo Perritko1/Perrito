@@ -7,7 +7,7 @@ fields:
         label: ID
         disabled: true
     race:
-        label: Race Of The Dog
+        label: Breed Of The Dog
         type: text
     number: 
         label: Phone Number
@@ -26,8 +26,8 @@ fields:
         label: Trained
         type: dropdown
         options:
-            trained: Trenovany
-            nottrained: Netrenovany
+            trained: Áno
+            nottrained: Nie
     location:
         label: Location
         type: text
