@@ -2,7 +2,7 @@
   <div class="h-screen bg-grey">
     <div class="about bg-grey">
       <navbar/>
-      <a @click="$router.push('/')">
+      <a href="/">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58" fill="none" overflow="visible" class="w-12 h-12 m-7">
           <path d="M7.25 21.7497H39.875C45.8811 21.7497 50.75 26.6186 50.75 32.6247C50.75 38.6308 45.8811 43.4997 39.875 43.4997H29M7.25 21.7497L16.9167 12.083M7.25 21.7497L16.9167 31.4163" stroke="#C5FFF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -170,7 +170,6 @@ export default {
       selectedRoute: '',
    }
   },
-
   methods: {
     submitForm() {
       this.v$.$validate()
@@ -189,16 +188,18 @@ export default {
     },
     navigate() {
       if (this.selectedRoute) {
-        this.$router.push(this.selectedRoute)
+        this.$router.push(this.selectedRoute);
       } 
     },
 
     async addUser() {
       let result = await axios.post("", {
-        user:this.email,
+        name:this.name,
         username:this.username,
         email:this.email,
         password:this.password,
+        password_confirmation:this.password,
+        // chyba dog_preference
       })
       console.warn(result)
     },
