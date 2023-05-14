@@ -99,11 +99,11 @@
             <br>
           </div>     
           <div class="flex justify-center">
-            <button @click="selectOwner" class="grey rounded-xl w-full h-10 bg-green mr-5 drop-shadow-lg text-blue focus:bg-blue focus:text-grey">
+            <button @click="selectOwner(); setButtonType('owner')" class="grey rounded-xl w-full h-10 bg-green mr-5 drop-shadow-lg text-blue focus:bg-blue focus:text-grey">
               Majiteľ
             </button>
             <br>
-            <button @click="selectGuardian" class="grey rounded-xl w-full h-10 bg-green drop-shadow-lg text-blue focus:bg-blue focus:text-grey">
+            <button @click="selectGuardian(); setButtonType('guardian')" class="grey rounded-xl w-full h-10 bg-green drop-shadow-lg text-blue focus:bg-blue focus:text-grey">
               Strážca
             </button>
             <br>
@@ -167,7 +167,9 @@ export default {
       username: '',
       email: '',
       password: '',
+      dogPrefference: '',
       selectedRoute: '',
+      buttonType: '',
    }
   },
 
@@ -193,15 +195,35 @@ export default {
       } 
     },
 
+    setButtonType(type) {
+          this.buttonType = type
+        },
+
     async addUser() {
+      let dogPrefference = ''
+      if(this.buttonType === 'owner') {
+        dogPrefference = 'value1'
+      } else if(this.buttonType === 'guardian') {
+        dogPrefference = 'value2'
+      }
+
+
       let result = await axios.post("", {
         user:this.email,
         username:this.username,
         email:this.email,
         password:this.password,
+<<<<<<< Updated upstream
+=======
+        password_confirmation:this.password,
+        dog_preference:dogPrefference,
+        
+>>>>>>> Stashed changes
       })
       console.warn(result)
     },
+
+    
   
 
 
