@@ -213,12 +213,9 @@ export default {
         username:this.username,
         email:this.email,
         password:this.password,
-<<<<<<< Updated upstream
-=======
         password_confirmation:this.password,
         dog_preference:dogPrefference,
         
->>>>>>> Stashed changes
       })
       console.warn(result)
     },
