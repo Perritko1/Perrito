@@ -17,7 +17,8 @@
             <div class="flex justify-center mb-4">
               <button @click="browse()">
                 <input type="file" accept="image/*" class="hidden" ref="file" @change="change">
-                <img :src="src" class="rounded cursor-pointer h-52 w-52">
+                <img v-if="src" :src="src" class="rounded cursor-pointer h-52 w-52">
+                <img v-else src="@/views/_assets/mdi_image-add-outline.svg" class="rounded cursor-pointer h-52 w-52">
               </button>
             </div>
             <div class="text-blue w-72">
@@ -88,6 +89,8 @@ export default {
       description: '',
       animalAge: '',
       animalWeight: '',
+      src: '',
+      file: null,
     }
   },
   methods: {
@@ -97,12 +100,7 @@ export default {
     
     change(e) {
       this.file = e.target.files[0];
-      this.$emit('input', this.file);
-      let reader = new FileReader();
-      reader.readAsDataURL(this.file);
-      reader.onload = (e) => {
-        this.src = e.target.result;
-      }
+      this.src = URL.createObjectURL(this.file)
     },
 
     // calculateAge() {
