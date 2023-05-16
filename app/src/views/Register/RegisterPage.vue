@@ -142,22 +142,50 @@ export default {
       username: '',
       email: '',
       password: '',
+      dogPrefference: '',
+      buttonType: '',
     })
 
     const rules = computed(() => {
       return {
-      name: { required },
-      username: { required, minLength: minLength(4) },
-      email: { required, email, },
-      password: { required, minLength: minLength(8) },
+        name: { required },
+        username: { required, minLength: minLength(4) },
+        email: { required, email, },
+        password: { required, minLength: minLength(8) },
       }
     })
 
     const v$ = useValidate(rules, state)
 
+    const addUser = async () => {
+      if(state.buttonType === 'owner') {
+        state.dogPrefference = 'owner'
+      } else if(state.buttonType === 'guardian') {
+        state.dogPrefference = 'caretaker'
+      }
+
+
+      const result = await axios.post("/auth/register", {
+        name:state.name,
+        username:state.username,
+        email:state.email,
+        password:state.password,
+        password_confirmation:state.password,
+        dog_preference:state.dogPrefference,
+        
+      })
+      console.warn(result)
+    }
+
+    const setButtonType = (type) => {
+          state.buttonType = type
+        }
+
     return { 
       state,
       v$,
+      addUser,
+      setButtonType
     }
   },
 
@@ -194,31 +222,9 @@ export default {
       } 
     },
 
-    setButtonType(type) {
-          this.buttonType = type
-        },
+  
 
-    async addUser() {
-      let dogPrefference = ''
-      if(this.buttonType === 'owner') {
-        dogPrefference = 'value1'
-      } else if(this.buttonType === 'guardian') {
-        dogPrefference = 'value2'
-      }
-
-
-      let result = await axios.post("", {
-        name:this.name,
-        username:this.username,
-        email:this.email,
-        password:this.password,
-        password_confirmation:this.password,
-        dog_preference:dogPrefference,
-        
-      })
-      console.warn(result)
-    },
-
+    
     
   
 

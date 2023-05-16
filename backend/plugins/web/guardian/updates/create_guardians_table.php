@@ -18,6 +18,12 @@ return new class extends Migration
     {
         Schema::create('web_guardian_guardians', function(Blueprint $table) {
             $table->id();
+            $table->string('number');
+            $table->timestamp('birthday');
+            $table->string('location')->nullable();
+            $table->string('popis')->nullable();
+            $table->string('pricehour')->nullable();
+            $table->string('priceday')->nullable();
             $table->timestamps();
         });
     }

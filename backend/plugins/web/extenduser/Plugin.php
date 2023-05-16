@@ -1,6 +1,7 @@
 <?php namespace Web\Extenduser;
 
 use Backend;
+use RainLab\User\Models\User;
 use System\Classes\PluginBase;
 
 /**
@@ -55,10 +56,24 @@ class Plugin extends PluginBase
                     'type' => 'dropdown',
                     'options' => [
                         'owner' => 'Majitel',
-                        'caretaker' => 'Strazca'
-                    ]
+                        'caretaker' => 'Strazca',
+                    ],
+                    'rules' => 'in:owner,caretaker',
+                    'required' => true 
                 ],
+                'username' => [
+                    'label'   => 'Username',
+                    'type' => 'text',
+                    'required' => true 
+                    ],
             ]);
+        });
+
+        User::extend(function ($model) {
+            $model->bindEvent('model.beforeValidate', function () use ($model) {
+                $model->rules['surname'] = ''; 
+                $model->rules ['dog_preference']  = 'in:owner,caretaker'; 
+            });
         });
     }
 
