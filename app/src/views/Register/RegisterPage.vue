@@ -2,7 +2,7 @@
   <div class="h-screen bg-grey">
     <div class="about bg-grey">
       <navbar/>
-      <a @click="$router.push('/')">
+      <a href="/">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58" fill="none" overflow="visible" class="w-12 h-12 m-7">
           <path d="M7.25 21.7497H39.875C45.8811 21.7497 50.75 26.6186 50.75 32.6247C50.75 38.6308 45.8811 43.4997 39.875 43.4997H29M7.25 21.7497L16.9167 12.083M7.25 21.7497L16.9167 31.4163" stroke="#C5FFF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -142,22 +142,50 @@ export default {
       username: '',
       email: '',
       password: '',
+      dogPrefference: '',
+      buttonType: '',
     })
 
     const rules = computed(() => {
       return {
-      name: { required },
-      username: { required, minLength: minLength(4) },
-      email: { required, email, },
-      password: { required, minLength: minLength(8) },
+        name: { required },
+        username: { required, minLength: minLength(4) },
+        email: { required, email, },
+        password: { required, minLength: minLength(8) },
       }
     })
 
     const v$ = useValidate(rules, state)
 
+    const addUser = async () => {
+      if(state.buttonType === 'owner') {
+        state.dogPrefference = 'owner'
+      } else if(state.buttonType === 'guardian') {
+        state.dogPrefference = 'caretaker'
+      }
+
+
+      const result = await axios.post("/auth/register", {
+        name:state.name,
+        username:state.username,
+        email:state.email,
+        password:state.password,
+        password_confirmation:state.password,
+        dog_preference:state.dogPrefference,
+        
+      })
+      console.warn(result)
+    }
+
+    const setButtonType = (type) => {
+          state.buttonType = type
+        }
+
     return { 
       state,
       v$,
+      addUser,
+      setButtonType
     }
   },
 
@@ -172,14 +200,19 @@ export default {
       buttonType: '',
    }
   },
-
   methods: {
     submitForm() {
       this.v$.$validate()
-      if(!this.v$.$error) {
-        alert('Registracia prebehla uspesne')
+
+      if (!this.v$.$error) {
+        if (this.buttonType === 'owner' || this.buttonType === 'guardian') {
+          alert('Registrácia prebehla úspešne')
+          this.navigate()
+        } else {
+          alert('Prosím, vyberte typ Majiteľ alebo Strážca')
+        }
       } else {
-        alert('Nepodarilo sa registrovat')
+        alert('Všetky polia musia byť vyplnené správne')
       }
     },
 
@@ -191,35 +224,13 @@ export default {
     },
     navigate() {
       if (this.selectedRoute) {
-        this.$router.push(this.selectedRoute)
+        this.$router.push(this.selectedRoute);
       } 
     },
 
-    setButtonType(type) {
-          this.buttonType = type
-        },
+  
 
-    async addUser() {
-      let dogPrefference = ''
-      if(this.buttonType === 'owner') {
-        dogPrefference = 'value1'
-      } else if(this.buttonType === 'guardian') {
-        dogPrefference = 'value2'
-      }
-
-
-      let result = await axios.post("", {
-        user:this.email,
-        username:this.username,
-        email:this.email,
-        password:this.password,
-        password_confirmation:this.password,
-        dog_preference:dogPrefference,
-        
-      })
-      console.warn(result)
-    },
-
+    
     
   
 
