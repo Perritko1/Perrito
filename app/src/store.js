@@ -1,22 +1,4 @@
-// import Vue from 'vue'
-// import Vuex from 'vuex'
 
-// Vue.use(Vuex)
-
-// export const store = new Vuex.Store({
-//     state: {
-//       // Your application-level state goes here
-//     },
-//     mutations: {
-//       // Your state mutation functions go here
-//     },
-//     actions: {
-//       // Your actions (which can call mutation functions) go here
-//     },
-//     getters: {
-//       // Your computed properties (based on state) go here
-//     }
-//   }) 
 import { createStore } from 'vuex'
 import axios from 'axios'
 

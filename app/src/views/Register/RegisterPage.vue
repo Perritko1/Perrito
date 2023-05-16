@@ -203,10 +203,16 @@ export default {
   methods: {
     submitForm() {
       this.v$.$validate()
-      if(!this.v$.$error) {
-        alert('Registracia prebehla uspesne')
+
+      if (!this.v$.$error) {
+        if (this.buttonType === 'owner' || this.buttonType === 'guardian') {
+          alert('Registrácia prebehla úspešne')
+          this.navigate()
+        } else {
+          alert('Prosím, vyberte typ Majiteľ alebo Strážca')
+        }
       } else {
-        alert('Nepodarilo sa registrovat')
+        alert('Všetky polia musia byť vyplnené správne')
       }
     },
 
