@@ -24,6 +24,9 @@ return new class extends Migration
             $table->string('dog_trained')->nullable();
             $table->string('location')->nullable();
             $table->string('popis')->nullable();
+            $table->string('weight')->nullable();
+            $table->string('pricehour')->nullable();
+            $table->string('priceday')->nullable();
             $table->timestamps();
         });
     }

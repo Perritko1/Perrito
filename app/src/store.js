@@ -22,13 +22,18 @@ import axios from 'axios'
 
 const store = createStore({
   state: {
-
+    user: JSON.parse(localStorage.getItem('perrito_vue_user') || '{}'),
+    _token: localStorage.getItem('perrito_vue_token') || ''
   },
   mutations: {
     
   },
   actions: {
-    
+    // signup({commit}, credentials){
+    //   return new Promise((resolve, reject) => {
+
+    //   })
+    // }
   },
   getters: {
 

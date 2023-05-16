@@ -34,6 +34,13 @@ fields:
     popis:
         label: Description
         type: text
-
-                    
+    weight:
+        label: Weight Of The Dog
+        type: text
+    pricehour:
+        label: Price For Hour
+        type: text
+    priceday:
+        label: Price For Day
+        type: text
                 

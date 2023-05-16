@@ -31,7 +31,6 @@ class User extends UserBase
         'surname' => 'required|unique:users',
         'password' => 'required:create|between:8,255|confirmed',
         'password_confirmation' => 'required_with:password|between:8,255',
-        'dog_preference' => 'required'
     ];
 
     /**
