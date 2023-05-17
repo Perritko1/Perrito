@@ -296,7 +296,7 @@ export default {
     },
 
     async addUserInfo() {
-      let result = await axios.post("", {
+      const result = await axios.post("", {
         phoneNum:this.phoneNum,
         price:this.price,
         location:this.location,

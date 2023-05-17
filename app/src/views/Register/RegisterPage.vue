@@ -202,17 +202,13 @@ export default {
   },
   methods: {
     submitForm() {
-      this.v$.$validate()
+        this.v$.$validate()
 
-      if (!this.v$.$error) {
-        if (this.buttonType === 'owner' || this.buttonType === 'guardian') {
-          alert('Registrácia prebehla úspešne')
-          this.navigate()
-        } else {
-          alert('Prosím, vyberte typ Majiteľ alebo Strážca')
-        }
+      if(!this.v$.$error && (this.buttonType === 'owner' || this.buttonType === 'guardian'))  {
+        alert('Registrácia prebehla úspešne')
+        this.navigate()
       } else {
-        alert('Všetky polia musia byť vyplnené správne')
+        alert('Všetky polia musia byť vyplnené a vyberte typ Majiteľ alebo Strážca')
       }
     },
 
