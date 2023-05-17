@@ -59,12 +59,59 @@ class Plugin extends PluginBase
                         'caretaker' => 'Strazca',
                     ],
                     'rules' => 'in:owner,caretaker',
-                    'required' => true 
+                    'required' => true ,
                 ],
+                
                 'username' => [
                     'label'   => 'Username',
                     'type' => 'text',
                     'required' => true 
+                    ],
+                    'id' => [
+                        'label' => 'ID',
+                        'type' => 'text',
+                        'disabled' => true
+                    ],
+                    'race' => [
+                        'label' => 'Breed Of The Dog',
+                        'type' => 'text'
+                    ],
+                    'number' => [
+                        'label' => 'Phone Number',
+                        'type' => 'text'
+                    ],
+                    'birthday' => [
+                        'label' => 'Year Of Birth',
+                        'type' => 'datepicker',
+                        'mode' => 'date'
+                    ],
+                    'dog_trained' => [
+                        'label' => 'Trained',
+                        'type' => 'dropdown',
+                        'options' => [
+                            'trained' => 'Áno',
+                            'nottrained' => 'Nie'
+                        ]
+                    ],
+                    'location' => [
+                        'label' => 'Location',
+                        'type' => 'text'
+                    ],
+                    'popis' => [
+                        'label' => 'Description',
+                        'type' => 'text'
+                    ],
+                    'weight' => [
+                        'label' => 'Weight Of The Dog',
+                        'type' => 'text'
+                    ],
+                    'pricehour' => [
+                        'label' => 'Price For Hour',
+                        'type' => 'text'
+                    ],
+                    'priceday' => [
+                        'label' => 'Price For Day',
+                        'type' => 'text'
                     ],
             ]);
         });
