@@ -175,6 +175,8 @@ export default {
         
       })
       console.warn(result)
+
+      this.$router.push('/login');
     }
 
     const setButtonType = (type) => {

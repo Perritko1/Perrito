@@ -17,6 +17,7 @@
         <h1 class="text-3xl">
           Nájdi si svojho strážcu.
         </h1>
+        <cards v-for="item in data" :key="item.id" :item="item" />
       </div> 
       <div class="h-[20rem] flex justify-center items-end">
         <button class="text-blue w-32 h-10 bg-grey rounded-xl shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
@@ -29,6 +30,7 @@
         <h1 class="text-3xl text-blue">
           Nájdi si psíka ktorého budeš strážiť.
         </h1>
+        <cards v-for="item in data" :key="item.id" :item="item" />
       </div>
       <div class="h-[20rem] flex justify-center items-end">
         <button class="text-grey w-32 h-10 bg-blue rounded-xl shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
@@ -74,14 +76,33 @@
 
 <script>
 import Navbar from '@/views/_components/Navbar.vue'
+import Cards from '@/views/_components/Cards.vue'
+import axios from 'axios'
 
 export default {
   name: 'HomePage',
   components: {
     Navbar,
+    Cards
+  },
+  props: {
+    item: {
+      type: Object,
+      required: true
+    }
+  },
+
+  async created() {
+    const response = await axios.get('user');
+    console.log(response);
   }
 }
 
+// , {
+//       headers: {
+//         Authorization: 'Bearer ' + localStorage.getItem('token')
+//       }
+//     }
 </script>
 
 <style>
