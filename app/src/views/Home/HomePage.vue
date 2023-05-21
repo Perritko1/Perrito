@@ -13,16 +13,36 @@
         </div>
         <img class="ml-20 lg:ml-0 hidden sm:flex" src="@/views/Home/_assets/main_dog.png" alt="">
       </div>
-      <div class="h-[25rem] bg-blue">
-        <div class="flex justify-center pt-4">
-          <h1 class="text-3xl">
-            Nájdi si svojho strážcu.
-          </h1>
-        </div> 
-        <div class="h-[20rem] flex justify-center items-end">
-          <button class="text-blue w-32 h-10 bg-grey rounded-xl shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
-            Zobraziť viac
-          </button>    
+      <img src="@/views/Home/_assets/main_dog.png" alt="">
+    </div>
+    <div class="h-[25rem] bg-blue">
+      <div class="flex justify-center pt-4">
+        <h1 class="text-3xl">
+          Nájdi si svojho strážcu.
+        </h1>
+        <cards v-for="item in data" :key="item.id" :item="item" />
+      </div> 
+      <div class="h-[20rem] flex justify-center items-end">
+        <button class="text-blue w-32 h-10 bg-grey rounded-xl shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
+          Zobraziť viac
+        </button>    
+      </div>
+    </div>
+    <div class="h-[56rem] bg-grey">
+      <div class="flex justify-center pt-4">
+        <h1 class="text-3xl text-blue">
+          Nájdi si psíka ktorého budeš strážiť.
+        </h1>
+        <cards v-for="item in data" :key="item.id" :item="item" />
+      </div>
+      <div class="h-[20rem] flex justify-center items-end">
+        <button class="text-grey w-32 h-10 bg-blue rounded-xl shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
+          Zobraziť viac
+        </button>
+      </div>
+      <div class="flex justify-center items-center">
+        <div class="w-screen mx-40">
+          <hr class="h-px my-20 bg-blue border-0 dark:bg-gray-700">
         </div>
       </div>
       <div class="h-[56rem] bg-grey">
@@ -73,15 +93,37 @@
 <script>
 import Navbar from '@/views/_components/Navbar.vue'
 import Footer from '@/views/_components/Footer.vue'
+import Cards from '@/views/_components/Cards.vue'
+import axios from 'axios'
 
 export default{
   name: 'HomePage',
   components: {
     Navbar,
     Footer,
+    Cards
   },
+
+    
+  
+  props: {
+    item: {
+      type: Object,
+      required: true
+    }
+  },
+
+  async created() {
+    const response = await axios.get('user');
+    console.log(response);
+  }
 };
 
+// , {
+//       headers: {
+//         Authorization: 'Bearer ' + localStorage.getItem('token')
+//       }
+//     }
 </script>
 
 <style>
