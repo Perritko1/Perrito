@@ -207,10 +207,7 @@ export default {
         this.v$.$validate()
 
       if(!this.v$.$error && (this.buttonType === 'owner' || this.buttonType === 'guardian'))  {
-        alert('Registrácia prebehla úspešne')
         this.navigate()
-      } else {
-        alert('Všetky polia musia byť vyplnené a vyberte typ Majiteľ alebo Strážca')
       }
     },
 

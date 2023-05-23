@@ -12,7 +12,6 @@
           </div>
           <img class="ml-20 lg:ml-0 hidden sm:flex" src="@/views/Home/_assets/main_dog.png" alt="">
         </div>
-        <img src="@/views/Home/_assets/main_dog.png" alt="">
       </div>
       <div class="h-[25rem] bg-blue">
         <div class="flex justify-center pt-4">
@@ -46,18 +45,6 @@
         </div>
         <div class="h-[56rem] bg-grey">
           <div class="flex justify-center pt-4">
-          <div class="flex justify-center pt-4">
-            <h1 class="text-3xl text-blue">
-              Nájdi si svojho psíka.
-            </h1>
-          </div>
-          <div class="h-[20rem] flex justify-center items-end">
-          </div>
-          <div class="h-[20rem] flex justify-center items-end">
-            <button class="text-grey w-32 h-10 bg-blue rounded-xl shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
-              Zobraziť viac
-            </button>
-          </div>
           </div>
           <div class="flex justify-center">
             <h1 class="text-3xl text-blue mt-8">
@@ -87,15 +74,6 @@
               <p class="flex justify-center text-center">Kontaktujte vybraného strážcu pomocou telefónneho čísla.</p>
             </div>
           </div>
-          <h1 class="flex justify-center text-2xl">Nájsť strážcu</h1>
-          <p class="flex justify-center text-center">Vyberte si jedného z našich zodpovedných strážcov.</p>
-        </div>
-        <div class="w-80 grid gap-4 content-evenly">
-          <div class="flex justify-center">
-            <img src="@/views/Home/_assets/message.svg" alt="">
-          </div>         
-          <h1 class="flex justify-center text-2xl">Kontaktovanie</h1>
-          <p class="flex justify-center text-center">Kontaktujte vybraného strážcu pomocou telefónneho čísla.</p>
         </div>
     <Footer/>
   </div>
