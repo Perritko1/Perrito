@@ -15,6 +15,15 @@ class AddDogPreferenceToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('dog_preference')->nullable();
+            $table->string('race')->nullable();
+            $table->string('number')->nullable();
+            $table->string('birthday')->nullable();
+            $table->string('dog_trained')->nullable();
+            $table->string('location')->nullable();
+            $table->string('popis')->nullable();
+            $table->string('weight')->nullable();
+            $table->string('pricehour')->nullable();
+            $table->string('priceday')->nullable();
         });
     }
 
@@ -27,6 +36,15 @@ class AddDogPreferenceToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('dog_preference');
+            $table->dropColumn('race');
+            $table->dropColumn('number');
+            $table->dropColumn('birthday');
+            $table->dropColumn('dog_trained');
+            $table->dropColumn('location');
+            $table->dropColumn('popis');
+            $table->dropColumn('weight');
+            $table->dropColumn('pricehour');
+            $table->dropColumn('priceday'); 
         });
     }
 };

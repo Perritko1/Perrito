@@ -82,8 +82,7 @@ class Plugin extends PluginBase
                     ],
                     'birthday' => [
                         'label' => 'Year Of Birth',
-                        'type' => 'datepicker',
-                        'mode' => 'date'
+                        'type' => 'text'
                     ],
                     'dog_trained' => [
                         'label' => 'Trained',
