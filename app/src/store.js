@@ -2,12 +2,11 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
 
-axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
 
 const store = createStore({
   state: {
     user: JSON.parse(localStorage.getItem('perrito_vue_user') || '{}'),
-    _token: localStorage.getItem('perrito_vue_token') || '',
+    token: localStorage.getItem('perrito_vue_token') || '',
     data: []
   },
   mutations: {
@@ -21,23 +20,21 @@ const store = createStore({
 
     //   })
     // }
-    fetchData({ commit }) {
-      axios
-        .get('/api/data')
-        .then(response => {
-          commit('setData', response.data);
-        })
-        .catch(error => {
-          console.error('Error fetching data:', error);
-        });
+    async fetchData({ commit }) {
+      try {
+        const response = await axios.get('/api/data')
+        commit('setData', response.data);
+      } catch(error) {
+        console.error('Error fetching data:', error);
+      }
     }
   },
   getters: {
-    registerUser(user) {
-      axios.post('', user).then(response => {
-        console.log(response);
-      });
-    }
+    // registerUser(user) {
+    //   axios.post('/auth/register', user).then(response => {
+    //     console.log(response);
+    //   });
+    // }
   }
 
    //   actions: {
