@@ -46,14 +46,18 @@
         </div>
         <div class="h-[56rem] bg-grey">
           <div class="flex justify-center pt-4">
+          <div class="flex justify-center pt-4">
             <h1 class="text-3xl text-blue">
               Nájdi si svojho psíka.
             </h1>
           </div>
           <div class="h-[20rem] flex justify-center items-end">
+          </div>
+          <div class="h-[20rem] flex justify-center items-end">
             <button class="text-grey w-32 h-10 bg-blue rounded-xl shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
               Zobraziť viac
             </button>
+          </div>
           </div>
           <div class="flex justify-center">
             <h1 class="text-3xl text-blue mt-8">
