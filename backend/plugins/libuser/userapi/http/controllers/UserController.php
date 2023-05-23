@@ -5,6 +5,7 @@ use Exception;
 use LibUser\Userapi\Models\User;
 use RainLab\User\Facades\Auth;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use System\Models\File;
 class UserController {
 
     // register user
@@ -21,7 +22,6 @@ class UserController {
         $user = User::find($user->id);
 
         return [
-            "user" => new UserResource($user),
             "token" => JWTAuth::fromUser($user)
         ];
     }
@@ -52,9 +52,22 @@ class UserController {
         $user->weight = post("weight");
         $user->pricehour = post("pricehour");
         $user->priceday = post("priceday");
+        $user->avatar = post("avatar");
+
+        if (request()->hasFile('avatar')){
+            $file = new File();
+            $file->fromPost(request()->file("avatar"));
+            $file->save();
+            $user->avatar()->add($file);
+        }
 
         $user->save();
 
+        return new UserResource($user);
+    }
+    function getUser ()
+    {
+        $user = auth()->user();
         return new UserResource($user);
     }
 
