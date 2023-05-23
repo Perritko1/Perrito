@@ -69,10 +69,6 @@ class UserController {
     function getUser ()
     {
         $user = auth()->user();
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
         return new UserResource($user);
     }
 

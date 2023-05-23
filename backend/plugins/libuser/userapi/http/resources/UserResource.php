@@ -23,11 +23,7 @@
                 "priceday" => $this->priceday,
                 "is_activated" => $this->is_activated,
                 "registered_at" => date($this->created_at),
-<<<<<<< Updated upstream
-                "avatar" => $this->avatar,
-=======
                 "avatar" => optional($this->avatar)->path,
->>>>>>> Stashed changes
             ];
         }
         
