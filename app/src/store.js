@@ -23,7 +23,7 @@ const store = createStore({
     // }
     fetchData({ commit }) {
       axios
-        .get('/api/data')
+        .get('/api/backend')
         .then(response => {
           commit('setData', response.data);
         })
@@ -34,7 +34,7 @@ const store = createStore({
   },
   getters: {
     registerUser(user) {
-      axios.post('', user).then(response => {
+      axios.post('/auth/login', user).then(response => {
         console.log(response);
       });
     }
