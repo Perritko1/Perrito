@@ -130,17 +130,17 @@ export default {
     },
 
     async loginUser() {
-      let result = await axios.post("", {
-        email:this.email,
-        password:this.password,
+      let result = await axios.post("/auth/login", {
+        email:this.state.email,
+        password:this.state.password,
       })
       console.warn(result)
     },
 
     async handleSubmit() {
       const response = await axios.push('login', {
-        email: this.email,
-        password: this.password,
+        email: this.state.email,
+        password: this.state.password,
       });
       
       localStorage.setItem('token', response.data.token);
