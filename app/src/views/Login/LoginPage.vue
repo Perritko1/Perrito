@@ -130,11 +130,15 @@ export default {
     },
 
     async loginUser() {
-      let result = await axios.post("/auth/login", {
+      await store.dispatch('login', {
         email:this.state.email,
         password:this.state.password,
       })
-      console.warn(result)
+      // let result = await axios.post("/auth/login", {
+      //   email:this.state.email,
+      //   password:this.state.password,
+      // })
+      // console.warn(result)
     },
 
     async handleSubmit() {
