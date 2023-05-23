@@ -1,6 +1,7 @@
 <?php
     namespace LibUser\Userapi\Http\Resources;
     use Illuminate\Http\Resources\Json\JsonResource;
+    use RainLab\User\Models\User;
 
     class UserResource extends JsonResource {
 
@@ -22,7 +23,11 @@
                 "priceday" => $this->priceday,
                 "is_activated" => $this->is_activated,
                 "registered_at" => date($this->created_at),
+<<<<<<< Updated upstream
                 "avatar" => $this->avatar,
+=======
+                "avatar" => optional($this->avatar)->path,
+>>>>>>> Stashed changes
             ];
         }
         
