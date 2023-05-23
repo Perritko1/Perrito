@@ -2,8 +2,9 @@
 
 use LibUser\Userapi\Http\Resources\UserResource;
 use Exception;
+use LibUser\Userapi\Models\User;
 use RainLab\User\Facades\Auth;
-
+use Tymon\JWTAuth\Facades\JWTAuth;
 class UserController {
 
     // register user
@@ -17,8 +18,12 @@ class UserController {
             "dog_preference" => post("dog_preference")
         ];
         $user = Auth::register($creds);
+        $user = User::find($user->id);
 
-        return new UserResource($user);
+        return [
+            "user" => new UserResource($user),
+            "token" => JWTAuth::fromUser($user)
+        ];
     }
 
     // login user
@@ -33,6 +38,24 @@ class UserController {
         }
 
         return $this->respondWithToken($token);
+    }
+    function addDetails()
+    {
+        $user = auth()->user();
+        
+        $user->race = post("race");
+        $user->number = post("number");
+        $user->birthday = post("birthday");
+        $user->dog_trained = post("dog_trained");
+        $user->location = post("location");
+        $user->popis = post("popis");
+        $user->weight = post("weight");
+        $user->pricehour = post("pricehour");
+        $user->priceday = post("priceday");
+
+        $user->save();
+
+        return new UserResource($user);
     }
 
     // respond json array with jwt info
