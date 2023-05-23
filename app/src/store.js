@@ -62,12 +62,14 @@ const store = createStore({
     // }
     async fetchData({ commit }) {
       try {
-        const response = await axios.get('/api/data')
+        const response = await axios.get('/auth/addDetails')
         commit('setData', response.data);
       } catch(error) {
         console.error('Error fetching data:', error);
       }
     }
+
+
   },
   getters: {
     isLoggedIn: (state) =>  {
