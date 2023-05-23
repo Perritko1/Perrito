@@ -22,7 +22,6 @@ class UserController {
         $user = User::find($user->id);
 
         return [
-            "user" => new UserResource($user),
             "token" => JWTAuth::fromUser($user)
         ];
     }
