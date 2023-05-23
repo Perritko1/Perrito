@@ -7,9 +7,10 @@
         Route::group(["prefix" => "auth"], function() {
             Route::post("register", [UserController::class, "register"]);
             Route::post("login", [UserController::class, "login"]);
-            
+
         Route::middleware(['auth'])->group (function() {   
             Route::post("addDetails", [UserController::class, "addDetails"]); 
+            Route::get("getUser", [UserController::class, "getUser"]);
         });
         });
     });

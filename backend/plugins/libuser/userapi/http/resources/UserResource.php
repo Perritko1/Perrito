@@ -10,9 +10,19 @@
                 "name" => $this->name,
                 "surname" => $this->surname,
                 "email" => $this->email,
+                "dog_preference" => $this->dog_preference,
+                "race" => $this->race,
+                "number" => $this->number,
+                "birthday" => $this->birthday,
+                "dog_trained" => $this->dog_trained,
+                "location" => $this->location,
+                "popis" => $this->popis,
+                "weight" => $this->weight,
+                "pricehour" => $this->pricehour,
+                "priceday" => $this->priceday,
                 "is_activated" => $this->is_activated,
                 "registered_at" => date($this->created_at),
-                "dog_preference" => $this->dog_preference,
+                "avatar" => $this->avatar,
             ];
         }
         

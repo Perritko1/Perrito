@@ -52,9 +52,15 @@ class UserController {
         $user->weight = post("weight");
         $user->pricehour = post("pricehour");
         $user->priceday = post("priceday");
+        $user->avatar = post("avatar");
 
         $user->save();
 
+        return new UserResource($user);
+    }
+    function getUser ()
+    {
+        $user = auth()->user();
         return new UserResource($user);
     }
 
