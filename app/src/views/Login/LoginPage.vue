@@ -81,7 +81,7 @@ import { required, email, minLength, helpers } from '@vuelidate/validators'
 import { reactive, computed } from "vue"
 import Navbar from '@/views/_components/Navbar.vue'
 import axios from 'axios'
-
+import store from '@/store'
 
 export default {
   name: 'LoginPage',
