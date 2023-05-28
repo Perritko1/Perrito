@@ -37,7 +37,11 @@ const store = createStore({
 
     async register({ commit }, credentials){
       try {
-        const response = await axios.post('', credentials)
+        const response = await axios.post('/auth/register', credentials);
+        const token = response.data.token;
+
+        localStorage.setItem('token', token);
+
         commit('auth_success', response.data)
       } catch(err) {
         commit('auth_error')
@@ -45,21 +49,24 @@ const store = createStore({
       }
     },
 
-    async login({ commit }, credentials){
+    async login({ commit, state }, credentials){
       try {
-        const response = await axios.post('/auth/login', credentials)
-        console.log(response)
-        commit('auth_success', response.data)
+        const response = await axios.post('/auth/login', credentials);
+        const token = response.data.token;
+        const userToken = state.user.token;
+
+        if(token === userToken) {
+          commit('auth_success', token);
+        } else {
+          commit('auth_error');
+          console.error('Invalid token');
+        }
       } catch(err) {
         commit('auth_error')
-        console.error(err)
+        console.error(err);
       }
     },
-    // signup({commit}, credentials){
-    //   return new Promise((resolve, reject) => {
 
-    //   })
-    // }
     async fetchData({ commit }) {
       try {
         const response = await axios.get('/auth/addDetails')
@@ -67,7 +74,7 @@ const store = createStore({
       } catch(error) {
         console.error('Error fetching data:', error);
       }
-    }
+    },
 
 
   },

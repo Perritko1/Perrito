@@ -121,13 +121,22 @@ export default {
     },
 
     async addUserInfo() {
-      let result = await axios.post("", {
-        breed:this.breed,
-        weight:this.weight,
-        location:this.location,
-        description:this.description,
-      })
-      console.warn(result)
+      try {
+        const token = localStorage.getItem('token'); 
+        const result = await axios.post('/auth/addDetails', {
+        breed: this.breed,
+        weight: this.weight,
+        location: this.location,
+        description: this.description,
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+        console.warn(result);
+      } catch (error) {
+        console.error(error);
+      }
     },
   },
   
