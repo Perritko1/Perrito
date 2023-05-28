@@ -18,7 +18,7 @@
           <h1 class="text-3xl">
             Nájdi si svojho strážcu.
           </h1>
-          <cards v-for="item in data" :key="item.id" :item="item" />
+          <cards v-for="item in data" :key="item.id" :item="item" :user="user" />
         </div> 
         <div class="h-[20rem] flex justify-center items-end">
           <button class="text-blue w-32 h-10 bg-grey rounded-xl shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
@@ -31,7 +31,7 @@
           <h1 class="text-3xl text-blue">
             Nájdi si psíka ktorého budeš strážiť.
           </h1>
-          <cards v-for="item in data" :key="item.id" :item="item" />
+          <cards v-for="item in data" :key="item.id" :item="item" :user="user" />
         </div>
         <div class="h-[20rem] flex justify-center items-end">
           <button class="text-grey w-32 h-10 bg-blue rounded-xl shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
@@ -93,8 +93,13 @@ export default{
     Cards
   },
 
-    
-  
+  data() {
+    return {
+      users: [],
+      userType: 'majitel' || 'strazca'
+    };
+  },
+
   props: {
     item: {
       type: Object,
@@ -105,6 +110,18 @@ export default{
   async created() {
     const response = await axios.get('user');
     console.log(response);
+  },
+
+  computed: {
+    filteredUsers() {
+      if (this.userType === 'majitel') {
+        return this.users.filter(user => user.user_type === 'majitel');
+      } else if (this.userType === 'strazca') {
+        return this.users.filter(user => user.user_type === 'strazca');
+      } else {
+        return [];
+      }
+    },
   }
 };
 
