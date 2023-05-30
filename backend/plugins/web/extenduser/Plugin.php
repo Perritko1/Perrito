@@ -118,7 +118,7 @@ class Plugin extends PluginBase
         User::extend(function ($model) {
             $model->bindEvent('model.beforeValidate', function () use ($model) {
                 $model->rules['surname'] = ''; 
-                $model->rules ['dog_preference']  = 'in:owner,caretaker'; 
+                $model->rules['dog_preference']  = 'in:owner,caretaker'; 
             });
         });
     }

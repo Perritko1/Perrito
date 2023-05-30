@@ -40,7 +40,7 @@ const store = createStore({
         const response = await axios.post('/auth/register', credentials);
         const token = response.data.token;
 
-        localStorage.setItem('token', token);
+        localStorage.setItem('perrito_vue_token', token);
 
         commit('auth_success', response.data)
       } catch(err) {
@@ -71,6 +71,7 @@ const store = createStore({
       try {
         const response = await axios.get('/auth/addDetails')
         commit('setData', response.data);
+        
       } catch(error) {
         console.error('Error fetching data:', error);
       }
@@ -82,6 +83,12 @@ const store = createStore({
     isLoggedIn: (state) =>  {
 			return !!state.token
 		},
+
+    token: (state) =>  {
+			return state.token
+		},
+
+  
 
     // registerUser(user) {
     //   axios.post('/auth/register', user).then(response => {
