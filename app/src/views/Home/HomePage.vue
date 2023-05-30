@@ -76,12 +76,11 @@
           </div>
         </div>
       </div>
-    </main>
-  </div>
 </template>
 
 <script>
 import Navbar from '@/views/_components/Navbar.vue'
+import axios from 'axios'
 
 export default{
   name: 'HomePage',
