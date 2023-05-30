@@ -75,22 +75,18 @@
             </div>
           </div>
         </div>
-    <Footer/>
+      </div>
+    </main>
   </div>
 </template>
 
 <script>
 import Navbar from '@/views/_components/Navbar.vue'
-import Footer from '@/views/_components/Footer.vue'
-import Cards from '@/views/_components/Cards.vue'
-import axios from 'axios'
 
 export default{
   name: 'HomePage',
   components: {
     Navbar,
-    Footer,
-    Cards
   },
 
   data() {
