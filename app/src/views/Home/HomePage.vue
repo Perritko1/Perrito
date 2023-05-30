@@ -1,6 +1,8 @@
 <template>
   <div>
+    <main>
     <navbar/>
+      <div>
         <div class="h-[25rem] bg-grey relative flex lg:justify-evenly">
           <div class="ml-6 md:ml-20 lg:ml-4 opacity-100 h-[25rem] grid content-center lg:relative absolute text-blue">
             <h1 class="text-5xl mb-10">
@@ -82,6 +84,7 @@
 
 <script>
 import Navbar from '@/views/_components/Navbar.vue'
+import axios from 'axios'
 
 export default{
   name: 'HomePage',
