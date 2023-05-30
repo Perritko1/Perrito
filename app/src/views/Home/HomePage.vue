@@ -66,19 +66,16 @@
         </div>
       </div>
     </main>
-    <Footer/>
   </div>
 </template>
 
 <script>
 import Navbar from '@/views/_components/Navbar.vue'
-import Footer from '@/views/_components/Footer.vue'
 
 export default{
   name: 'HomePage',
   components: {
     Navbar,
-    Footer,
   },
 };
 
