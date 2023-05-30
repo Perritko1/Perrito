@@ -22,7 +22,8 @@ class UserController {
         $user = User::find($user->id);
 
         return [
-            "token" => JWTAuth::fromUser($user)
+            "token" => JWTAuth::fromUser($user),
+            'user' => new UserResource($user)
         ];
     }
 
@@ -52,7 +53,6 @@ class UserController {
         $user->weight = post("weight");
         $user->pricehour = post("pricehour");
         $user->priceday = post("priceday");
-        $user->avatar = post("avatar");
 
         if (request()->hasFile('avatar')){
             $file = new File();
