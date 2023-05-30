@@ -13,22 +13,26 @@
           <img class="ml-20 lg:ml-0 hidden sm:flex" src="@/views/Home/_assets/main_dog.png" alt="">
         </div>
       </div>
-      <div class="h-[25rem] bg-blue">
-        <div class="flex justify-center pt-4">
+      <div class=" bg-blue">
+        <div class="flex justify-center text-center items-center pt-4">
           <h1 class="text-3xl">
             Nájdi si svojho strážcu.
-          </h1>
-          <cards v-for="item in data" :key="item.id" :item="item" :user="user" />
-        </div> 
-        <div class="h-[20rem] flex justify-center items-end">
-          <button class="text-blue w-32 h-10 bg-grey rounded-xl shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
+          </h1>  
+        </div>
+        <div class="sm:flex sm:justify-evenly sm:items-center grid gap-4 px-4 grid-cols-1 content-evenly justify-items-center pt-8">
+          <cards/>
+          <cards/>
+          <cards/>
+        </div>
+        <div class="h-[5rem] flex justify-center items-end">
+          <button class="text-blue w-32 h-10 mb-4 bg-grey rounded-xl shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
             Zobraziť viac
           </button>    
         </div>
       </div>
       <div class="h-[56rem] bg-grey">
         <div class="flex justify-center pt-4">
-          <h1 class="text-3xl text-blue">
+          <h1 class="text-3xl text-blue text-center">
             Nájdi si psíka ktorého budeš strážiť.
           </h1>
           <cards v-for="item in data" :key="item.id" :item="item" :user="user" />
@@ -43,9 +47,7 @@
             <hr class="h-px my-20 bg-blue border-0 dark:bg-gray-700">
           </div>
         </div>
-        <div class="h-[56rem] bg-grey">
-          <div class="flex justify-center pt-4">
-          </div>
+        <div class="bg-grey">
           <div class="flex justify-center">
             <h1 class="text-3xl text-blue mt-8">
               Ako to funguje?
@@ -75,17 +77,19 @@
             </div>
           </div>
         </div>
-  </div>
+      </div>
 </template>
 
 <script>
 import Navbar from '@/views/_components/Navbar.vue'
 import axios from 'axios'
+import Cards from '@/views/_components/Cards.vue'
 
 export default{
   name: 'HomePage',
   components: {
     Navbar,
+    Cards,
   },
 
   data() {
