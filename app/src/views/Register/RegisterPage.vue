@@ -127,7 +127,8 @@ import useValidate from '@vuelidate/core'
 import { required, email, minLength, } from '@vuelidate/validators'
 /*import { data } from 'autoprefixer'*/
 import { reactive, computed } from 'vue'
-import axios from 'axios'
+import { useStore } from 'vuex'
+// import axios from 'axios'
 
 
 export default {
@@ -137,6 +138,7 @@ export default {
   },
 
   setup() {
+    const store = useStore()
     const state = reactive({
       name: '',
       username: '',
@@ -165,16 +167,26 @@ export default {
       }
 
 
-      const result = await axios.post("/auth/register", {
+      // const result = await axios.post("/auth/register", {
+      //   name:state.name,
+      //   username:state.username,
+      //   email:state.email,
+      //   password:state.password,
+      //   password_confirmation:state.password,
+      //   dog_preference:state.dogPrefference,
+      // })
+
+      store.dispatch('register', {
         name:state.name,
         username:state.username,
         email:state.email,
         password:state.password,
         password_confirmation:state.password,
         dog_preference:state.dogPrefference,
-        
       })
-      console.warn(result)
+
+      
+      // console.warn(result)
 
       this.$router.push('/login');
     }

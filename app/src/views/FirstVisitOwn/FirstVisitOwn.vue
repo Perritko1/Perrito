@@ -75,6 +75,8 @@
 <script>
 import Navbar from '@/views/_components/Navbar.vue'
 import axios from 'axios'
+import { useVuelidate } from '@vuelidate/core'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'FirstvisitOwner',
@@ -92,6 +94,7 @@ export default {
 
   data() {
     return {
+      v$: useVuelidate(),
       src: '',
       file: null,
       breed: '',
@@ -99,6 +102,12 @@ export default {
       location: '',
       description: '',
     }
+  },
+
+  computed: {
+    ...mapGetters({
+      token: 'token'
+    })
   },
 
   methods: {
@@ -122,15 +131,15 @@ export default {
 
     async addUserInfo() {
       try {
-        const token = localStorage.getItem('token'); 
+        console.log(this.token)
         const result = await axios.post('/auth/addDetails', {
-        breed: this.breed,
+        race: this.breed,
         weight: this.weight,
         location: this.location,
         description: this.description,
       }, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${this.token}`,
         },
       });
         console.warn(result);
