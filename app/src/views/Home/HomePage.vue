@@ -1,6 +1,4 @@
 <template>
-  <div>
-    <main>
     <navbar/>
       <div>
         <div class="h-[25rem] bg-grey relative flex lg:justify-evenly">
