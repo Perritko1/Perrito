@@ -131,12 +131,14 @@ export default {
 
     async addUserInfo() {
       try {
-        console.log(this.token)
         const result = await axios.post('/auth/addDetails', {
         race: this.breed,
         weight: this.weight,
         location: this.location,
         description: this.description,
+        priceday: this.price,
+        pricehour: this.hour,
+        birthday: this.date,
       }, {
         headers: {
           Authorization: `Bearer ${this.token}`,

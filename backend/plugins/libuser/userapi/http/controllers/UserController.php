@@ -18,8 +18,10 @@ class UserController {
             "password_confirmation" => post("password_confirmation"),
             "dog_preference" => post("dog_preference")
         ];
-        $user = Auth::register($creds);
+
+        $user = Auth::register($creds); //register nevie pracovat s tvojimi custom datami, manualne ich nastav, na $user, nizsie
         $user = User::find($user->id);
+        $user->dog_preference = post("dog_preference");
 
         return [
             "token" => JWTAuth::fromUser($user),
@@ -43,7 +45,6 @@ class UserController {
     function addDetails()
     {
         $user = auth()->user();
-        
         $user->race = post("race");
         $user->number = post("number");
         $user->birthday = post("birthday");
