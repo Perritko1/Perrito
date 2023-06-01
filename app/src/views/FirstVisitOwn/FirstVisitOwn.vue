@@ -64,7 +64,7 @@
           </div>
         </div>
         <div class="flex justify-center">
-          <button @click="submitForm(); addUserInfo()" class="w-32 h-10 bg-grey rounded-xl mt-6 mb-10 shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)] accept-btn text-blue">
+          <button @click="submitForm(); addUserDogInfo()" class="w-32 h-10 bg-grey rounded-xl mt-6 mb-10 shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)] accept-btn text-blue">
             Dokončiť
           </button>
         </div>
@@ -129,7 +129,7 @@ export default {
       }
     },
 
-    async addUserInfo() {
+    async addUserDogInfo() {
       try {
         const result = await axios.post('/auth/addDetails', {
         race: this.breed,

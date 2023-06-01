@@ -1,17 +1,16 @@
 <template>
   <div>
   <router-view/>  
-  <cards v-for="item in data" :key="item.id" :item="item" />
+  <cardsUser v-for="item in data" :key="item.id" :item="item" />
   </div>
 </template>
 
 <script>
-import Cards from '@/views/_components/Cards.vue';
+import CardsUser from '@/views/_components/CardsUser.vue';
 import { mapState, mapActions } from 'vuex';
-
 export default {
   components: {
-    Cards,
+    CardsUser
   },
   computed: {
     ...mapState(['data']),

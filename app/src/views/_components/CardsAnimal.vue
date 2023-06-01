@@ -21,6 +21,7 @@
   <script>
   
   import { mapGetters, mapActions } from 'vuex';
+  import axios from 'axios'
   
   export default {
     props: {
@@ -34,16 +35,26 @@
     ...mapGetters(['accountDetails']),
   },
     methods: {
-    ...mapActions(['addUserInfo']),
-    async addUserInformation() {
-      const userInfo = {
-        phoneNum: this.phoneNum,
-        price: this.price,
+    ...mapActions(['addUserDogInfo']),
+    async addUserDogInfo() {
+      try {
+        const result = await axios.get('/auth/addDetails', {
+        race: this.breed,
+        weight: this.weight,
         location: this.location,
         description: this.description,
-      };
-
-      await this.addUserInfo(userInfo);
+        priceday: this.price,
+        pricehour: this.hour,
+        birthday: this.date,
+      }, {
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+      });
+        console.warn(result);
+      } catch (error) {
+        console.error(error);
+      }
     },
   },
 
