@@ -128,16 +128,24 @@ export default {
     },
 
     async addUserInfo() {
-      const result = await axios.post("", {
+       try {
+        const result = await axios.post('/auth/addDetails', {
         phoneNum:this.phoneNum,
         price:this.price,
         location:this.location,
         description:this.description,
-        animalAge:this.animalAge,
-        animalWeight:this.animalWeight,
-      })
-      console.warn(result)
+      }, {
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+      });
+        console.warn(result);
+      } catch (error) {
+        console.error(error);
+      }
     },
+
+   
   },
 }
 

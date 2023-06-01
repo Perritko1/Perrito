@@ -6,19 +6,22 @@
       <div class="grid gap-3 grid-cols-2 pt-2 text-blue">
         <div class="flex pl-2">
           <img src="@/views/_components/_assets/PeopleVector.svg" alt="">
-          <p class="pl-1">meno</p>
+          <p class="pl-1">{{ accountDetails.meno }}</p>
         </div>
-        <p>€/hod</p>
+        <p>{{ accountDetails.pricehour }}</p>
         <div class="flex pl-2 pb-2">
           <img src="@/views/_components/_assets/MarkerVector.svg" alt="">
-          <p class="pl-1">Lorem ipsum dolor sit amet.</p>        
+          <p class="pl-1">{{ accountDetails.description }}</p>        
         </div>
-        <p>€/den</p>
+        <p>{{ accountDetails.priceday }}</p>
       </div>
     </div>
 </template>
   
   <script>
+  
+  import { mapGetters, mapActions } from 'vuex';
+  
   export default {
     props: {
       user: {
@@ -26,5 +29,23 @@
         required: true,
       },
     },
+
+    computed: {
+    ...mapGetters(['accountDetails']),
+  },
+    methods: {
+    ...mapActions(['addUserInfo']),
+    async addUserInformation() {
+      const userInfo = {
+        phoneNum: this.phoneNum,
+        price: this.price,
+        location: this.location,
+        description: this.description,
+      };
+
+      await this.addUserInfo(userInfo);
+    },
+  },
+
   };
   </script>

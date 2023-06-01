@@ -7,11 +7,11 @@ const store = createStore({
   state: {
     user: JSON.parse(localStorage.getItem('perrito_vue_user') || '{}'),
     token: localStorage.getItem('perrito_vue_token') || '',
-    data: []
+    accountDetails: {},
   },
   mutations: {
-    setData(state, payload) {
-      state.data = payload;
+    setAccountDetails(state, details) {
+      state.accountDetails = details;
     },
 
     auth_success(state, data) {
@@ -70,13 +70,26 @@ const store = createStore({
     async fetchData({ commit }) {
       try {
         const response = await axios.get('/auth/addDetails')
-        commit('setData', response.data);
-        
+        const accountDetails = response.data;
+        commit('setAccountDetails', accountDetails);        
       } catch(error) {
         console.error('Error fetching data:', error);
       }
     },
 
+    async addUserInfo({ commit, state }, userInfo) {
+      try {
+        const result = await axios.post('/auth/addDetails', userInfo, {
+          headers: {
+            Authorization: `Bearer ${state.token}`,
+          },
+        });
+        console.warn(result);
+        commit('setAccountDetails', result.data);
+      } catch (error) {
+        console.error(error);
+      }
+    },
 
   },
   getters: {
@@ -88,7 +101,9 @@ const store = createStore({
 			return state.token
 		},
 
-  
+    accountDetails: (state) => {
+      return state.accountDetails;
+    },
 
     // registerUser(user) {
     //   axios.post('/auth/register', user).then(response => {
