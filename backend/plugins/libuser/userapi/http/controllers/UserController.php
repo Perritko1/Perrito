@@ -72,6 +72,17 @@ class UserController {
         return new UserResource($user);
     }
 
+    function getOwner ()
+    {
+        $owner = User::where('dog_preference','owner')->get();
+        return UserResource::collection($owner);
+    }
+    function getCaretaker ()
+    {
+        $caretaker = User::where('dog_preference','caretaker')->get();
+        return UserResource::collection($caretaker);
+    }
+
     // respond json array with jwt info
     private function respondWithToken($token) {
         return response()->json([
