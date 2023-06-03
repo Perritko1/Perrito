@@ -5,6 +5,8 @@ import './styles/tailwind.css'
 import store from './store'
 import axios from "axios"; // <-- Import the store object
 
+import '../src/styles/style.css'
+
 const app = createApp(App)
     .use(router)
     .use(store)
