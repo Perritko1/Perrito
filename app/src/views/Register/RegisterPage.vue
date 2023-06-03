@@ -13,7 +13,7 @@
       <form @submit.prevent="registerUser">
         <div class="justify-center grid">
           <div class="grid w-60">
-            <input type="text" placeholder="Celé meno" v-model="state.name" class="input-r1 bg-blue h-10 rounded-xl indent-2">
+            <input type="text" placeholder="Celé meno" v-model="name" class="input-r1 bg-blue h-10 rounded-xl indent-2">
             <span v-if="v$.name.$error" class="flex text-red-600 items-center">
               <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
               <g id="SVGRepo_bgCarrier" stroke-width="0"/>
@@ -34,7 +34,7 @@
               {{ v$.name.$errors[0].$message }}
             </span>
             <br>
-            <input type="text" placeholder="Užívateľské meno" v-model="state.username" class="input-r2 bg-blue h-10 rounded-xl indent-2">
+            <input type="text" placeholder="Užívateľské meno" v-model="username" class="input-r2 bg-blue h-10 rounded-xl indent-2">
             <span v-if="v$.username.$error" class="flex text-red-600 items-center">
               <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
               <g id="SVGRepo_bgCarrier" stroke-width="0"/>
@@ -55,7 +55,7 @@
               {{ v$.username.$errors[0].$message }}
             </span>
             <br>
-            <input type="text" placeholder="E-mailová adresa" v-model="state.email" class="input-r3 bg-blue h-10 rounded-xl indent-2">
+            <input type="text" placeholder="E-mailová adresa" v-model="email" class="input-r3 bg-blue h-10 rounded-xl indent-2">
             <span v-if="v$.email.$error" class="flex text-red-600 items-center">
               <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
               <g id="SVGRepo_bgCarrier" stroke-width="0"/>
@@ -76,7 +76,7 @@
               {{ v$.email.$errors[0].$message }}
             </span>
             <br>
-            <input type="password" placeholder="Heslo" v-model="state.password" class="input-r4 bg-blue h-10 rounded-xl indent-2">
+            <input type="password" placeholder="Heslo" v-model="password" class="input-r4 bg-blue h-10 rounded-xl indent-2">
             <span v-if="v$.password.$error" class="flex text-red-600 items-center">
               <svg width="14px" height="14px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ff0000" stroke="#ff0000" class="mr-0.5">
               <g id="SVGRepo_bgCarrier" stroke-width="0"/>
@@ -99,18 +99,18 @@
             <br>
           </div>     
           <div class="flex justify-center">
-            <button @click="selectOwner(); setButtonType('owner')" class="grey rounded-xl w-full h-10 bg-green mr-5 drop-shadow-lg text-blue focus:bg-blue focus:text-grey">
+            <button @click="selectOwner()" class="grey rounded-xl w-full h-10 bg-green mr-5 drop-shadow-lg text-blue" :class="{'!bg-blue !text-grey': buttonType === 'owner'}">
               Majiteľ
             </button>
             <br>
-            <button @click="selectGuardian(); setButtonType('guardian')" class="grey rounded-xl w-full h-10 bg-green drop-shadow-lg text-blue focus:bg-blue focus:text-grey">
+            <button @click="selectGuardian()" class="grey rounded-xl w-full h-10 bg-green drop-shadow-lg text-blue" :class="{'!bg-blue !text-grey': buttonType === 'guardian'}">
               Strážca
             </button>
             <br>
           </div>
         </div>
         <div class="flex justify-center">
-          <button @click="submitForm(); navigate(); addUser();" class="w-32 h-10 bg-grey rounded-xl mt-6 shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)] accept-btn text-blue">
+          <button @click="submitForm()" class="w-32 h-10 bg-grey rounded-xl mt-6 shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)] accept-btn text-blue">
             Dokončiť
           </button>
         </div>
@@ -123,88 +123,18 @@
 <script>
 
 import Navbar from '@/views/_components/Navbar.vue';
-import useValidate from '@vuelidate/core'
 import { required, email, minLength, } from '@vuelidate/validators'
-/*import { data } from 'autoprefixer'*/
-import { reactive, computed } from 'vue'
-import { useStore } from 'vuex'
-// import axios from 'axios'
-
+import store from '@/store.js'
+import { useVuelidate } from '@vuelidate/core'
 
 export default {
-  name: 'RegisterPage',
   components: {
     Navbar
   },
 
-  setup() {
-    const store = useStore()
-    const state = reactive({
-      name: '',
-      username: '',
-      email: '',
-      password: '',
-      dogPrefference: '',
-      buttonType: '',
-    })
-
-    const rules = computed(() => {
-      return {
-        name: { required },
-        username: { required, minLength: minLength(4) },
-        email: { required, email, },
-        password: { required, minLength: minLength(8) },
-      }
-    })
-
-    const v$ = useValidate(rules, state)
-
-    const addUser = async () => {
-      if(state.buttonType === 'owner') {
-        state.dogPrefference = 'owner'
-      } else if(state.buttonType === 'guardian') {
-        state.dogPrefference = 'caretaker'
-      }
-
-
-      // const result = await axios.post("/auth/register", {
-      //   name:state.name,
-      //   username:state.username,
-      //   email:state.email,
-      //   password:state.password,
-      //   password_confirmation:state.password,
-      //   dog_preference:state.dogPrefference,
-      // })
-
-      store.dispatch('register', {
-        name:state.name,
-        username:state.username,
-        email:state.email,
-        password:state.password,
-        password_confirmation:state.password,
-        dog_preference:state.dogPrefference,
-      })
-
-      
-      // console.warn(result)
-
-      this.$router.push('/login');
-    }
-
-    const setButtonType = (type) => {
-          state.buttonType = type
-        }
-
-    return { 
-      state,
-      v$,
-      addUser,
-      setButtonType
-    }
-  },
-
   data()  {
    return {
+      v$: useVuelidate(),
       name: '',
       username: '',
       email: '',
@@ -214,19 +144,44 @@ export default {
       buttonType: '',
    }
   },
+
+  validations(){
+    return {
+      name: { required },
+      username: { required, minLength: minLength(4) },
+      email: { required, email, },
+      password: { required, minLength: minLength(8) },
+    }
+  },
+
   methods: {
-    submitForm() {
-        this.v$.$validate()
+    async submitForm() {
+      await this.v$.$validate()
 
       if(!this.v$.$error && (this.buttonType === 'owner' || this.buttonType === 'guardian'))  {
-        this.navigate()
+        try {
+          await store.dispatch('register', {
+            name: this.name,
+            username: this.username,
+            email: this.email,
+            password: this.password,
+            password_confirmation: this.password,
+            dog_preference: this.buttonType === 'owner' ? this.buttonType : 'caretaker',
+          })
+          this.navigate()
+        } catch(err) {
+          console.warn(err)
+        }
       }
     },
 
     selectOwner() {
+      this.buttonType = 'owner'
       this.selectedRoute = '/first-owner'
     },
+
     selectGuardian() {
+      this.buttonType = 'guardian'
       this.selectedRoute = '/first-guardian'
     },
     navigate() {
