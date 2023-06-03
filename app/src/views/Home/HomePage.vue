@@ -20,9 +20,15 @@
           </h1>  
         </div>
         <div class="sm:flex sm:justify-evenly sm:items-center grid gap-4 px-4 grid-cols-1 content-evenly justify-items-center pt-8">
-          <cards-animal/>
-          <cards-animal/>
-          <cards-animal/>
+          <div v-for="account in accounts" :key="account.id">
+            <CardsUser :accountDetails="account" />
+          </div>
+          <div v-for="account in accounts" :key="account.id">
+            <CardsUser :accountDetails="account" />
+          </div>
+          <div v-for="account in accounts" :key="account.id">
+            <CardsUser :accountDetails="account" />
+          </div>
         </div>
         <div class="h-[5rem] flex justify-center items-end">
           <button class="text-blue w-32 h-10 mb-4 bg-grey rounded-xl shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
@@ -35,7 +41,17 @@
           <h1 class="text-3xl text-blue text-center">
             Nájdi si psíka ktorého budeš strážiť.
           </h1>
-          <cards-user v-for="item in data" :key="item.id" :item="item" :user="user" />
+        </div>
+        <div class="sm:flex sm:justify-evenly sm:items-center grid gap-4 px-4 grid-cols-1 content-evenly justify-items-center pt-8">
+          <div v-for="account in accounts" :key="account.id">
+            <CardsAnimals :accountDetails="account" />
+          </div>
+          <div v-for="account in accounts" :key="account.id">
+            <CardsAnimals :accountDetails="account" />
+          </div>
+          <div v-for="account in accounts" :key="account.id">
+            <CardsAnimals :accountDetails="account" />
+          </div>
         </div>
         <div class="h-[20rem] flex justify-center items-end">
           <button class="text-grey w-32 h-10 bg-blue rounded-xl shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
@@ -83,21 +99,22 @@
 <script>
 import Navbar from '@/views/_components/Navbar.vue'
 import axios from 'axios'
-import CardsAnimal from '@/views/_components/CardsAnimal.vue'
+import CardsAnimals from '@/views/_components/CardsAnimals.vue'
 import CardsUser from '@/views/_components/CardsUser.vue'
 
 export default{
   name: 'HomePage',
   components: {
     Navbar,
-    CardsAnimal,
+    CardsAnimals,
     CardsUser,
   },
 
   data() {
     return {
       users: [],
-      userType: 'majitel' || 'strazca'
+      userType: 'majitel' || 'strazca',
+      accounts: [],
     };
   },
 
@@ -109,8 +126,12 @@ export default{
   },
 
   async created() {
-    const response = await axios.get('user');
-    console.log(response);
+    try {
+      const response = await axios.get('/auth/user');
+      this.users = response.data.data;
+    } catch (error) {
+      console.error(error);
+    }
   },
 
   computed: {
@@ -126,11 +147,6 @@ export default{
   }
 };
 
-// , {
-//       headers: {
-//         Authorization: 'Bearer ' + localStorage.getItem('token')
-//       }
-//     }
 </script>
 
 <style>

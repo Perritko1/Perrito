@@ -7,7 +7,7 @@ const store = createStore({
   state: {
     user: JSON.parse(localStorage.getItem('perrito_vue_user') || '{}'),
     token: localStorage.getItem('perrito_vue_token') || '',
-    accountDetails: {},
+    accountDetails: []
   },
   mutations: {
     setAccountDetails(state, details) {

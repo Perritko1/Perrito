@@ -16,7 +16,7 @@
           <div class="md:flex md:w-[50rem] md:justify-between">
             <div class="flex justify-center mb-4">
               <button @click="browse()">
-                <input type="file" accept="image/*" class="hidden" ref="file" @change="change">
+                <input type="file" accept="image/*" class="hidden" ref="file" @change="change" >
                 <img v-if="src" :src="src" class="rounded cursor-pointer h-52 w-52">
                 <img v-else src="@/views/_assets/mdi_image-add-outline.svg" class="rounded cursor-pointer h-52 w-52">
               </button>
@@ -64,9 +64,9 @@
           </div>
         </div>
         <div class="flex justify-center">
-          <button @click="submitForm(); addUserDogInfo()" class="w-32 h-10 bg-grey rounded-xl mt-6 mb-10 shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)] accept-btn text-blue">
-            Dokončiť
-          </button>
+            <button @click="submitForm(); addUserDogInfo()" class="w-32 h-10 bg-grey rounded-xl mt-6 mb-10 shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)] accept-btn text-blue">
+              Dokončiť
+            </button>
         </div>
     </div>
   </div>
