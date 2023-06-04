@@ -15,11 +15,17 @@
         <div class="flex md:justify-evenly justify-center">
           <div class="md:flex md:w-[50rem] md:justify-between">
             <div class="flex justify-center mb-4">
-              <button @click="browse()">
-                <input type="file" accept="image/*" class="hidden" ref="photoInput" @change="change" >
+              <button>
+                <label for="files" @change = "onFileSelected">
+                  <img :src="photoInput ? photoInput :avatar" alt="">
+                </label>
+                <input @change="onFileSelected" id="files" type="file">
+              </button>
+              <!-- <button @click="browse()">
+                <input type="file" accept="image/*" class="hidden" ref="photoInput" @onFileSelected="onFileSelected" >
                 <img v-if="src" :src="photoUrl" class="rounded cursor-pointer h-52 w-52">
                 <img v-else src="@/views/_assets/mdi_image-add-outline.svg" class="rounded cursor-pointer h-52 w-52">
-              </button>
+              </button> -->
             </div>
             <div class="text-blue w-72">
               <div class="inline">
@@ -77,6 +83,8 @@ import Navbar from '@/views/_components/Navbar.vue'
 import axios from 'axios'
 import { useVuelidate } from '@vuelidate/core'
 import { mapGetters } from 'vuex'
+import avatar from '@/views/_assets/mdi_image-add-outline.svg'
+import { ref } from 'vue'
 
 export default {
   name: 'FirstvisitOwner',
@@ -95,8 +103,9 @@ export default {
   data() {
     return {
       v$: useVuelidate(),
-      photoUrl: null,
-      photoInput: null,
+      avatar,
+      sentPhoto: null,
+      photoInput: ref(null),
       breed: '',
       weight: '',
       location: '',
@@ -115,10 +124,10 @@ export default {
       this.$refs.photoInput.click();
     },
     
-    change(e) {
-      this.photoInput = e.target.files[0];
-      this.photoUrl = URL.createObjectURL(this.photoInput)
-    },
+    // change(e) {
+    //   this.photoInput = e.target.files[0];
+    //   this.photoUrl = URL.createObjectURL(this.photoInput)
+    // },
 
     submitForm() {
       this.v$.$validate()
@@ -129,51 +138,93 @@ export default {
       }
     },
 
-    // async addUserDogInfo() {
-    //   try {
-    //     const result = await axios.post('/auth/addDetails', {
-    //     avatar: this.photoInput,
-    //     race: this.breed,
-    //     weight: this.weight,
-    //     location: this.location,   
-    //     description: this.description,
-    //     priceday: this.price,
-    //     pricehour: this.hour,
-    //     birthday: this.date,
-    //   }, {
-    //     headers: {
-    //       Authorization: `Bearer ${this.token}`,
-    //     },
-    //   });
-    //     console.warn(result);
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // },
+    onFileSelected(e) {
+      console.log(e)
+      this.sentPhoto = e.target.files[0]
+      // const file = e.target.files[0];
+      // const fr = new FileReader();
+      // const vm = this;
+      // fr.onload = function() {
+      //   vm.photoInput = ref(fr.result);
+      // }.bind(vm);
+      // fr.readAsDataURL(fiele);
+
+      // const formData = new FormData();
+      // formData.append('photoUrl', file);
+      
+      // try {
+      //   const result = await axios.post('/auth/addDetails', {
+      //     avatar: formData,
+      //     race: this.breed,
+      //     weight: this.weight,
+      //     location: this.location,   
+      //     description: this.description,
+      //     priceday: this.price,
+      //     pricehour: this.hour,
+      //     birthday: this.date,
+      //   }, {
+      //     headers: {
+      //       Authorization: `Bearer ${this.token}`,
+      //     },
+      //   });
+
+      //   console.warn(result);
+      // } catch (error) {
+      //   console.error(error);
+      // }
+    },
+
+    
 
     async addUserDogInfo() {
+      console.log(this.sentPhoto);
+      const fr = new FileReader();
+      const formData = new FormData();
+      formData.append('avatar', this.sentPhoto);
+      formData.append('race', this.breed);
+      formData.append('weight', this.weight);
+      formData.append('location', this.location);
+      formData.append('description', this.description);
+      formData.append('priceday', this.price);
+      formData.append('pricehour', this.hour);
+      formData.append('birthday', this.date);
+      fr.readAsDataURL(this.sentPhoto);
       try {
-        const formData = new FormData();
-        formData.append('avatar', this.photoInput);
-        formData.append('race', this.breed);
-        formData.append('weight', this.weight);
-        formData.append('location', this.location);
-        formData.append('description', this.description);
-        formData.append('priceday', this.price);
-        formData.append('pricehour', this.hour);
-        formData.append('birthday', this.date);
-
+        console.log(formData);
         const result = await axios.post('/auth/addDetails', formData, {
           headers: {
-            Authorization: `Bearer ${this.token}`
-          }
+            Authorization: `Bearer ${this.token}`,
+          },
         });
-
         console.warn(result);
       } catch (error) {
         console.error(error);
       }
     },
+
+    // async addUserDogInfo() {
+    //   try {
+    //     const formData = new FormData();
+    //     formData.append('avatar', this.photoInput);
+    //     formData.append('race', this.breed);
+    //     formData.append('weight', this.weight);
+    //     formData.append('location', this.location);
+    //     formData.append('description', this.description);
+    //     formData.append('priceday', this.price);
+    //     formData.append('pricehour', this.hour);
+    //     formData.append('birthday', this.date);
+
+    //     const result = await axios.post('/auth/addDetails', formData, {
+    //       headers: {
+    //         Authorization: `Bearer ${this.token}`
+    //       }
+    //     });
+
+    //     console.warn(result);
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // },
 
     methods: {
     uploadPhoto() {
@@ -195,4 +246,9 @@ export default {
 </script>
 
 <style>
+
+#files {
+  display: none !important;
+}
+
 </style> 

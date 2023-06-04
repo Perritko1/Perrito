@@ -15,9 +15,9 @@ export default {
   computed: {
     ...mapState(['data']),
   },
-  mounted() {
-    this.$store.dispatch('fetchData'); // Dispatch the fetchData action from the store
-  },
+  // mounted() {
+  //   this.$store.dispatch('fetchData'); // Dispatch the fetchData action from the store
+  // },
   methods: {
     ...mapActions(['fetchData']),
   }

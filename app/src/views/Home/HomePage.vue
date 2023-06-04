@@ -25,9 +25,11 @@
       </div>
     </div>
     <div class="h-[5rem] flex justify-center items-end">
-      <button class="text-blue w-32 h-10 mb-4 bg-grey rounded-xl shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
-        Zobraziť viac
-      </button>    
+      <a @click="$router.push('/guardians')">
+        <button class="text-blue w-32 h-10 mb-4 bg-grey rounded-xl shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
+          Zobraziť viac
+        </button>    
+      </a>
     </div>
   </div>
   <div class="h-[56rem] bg-grey">
@@ -41,10 +43,12 @@
         <CardsAnimals :accountDetails="account" />
       </div>
     </div>
-    <div class="h-[5rem] flex justify-center items-end">
-      <button class="text-grey w-32 h-10 bg-blue rounded-xl shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
-        Zobraziť viac
-      </button>
+    <div class="h-[20rem] flex justify-center items-end">
+      <a @click="$router.push('/animals')">
+        <button class="text-grey w-32 h-10 bg-blue rounded-xl shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
+          Zobraziť viac
+        </button>
+      </a>
     </div>
     <div class="bg-grey">
       <div class="flex justify-center">
