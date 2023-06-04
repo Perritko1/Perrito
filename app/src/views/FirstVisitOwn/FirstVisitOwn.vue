@@ -16,8 +16,8 @@
           <div class="md:flex md:w-[50rem] md:justify-between">
             <div class="flex justify-center mb-4">
               <button @click="browse()">
-                <input type="file" accept="image/*" class="hidden" ref="file" @change="change" >
-                <img v-if="src" :src="src" class="rounded cursor-pointer h-52 w-52">
+                <input type="file" accept="image/*" class="hidden" ref="photoInput" @change="change" >
+                <img v-if="src" :src="photoUrl" class="rounded cursor-pointer h-52 w-52">
                 <img v-else src="@/views/_assets/mdi_image-add-outline.svg" class="rounded cursor-pointer h-52 w-52">
               </button>
             </div>
@@ -95,8 +95,8 @@ export default {
   data() {
     return {
       v$: useVuelidate(),
-      src: '',
-      file: null,
+      photoUrl: null,
+      photoInput: null,
       breed: '',
       weight: '',
       location: '',
@@ -112,12 +112,12 @@ export default {
 
   methods: {
     browse() {
-      this.$refs.file.click();
+      this.$refs.photoInput.click();
     },
     
     change(e) {
-      this.file = e.target.files[0];
-      this.src = URL.createObjectURL(this.file)
+      this.photoInput = e.target.files[0];
+      this.photoUrl = URL.createObjectURL(this.photoInput)
     },
 
     submitForm() {
@@ -129,26 +129,66 @@ export default {
       }
     },
 
+    // async addUserDogInfo() {
+    //   try {
+    //     const result = await axios.post('/auth/addDetails', {
+    //     avatar: this.photoInput,
+    //     race: this.breed,
+    //     weight: this.weight,
+    //     location: this.location,   
+    //     description: this.description,
+    //     priceday: this.price,
+    //     pricehour: this.hour,
+    //     birthday: this.date,
+    //   }, {
+    //     headers: {
+    //       Authorization: `Bearer ${this.token}`,
+    //     },
+    //   });
+    //     console.warn(result);
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // },
+
     async addUserDogInfo() {
       try {
-        const result = await axios.post('/auth/addDetails', {
-        race: this.breed,
-        weight: this.weight,
-        location: this.location,
-        description: this.description,
-        priceday: this.price,
-        pricehour: this.hour,
-        birthday: this.date,
-      }, {
-        headers: {
-          Authorization: `Bearer ${this.token}`,
-        },
-      });
+        const formData = new FormData();
+        formData.append('avatar', this.photoInput);
+        formData.append('race', this.breed);
+        formData.append('weight', this.weight);
+        formData.append('location', this.location);
+        formData.append('description', this.description);
+        formData.append('priceday', this.price);
+        formData.append('pricehour', this.hour);
+        formData.append('birthday', this.date);
+
+        const result = await axios.post('/auth/addDetails', formData, {
+          headers: {
+            Authorization: `Bearer ${this.token}`
+          }
+        });
+
         console.warn(result);
       } catch (error) {
         console.error(error);
       }
     },
+
+    methods: {
+    uploadPhoto() {
+      const formData = new FormData();
+      formData.append('photo', this.$refs.photoInput.files[0]);
+
+      axios.post('auth/addDetails', formData)
+        .then(response => {
+          this.photoUrl = response.data.photoUrl;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  }
   },
   
 }

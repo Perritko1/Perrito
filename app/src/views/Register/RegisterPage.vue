@@ -125,6 +125,7 @@
 import Navbar from '@/views/_components/Navbar.vue';
 import { required, email, minLength, } from '@vuelidate/validators'
 import store from '@/store.js'
+import axios from 'axios'
 import { useVuelidate } from '@vuelidate/core'
 
 export default {
@@ -172,6 +173,17 @@ export default {
         } catch(err) {
           console.warn(err)
         }
+      }
+    },
+
+    async addUserName() {
+      try {
+        const result = await axios.post('auth/addDetails', {
+          name: this.name,
+        })
+        console.warn(result)
+      } catch(err) {
+        console.warn(err)
       }
     },
 

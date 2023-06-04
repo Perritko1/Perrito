@@ -70,7 +70,7 @@ const store = createStore({
     async fetchData({ commit }) {
       try {
         const response = await axios.get('/auth/addDetails')
-        const accountDetails = response.data;
+        const accountDetails = response.data.data;
         commit('setAccountDetails', accountDetails);        
       } catch(error) {
         console.error('Error fetching data:', error);

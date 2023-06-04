@@ -37,7 +37,7 @@
       </h1>
     </div>
     <div class="sm:flex sm:justify-evenly sm:items-center grid gap-4 px-4 grid-cols-1 content-evenly justify-items-center pt-8">
-      <div v-for="account in accounts" :key="account.id">
+      <div v-for="account in owners" :key="account.id">
         <CardsAnimals :accountDetails="account" />
       </div>
     </div>
@@ -103,7 +103,8 @@ export default{
       users: [],
       userType: 'majitel' || 'strazca',
       accounts: [],
-      careTakers: []
+      careTakers: [],
+      owners: []
     };
   },
 
@@ -111,6 +112,8 @@ export default{
     try {
       const respCare = await axios.get('auth/getCaretaker')
       this.careTakers = respCare.data.data.slice(0, 3)
+      const respOwn = await axios.get('auth/getOwner')
+      this.owners = respOwn.data.data.slice(0, 3)
 
       const response = await axios.get('/auth/user');
       this.users = response.data.data;
