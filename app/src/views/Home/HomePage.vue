@@ -41,15 +41,10 @@
         <CardsAnimals :accountDetails="account" />
       </div>
     </div>
-    <div class="h-[20rem] flex justify-center items-end">
+    <div class="h-[5rem] flex justify-center items-end">
       <button class="text-grey w-32 h-10 bg-blue rounded-xl shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
         Zobraziť viac
       </button>
-    </div>
-    <div class="flex justify-center items-center">
-      <div class="w-screen mx-40">
-        <hr class="h-px my-20 bg-blue border-0 dark:bg-gray-700">
-      </div>
     </div>
     <div class="bg-grey">
       <div class="flex justify-center">

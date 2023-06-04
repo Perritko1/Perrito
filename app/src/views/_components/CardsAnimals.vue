@@ -1,19 +1,28 @@
 <template>
-  <div class="bg-grey rounded-md w-80">
+  <div class="bg-blue rounded-md w-80">
     <div class="flex justify-center">
       <img class="rounded w-100" src="@/views/_components/_assets/random-people.jpeg" alt="">
     </div>
-      <div class="grid gap-3 grid-cols-2 pt-2 text-blue">
+      <div class="grid gap-3 grid-cols-2 pt-2 text-grey">
         <div class="flex pl-2">
-          <p class="pl-1">{{ accountDetails.breed }}</p>
+          <img src="@/views/_components/_assets/DogVector.svg" alt="">
+          <p class="pl-2">{{ accountDetails.breed }}</p>
         </div>
-        <p>{{ accountDetails.pricehour }} €/hod</p>
+        <div class="flex justify-end pr-2">
+          <p>{{ accountDetails.pricehour }} €/hod</p>
+        </div>   
+        <div class="flex pl-2">
+          <img src="@/views/_components/_assets/MarkerGreyVector.svg" alt="">
+          <p class="pl-2">{{ accountDetails.location }}</p>        
+        </div>
+        <div class="flex justify-end pr-2">
+          <p>{{ accountDetails.priceday }} €/deň</p>
+        </div>
         <div class="flex pl-2 pb-2">
-          <img src="@/views/_components/_assets/MarkerVector.svg" alt="">
-          <p class="pl-1">{{ accountDetails.location }}</p>        
+          <img src="@/views/_components/_assets/WeightVector.svg" alt="">
+          <p class="pl-2">{{ accountDetails.weight}} Kg</p>
         </div>
-        <p>{{ accountDetails.priceday }} €/den</p>
-        <p>{{ accountDetails.weight}} Kg</p>
+        
       </div>
     </div>
 </template>

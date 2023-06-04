@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-grey h-screen">
     <navbar/>
         <a @click="$router.push('/')">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 58 58" fill="none" overflow="visible" class="w-12 h-12 m-7">

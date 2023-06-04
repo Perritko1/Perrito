@@ -6,14 +6,18 @@
       <div class="grid gap-3 grid-cols-2 pt-2 text-blue">
         <div class="flex pl-2">
           <img src="@/views/_components/_assets/PeopleVector.svg" alt="">
-          <p>   {{ accountDetails.name }}</p>
+          <p class="pl-2">{{ accountDetails.name }}</p>
         </div>
-        <p>{{ accountDetails.pricehour }}€/hod</p>
+        <div class="flex justify-end pr-2">
+          <p>{{ accountDetails.pricehour }}€/hod</p>
+        </div>
         <div class="flex pl-2 pb-2">
           <img src="@/views/_components/_assets/MarkerVector.svg" alt="">
-          <p class="pl-1">{{ accountDetails.location }}</p>     
+          <p class="pl-2">{{ accountDetails.location }}</p>     
         </div>
-        <p>{{ accountDetails.priceday }}€/den</p>
+        <div class="flex justify-end pr-2">
+          <p>{{ accountDetails.priceday }}€/deň</p>
+        </div>
       </div>
     </div>
 </template>
