@@ -17,7 +17,7 @@
             <div class="flex justify-center mb-4">
               <button>
                 <label for="files" @change = "onFileSelected">
-                  <img :src="photoInput ? photoInput :avatar" alt="">
+                  <img :src="photoInput ? photoInput :avatar" alt="" class="h-80">
                 </label>
                 <input @change="onFileSelected" id="files" type="file">
               </button>
@@ -141,6 +141,15 @@ export default {
     onFileSelected(e) {
       console.log(e)
       this.sentPhoto = e.target.files[0]
+      const file = e.target.files[0]
+      const fr = new FileReader();
+      const vm = this
+
+      fr.onload = function() {
+        vm.picture = ref(fr.result)
+        localStorage.setItem('avatar', fr.result)
+      }.bind(vm)
+      fr.readAsDataURL(file);
       // const file = e.target.files[0];
       // const fr = new FileReader();
       // const vm = this;

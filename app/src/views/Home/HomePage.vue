@@ -38,12 +38,12 @@
         Nájdi si psíka ktorého budeš strážiť.
       </h1>
     </div>
-    <div class="sm:flex sm:justify-evenly sm:items-center grid gap-4 px-4 grid-cols-1 content-evenly justify-items-center pt-8">
+    <div class="sm:flex sm:justify-evenly bg-grey sm:items-center grid gap-4 px-4 grid-cols-1 content-evenly justify-items-center pt-8">
       <div v-for="account in owners" :key="account.id">
         <CardsAnimals :accountDetails="account" />
       </div>
     </div>
-    <div class="h-[20rem] flex justify-center items-end">
+    <div class="h-[5rem] bg-grey flex justify-center items-end">
       <a @click="$router.push('/animals')">
         <button class="text-grey w-32 h-10 bg-blue rounded-xl shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)]">
           Zobraziť viac
