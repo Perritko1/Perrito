@@ -15,4 +15,9 @@ class User extends RainlabUser implements JWTSubject {
         return [];
     }
 
+    public function getMorphClass()
+    {
+        return \RainLab\User\Models\User::class;
+    }
+
 }
