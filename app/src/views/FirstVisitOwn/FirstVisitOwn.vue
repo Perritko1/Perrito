@@ -123,19 +123,14 @@ export default {
     browse() {
       this.$refs.photoInput.click();
     },
-    
-    // change(e) {
-    //   this.photoInput = e.target.files[0];
-    //   this.photoUrl = URL.createObjectURL(this.photoInput)
-    // },
+
+    change(e) {
+      this.file = e.target.files[0];
+      this.src = URL.createObjectURL(this.file)
+    },
 
     submitForm() {
       this.v$.$validate()
-      if(!this.v$.$error) {
-        alert("nastavenie uctu prebehlo uspesne")
-      } else {
-        alert("nepodarilo sa dokoncit nastavovanie uctu")
-      }
     },
 
     onFileSelected(e) {
@@ -150,37 +145,6 @@ export default {
         localStorage.setItem('avatar', fr.result)
       }.bind(vm)
       fr.readAsDataURL(file);
-      // const file = e.target.files[0];
-      // const fr = new FileReader();
-      // const vm = this;
-      // fr.onload = function() {
-      //   vm.photoInput = ref(fr.result);
-      // }.bind(vm);
-      // fr.readAsDataURL(fiele);
-
-      // const formData = new FormData();
-      // formData.append('photoUrl', file);
-      
-      // try {
-      //   const result = await axios.post('/auth/addDetails', {
-      //     avatar: formData,
-      //     race: this.breed,
-      //     weight: this.weight,
-      //     location: this.location,   
-      //     description: this.description,
-      //     priceday: this.price,
-      //     pricehour: this.hour,
-      //     birthday: this.date,
-      //   }, {
-      //     headers: {
-      //       Authorization: `Bearer ${this.token}`,
-      //     },
-      //   });
-
-      //   console.warn(result);
-      // } catch (error) {
-      //   console.error(error);
-      // }
     },
 
     
@@ -210,30 +174,6 @@ export default {
         console.error(error);
       }
     },
-
-    // async addUserDogInfo() {
-    //   try {
-    //     const formData = new FormData();
-    //     formData.append('avatar', this.photoInput);
-    //     formData.append('race', this.breed);
-    //     formData.append('weight', this.weight);
-    //     formData.append('location', this.location);
-    //     formData.append('description', this.description);
-    //     formData.append('priceday', this.price);
-    //     formData.append('pricehour', this.hour);
-    //     formData.append('birthday', this.date);
-
-    //     const result = await axios.post('/auth/addDetails', formData, {
-    //       headers: {
-    //         Authorization: `Bearer ${this.token}`
-    //       }
-    //     });
-
-    //     console.warn(result);
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // },
 
     methods: {
     uploadPhoto() {

@@ -15,18 +15,24 @@
         <div class="flex md:justify-evenly justify-center">
           <div class="md:flex md:w-[50rem] md:justify-between">
             <div class="flex justify-center mb-4">
-              <button @click="browse()">
+              <button>
+                <label for="files" @change = "onFileSelected">
+                  <img :src="photoInput ? photoInput :avatar" alt="" class="h-80">
+                </label>
+                <input @change="onFileSelected" id="files" type="file">
+              </button>
+              <!-- <button @click="browse()">
                 <input type="file" accept="image/*" class="hidden" ref="file" @change="change">
                 <img v-if="src" :src="src" class="rounded cursor-pointer h-52 w-52">
                 <img v-else src="@/views/_assets/mdi_image-add-outline.svg" class="rounded cursor-pointer h-52 w-52">
-              </button>
+              </button> -->
             </div>
             <div class="text-blue w-72">
               <div class="inline">
                 <label class="mr-4" for="birthdate">
                   Zadajte dátum narodenia:
                 </label>
-                <input class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" type="date" id="birthdate">
+                <input class="bg-blue text-black rounded-xl w-full h-8 mb-4 indent-2" type="date" v-model="birthdate">
               </div>
               <div class="inline">
                 <p class="mr-4">Telefónne číslo:</p>
@@ -66,7 +72,11 @@
 <script >
 
 import Navbar from '@/views/_components/Navbar.vue'
+import avatar from '@/views/_assets/mdi_image-add-outline.svg'
+import { useVuelidate } from '@vuelidate/core'
+import { mapGetters } from 'vuex'
 import axios from 'axios'
+import { ref } from 'vue'
 
 
 export default {
@@ -82,6 +92,10 @@ export default {
 
   data() {
     return {
+      v$: useVuelidate(),
+      avatar,
+      sentPhoto: null,
+      photoInput: ref(null),
       phoneNum: '',
       price: '',
       hour: '',
@@ -89,10 +103,15 @@ export default {
       description: '',
       animalAge: '',
       animalWeight: '',
-      src: '',
-      file: null,
     }
   },
+
+  computed: {
+    ...mapGetters({
+      token: 'token'
+    })
+  },
+
   methods: {
     browse() {
       this.$refs.file.click();
@@ -120,32 +139,59 @@ export default {
 
     submitForm() {
       this.v$.$validate()
-      if(!this.v$.$error) {
-        alert("dokoncovaniie uctu prebehlo uspesne")
-      } else {
-        alert("nepodarilo sa donastavovat ucet")
-      }
+    },
+
+    onFileSelected(e) {
+      console.log(e)
+      this.sentPhoto = e.target.files[0]
+      const file = e.target.files[0]
+      const fr = new FileReader();
+      const vm = this
+
+      fr.onload = function() {
+        vm.picture = ref(fr.result)
+        localStorage.setItem('avatar', fr.result)
+      }.bind(vm)
+      fr.readAsDataURL(file);
     },
 
     async addUserInfo() {
-       try {
-        const result = await axios.post('/auth/addDetails', {
-        phoneNum:this.phoneNum,
-        price:this.price,
-        location:this.location,
-        description:this.description,
-      }, {
-        headers: {
-          Authorization: `Bearer ${this.token}`,
-        },
-      });
+      console.log(this.sentPhoto);
+      const fr = new FileReader();
+      const formData = new FormData();
+      formData.append('avatar', this.sentPhoto);
+      formData.append('number', this.phoneNum);
+      formData.append('priceday', this.price);
+      formData.append('pricehour', this.hour);
+      formData.append('description', this.description);
+      formData.append('location', this.location);
+      formData.append('birthday', this.birthdate);
+      fr.readAsDataURL(this.sentPhoto);
+      try {
+        console.log(formData);
+        const result = await axios.post('/auth/addDetails', formData, {
+          headers: {
+            Authorization: `Bearer ${this.token}`,
+          },
+        });
         console.warn(result);
       } catch (error) {
         console.error(error);
       }
     },
+    
+    uploadPhoto() {
+      const formData = new FormData();
+      formData.append('photo', this.$refs.photoInput.files[0]);
 
-   
+      axios.post('auth/addDetails', formData)
+        .then(response => {
+          this.photoUrl = response.data.photoUrl;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
   },
 }
 
