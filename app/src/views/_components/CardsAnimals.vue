@@ -6,7 +6,7 @@
       <div class="grid gap-3 grid-cols-2 pt-2 text-grey">
         <div class="flex pl-2">
           <img src="@/views/_components/_assets/DogVector.svg" alt="">
-          <p class="pl-2">{{ accountDetails.breed }}</p>
+          <p class="pl-2">{{ accountDetails.race }}</p>
         </div>
         <div class="flex justify-end pr-2">
           <p>{{ accountDetails.pricehour }} €/hod</p>

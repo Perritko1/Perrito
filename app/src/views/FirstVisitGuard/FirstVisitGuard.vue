@@ -103,8 +103,6 @@ export default {
       hour: '',
       location: '',
       description: '',
-      animalAge: '',
-      animalWeight: '',
     }
   },
 

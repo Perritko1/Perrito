@@ -65,7 +65,7 @@
           </a>
           <a v-else @click="logout()">
             <button class="inter ml-2">
-              Odhlasenie
+              Odhlásenie
             </button>
           </a>
         </div>
@@ -120,7 +120,7 @@
                     </a>
                     <a v-else @click="logout()">
                       <button class="inter ml-2">
-                        Odhlasenie
+                        Odhlásenie
                       </button>
                     </a>
                   </div>

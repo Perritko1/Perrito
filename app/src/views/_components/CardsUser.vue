@@ -20,7 +20,9 @@
           <p>{{ accountDetails.priceday }}€/deň</p>
         </div>
         <div class="flex pl-2 pb-2">
-          <p>Tel. č.{{ accountDetails.phoneNum }}</p>
+          <a :href="`tel: {{ accountDetails.number }}`">
+            <p>Tel. č. {{ accountDetails.number }}</p>
+          </a>
         </div>
       </div>
     </div>
