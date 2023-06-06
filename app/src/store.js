@@ -32,6 +32,13 @@ const store = createStore({
 			localStorage.removeItem('perrito_vue_user')
 			localStorage.removeItem('perrito_vue_token')
 		},
+
+    logout(state) {
+      state.user = null
+      state.token = null 
+      localStorage.removeItem('perrito_vue_user')
+      localStorage.removeItem('perrito_vue_token')
+    }
   },
   actions: {
 
@@ -90,6 +97,10 @@ const store = createStore({
         console.error(error);
       }
     },
+
+    logout({ commit }) {
+      commit('logout')
+    }
 
   },
   getters: {

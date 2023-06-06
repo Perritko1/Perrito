@@ -70,9 +70,11 @@
           </div>
         </div>
         <div class="flex justify-center">
+          <a @click="$router.push('/')">
             <button @click="submitForm(); addUserDogInfo()" class="w-32 h-10 bg-grey rounded-xl mt-6 mb-10 shadow-[1px_1px_10px_2px_rgba(0,0,0,0.3)] accept-btn text-blue">
               Dokončiť
             </button>
+          </a>
         </div>
     </div>
   </div>

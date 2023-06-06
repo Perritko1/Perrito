@@ -18,6 +18,7 @@
 
 import Navbar from '@/views/_components/Navbar.vue'
 import CardsUser from '@/views/_components/CardsUser.vue'
+import axios from 'axios'
 
 export default {
   name: 'StrazcoviaPage',
@@ -25,27 +26,31 @@ export default {
     Navbar,
     CardsUser
   },
+
+  data() {
+    return {
+      careTakers: [],
+    };
+  },
+
+  async created() {
+    try {
+      const respCare = await axios.get('auth/getCaretaker')
+      this.careTakers = respCare.data.data.slice(0, 3)
+
+      const response = await axios.get('/auth/user');
+      this.users = response.data.data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
   props: {
     item: {
       type: Object,
       required: true
-    }
-  }
-
-  // props: {
-  //   title:{
-  //     require: true,
-  //     type: String,
-  //   },
-  //   image:{
-  //     require: true,
-  //     type: String
-  //   },
-  //   rating:{
-  //     require: true,
-  //     type: Number
-  //   },
-  // }
+    },
+  },
 } 
 
 </script>
