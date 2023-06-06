@@ -1,7 +1,7 @@
 <template>
   <div class="bg-blue rounded-md w-80">
     <div class="flex justify-center">
-      <img class="rounded w-100" src="@/views/_components/_assets/random-people.jpeg" alt="">
+      <img class="rounded w-100" :src="accountDetails.avatar" alt="">
     </div>
       <div class="grid gap-3 grid-cols-2 pt-2 text-grey">
         <div class="flex pl-2">
