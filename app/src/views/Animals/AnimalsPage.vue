@@ -38,7 +38,7 @@ export default {
     async created() {
     try {
       const respOwn = await axios.get('auth/getOwner')
-      this.owners = respOwn.data.data.slice(0, 3)
+      this.owners = respOwn.data.data
 
       const response = await axios.get('/auth/user');
       this.users = response.data.data;

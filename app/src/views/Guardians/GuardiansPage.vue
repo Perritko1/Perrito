@@ -36,7 +36,7 @@ export default {
   async created() {
     try {
       const respCare = await axios.get('auth/getCaretaker')
-      this.careTakers = respCare.data.data.slice(0, 3)
+      this.careTakers = respCare.data.data
 
       const response = await axios.get('/auth/user');
       this.users = response.data.data;
